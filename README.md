@@ -149,6 +149,8 @@ These are the files that you need to download to make lelbot work correctly:
 > facts.txt
 > 
 > items.txt
+>
+> lelnums.json
 > 
 > users.txt
 
