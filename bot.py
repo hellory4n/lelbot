@@ -46,9 +46,36 @@ client.remove_command('help')
 
 inter_client = InteractionClient(client)
 
+@tasks.loop(seconds = 3600)
+async def cook_loop():
+    statuses = ['/',
+    'Me has cook slash commands',
+    'Hey do you want free B O b u X?',
+    'Beep boop',
+    'Beep boop me is a bot and me don\'t breathe air cuz bots don\'t breathe air',
+    'lel',
+    'This text was written on 11/03/2021',
+    'I need potatos. Can you give me potatos?',
+    'Me likes potatos',
+    'Potatos are cook',
+    'There\'s so many good things you can do on your life, why you are reading this?',
+    'h uwu',
+    'Hello! My token is [REDACTED].',
+    'hgsfvusdijfv',
+    'You are cook :)',
+    'Type "/slash" to see a butiful message',
+    'Never gonna give you up',
+    'Are you reading this?',
+    'h',
+    'Did you know that your age is your age + 3 - 3?',
+    'I want a really fancy coffee maker',
+    'I love SandwichXP, it\'s just so well made!']
+    await client.change_presence(status=discord.Status.idle, activity=discord.Game(f'Type l!help for help! {random.choice(statuses)}'))
+
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.idle, activity=discord.Game('Type l!help for help! Slash commands are here!'))
+    #Only remove the "#" from the line below if you don't have to restart the bot many times
+    #cook_loop.start()
     print('Im online EEEEEEEE')
 
 @client.event
@@ -83,10 +110,14 @@ async def boom2(ctx, *, exploded_lol):
 
 @client.command(aliases=['commands'])
 async def help(ctx):
-    embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional. You can also use slash commands!", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`", inline=False)
-    embed.set_footer(text="lel")
-    await ctx.send(embed=embed)
+    embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`", inline=False)
+    embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
+    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
+    embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
+    embed.add_field(name="Stuff that isn't really for fun", value="`embed <title> | <description>`, `math <expression>`, `poll <text>`, `randnum <min> <max>`, `suggest <suggestion>`, `roll`", inline=False)
+    await ctx.reply(embed=embed)
 
 @client.command()
 async def invite(ctx):
@@ -175,9 +206,10 @@ async def randomstory2(ctx):
 
 @client.command()
 async def aboutme(ctx):
-        ABOTME_embed=discord.Embed(title=f'About Lelbot', description=f'Hello! Im lelbot! Im an AI created by hellory5n! (hellory5n is character, who really created me is hellory4n lel)\n\nthis is hellory5n: https://cdn.discordapp.com/attachments/811060678277333023/819620061869244426/Screenshot_20210311-141624_Fancade.jpg \n\nCREDITS\nDeveloped by hellory4n\nsome fun facts: SrMuffin136, Senjienji, Dylan Brew, shartok, Rubi, Nextie\nHosted in Discloud\nAnd thank you for using my commands!\n\nCurrent version: 1.1.6', color=0xFECC4D)
-        ABOTME_embed.set_footer(text="lel")
-        await ctx.send(embed=ABOTME_embed)
+        embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
+        embed.set_footer(text="Version 1.2")
+        embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
+        await ctx.send(embed=embed)
 
 @client.command(aliases=['when'])
 async def when2(ctx, *, whenn):
@@ -202,8 +234,8 @@ async def when2(ctx, *, whenn):
 
 @client.command(aliases=['yesorno'])
 async def helloyesorno(ctx, *, question):
-    helloyesorno = ['https://cdn.discordapp.com/attachments/811060678277333023/828721589981806632/Screenshot_20210405-141259_Fancade.jpg',
-            'https://cdn.discordapp.com/attachments/811060678277333023/828721531768012820/Screenshot_20210405-141109_Fancade.png']
+    helloyesorno = ['https://media.discordapp.net/attachments/806308041115959377/911742147655508038/hellono_but_big.png',
+            'https://media.discordapp.net/attachments/806308041115959377/911742147999445052/helloyes_but_big.png']
     embed=discord.Embed(title=question, description="", color=0xFECC4D)
     embed.set_footer(text=ctx.author.id)
     embed.set_image(url=random.choice(helloyesorno))
@@ -307,9 +339,9 @@ async def randomsandwich2(ctx):
 
 @client.command(aliases=['poll'])
 async def poll2(ctx, *, owopoll):
-    poll_embed=discord.Embed(title=f'Poll by {ctx.message.author}', description=f'{owopoll}', color=0xFECC4D)
-    poll_embed.set_footer(text=f'lel')
-    Poll = await ctx.send(embed=poll_embed)
+    pou_embed=discord.Embed(title=f'Poll by {ctx.message.author}', description=f'{owopoll}', color=0xFECC4D)
+    pou_embed.set_footer(text=f'lel')
+    Poll = await ctx.send(embed=pou_embed)
     await Poll.add_reaction('<:checkmark:828495515423080448>')
     await Poll.add_reaction('<:crossmark:828495571240747018>')
 
@@ -330,175 +362,222 @@ async def weirdtext2(ctx):
     await ctx.send(f'{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}')
 
 @client.command(aliases=['dostuff'])
-async def dostuff2(ctx):
-    lelbot_tasks_index = random.randint(1,55)
+async def dostuff2(ctx,index="random"):
+    no_NOOOOO = False
+    
+    try:
+        int_index = int(index)
+    except:
+        index = "random"
 
-    if lelbot_tasks_index == 1:
-        await ctx.send(f'🎙 <:lelcube:811058465383514132>')
-        await ctx.send(f'He sings')
-    if lelbot_tasks_index == 2:
-        await ctx.send(f':frame_photo: :paintbrush: <:lelcube:811058465383514132>')
-        await ctx.send(f'He paints')
-    if lelbot_tasks_index == 3:
-        await ctx.send(f':computer: <:lelcube:811058465383514132>')
-        await ctx.send(f'He codes')
-    if lelbot_tasks_index == 4:
-        await ctx.send(f':video_game: <:lelcube:811058465383514132>')
-        await ctx.send(f'He play games')
-    if lelbot_tasks_index == 5:
-        await ctx.send(f':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await ctx.send(f'He kills potatos')
-    if lelbot_tasks_index == 6:
-        await ctx.send(f':tv: <:lelcube:811058465383514132>')
-        await ctx.send(f'He watches tv')
-    if lelbot_tasks_index == 7:
-        await ctx.send(f':hammer: <:lelcube:811058465383514132>')
-        await ctx.send(f'He destroy stuff')
-    if lelbot_tasks_index == 8:
-        await ctx.send(f':shower:\n<:lelcube:811058465383514132>')
-        await ctx.send(f'He showers')
-    if lelbot_tasks_index == 9:
-        await ctx.send(f'<:lelcube:811058465383514132> :shopping_cart:')
-        await ctx.send(f'He goes shopping')
-    if lelbot_tasks_index == 10:
-        await ctx.send(f':balloon: <:lelcube:811058465383514132>')
-        await ctx.send(f'He plays with balloon')
-    if lelbot_tasks_index == 11:
-        await ctx.send(f':wastebasket: :newspaper2: <:lelcube:811058465383514132>')
-        await ctx.send(f'He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee')
-    if lelbot_tasks_index == 12:
-        await ctx.send(f':video_camera: <:lelcube:811058465383514132>')
-        await ctx.send(f'He records a video')
-    if lelbot_tasks_index == 13:
-        await ctx.send(f':pencil: <:lelcube:811058465383514132>')
-        await ctx.send(f'He writes a text')
-    if lelbot_tasks_index == 14:
-        await ctx.send(f'<:pixel:827617330237669406> :mag: <:lelcube:811058465383514132>')
-        worstjokeever = await ctx.send(f'He is trying to see nextie *but nextie have the size of a __pixel__*')
-        await worstjokeever.add_reaction('<:bassrolf:821948606701371462>')
-    if lelbot_tasks_index == 15:
-        await ctx.send(f'<:lelcube:811058465383514132> :loudspeaker:')
-        await ctx.send(f'He says potatopatata very loud')
-    if lelbot_tasks_index == 16:
-        await ctx.send(f':cake: :fork_and_knife: <:lelcube:811058465383514132>')
-        await ctx.send(f'He eats a cake')
-    if lelbot_tasks_index == 17:
-        await ctx.send(f':iphone: <:lelcube:811058465383514132>')
-        await ctx.send(f'He uses the phone')
-    if lelbot_tasks_index == 18:
-        await ctx.send(f':pizza: <:lelcube:811058465383514132>')
-        await ctx.send(f'He is 101% sure that pizza is pizza')
-    if lelbot_tasks_index == 19:
-        await ctx.send(f'<:clapping:811058070843162686> <:lelcube:811058465383514132>')
-        await ctx.send(f'He claps')
-    if lelbot_tasks_index == 20:
-        await ctx.send(f'<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>')
-        await ctx.send(f'He fights')
-    if lelbot_tasks_index == 21:
-        await ctx.send(f':telephone_receiver: <:lelcube:811058465383514132>')
-        await ctx.send(f'He calls people')
-    if lelbot_tasks_index == 22:
-        await ctx.send(f'<:lelcube:811058465383514132> :tent:')
-        await ctx.send(f'He goes camping')
-    if lelbot_tasks_index == 23:
-        await ctx.send(f':ballet_shoes: <:lelcube:811058465383514132>')
-        await ctx.send(f'He uses a ballet shoes')
-    if lelbot_tasks_index == 24:
-        await ctx.send(f'<:lelcube:811058465383514132> :toothbrush: :toilet:')
-        await ctx.send(f'He clean the toilet')
-    if lelbot_tasks_index == 25:
-        await ctx.send(f":tophat:\n<:lelcube:811058465383514132> :magic_wand:")
-        await ctx.send(f'He magic man')
-    if lelbot_tasks_index == 26:
-        await ctx.send(f':saxophone: <:lelcube:811058465383514132>')
-        await ctx.send(f'He plays the saxophone cuz saxophones are cool')
-    if lelbot_tasks_index == 27:
-        await ctx.send(f'<:lelcube:811058465383514132> <:okhand:811059019828428821>')
-        await ctx.send(f'He likes *something*')
-    if lelbot_tasks_index == 28:
-        await ctx.send(f'<:sweatwide1:818622702574632970><:lelcube:811058465383514132><:sweatwide2:818622715815526481>')
-        await ctx.send(f'He uses a disguise')
-    if lelbot_tasks_index == 29:
-        await ctx.send(f':sweat_smile: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await ctx.send(f'He kills')
-    if lelbot_tasks_index == 30:
-        await ctx.send(f'<:maum1:778489567036178464> <:lelcube:811058465383514132> <:maum2:778489689014403072>')
-        await ctx.send(f'He will catch you')
-    if lelbot_tasks_index == 31:
-        await ctx.send(f'<:lelcube:811058465383514132> :dash:')
-        await ctx.send('He fards')
-    if lelbot_tasks_index == 32:
-        await ctx.send(f'<:lelcube:811058465383514132>\n:blue_car:')
-        await ctx.send('He drives a car')
-    if lelbot_tasks_index == 33:
-        await ctx.send(':boom: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await ctx.send('He commits war crimes')
-    if lelbot_tasks_index == 34:
-        await ctx.send(':wolf: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await ctx.send('He hunts')
-    if lelbot_tasks_index == 35:
-        await ctx.send(':cloud_rain:\n:umbrella:\n<:lelcube:811058465383514132>')
-        await ctx.send('He is on rain')
-    if lelbot_tasks_index == 36:
-        await ctx.send('<:lelcube:811058465383514132>\n:sailboat: :island:')
-        await ctx.send('He escapes island')
-    if lelbot_tasks_index == 37:
-        await ctx.send(':cooking: <:lelcube:811058465383514132>')
-        await ctx.send('He cooks')
-    if lelbot_tasks_index == 38:
-        await ctx.send(':ping_pong: <:lelcube:811058465383514132>')
-        await ctx.send('He plays ping pong')
-    if lelbot_tasks_index == 39:
-        await ctx.send(':guitar: <:lelcube:811058465383514132>')
-        await ctx.send('He plays guitar')
-    if lelbot_tasks_index == 40:
-        await ctx.send('<:blushing:821505454361935902> :heart: <:lelcube:811058465383514132>')
-        await ctx.send('He finds love')
-    if lelbot_tasks_index == 41:
-        await ctx.send(':desktop: :hammer: <:lelcube:811058465383514132>')
-        await ctx.send('He hacks')
-    if lelbot_tasks_index == 42:
-        await ctx.send(':telescope: <:lelcube:811058465383514132>')
-        await ctx.send('He sees the space')
-    if lelbot_tasks_index == 43:
-        await ctx.send(':microscope: <:lelcube:811058465383514132>')
-        await ctx.send('He finds the close ad button')
-    if lelbot_tasks_index == 44:
-        await ctx.send(':desktop: <:lelcube:811058465383514132>')
-        await ctx.send('He works on the computer')
-    if lelbot_tasks_index == 45:
-        await ctx.send(':moneybag: <:lelcube:811058465383514132>')
-        await ctx.send('He gets paid')
-    if lelbot_tasks_index == 46:
-        await ctx.send(':chart_with_upwards_trend: <:lelcube:811058465383514132>')
-        await ctx.send('He stonks')
-    if lelbot_tasks_index == 47:
-        await ctx.send(':house_with_garden: :money_with_wings: <:lelcube:811058465383514132>')
-        await ctx.send('He buys house')
-    if lelbot_tasks_index == 48:
-        await ctx.send('<:sweatsmile:811059266806480916> :gift: <:lelcube:811058465383514132>')
-        await ctx.send('He gets gift')
-    if lelbot_tasks_index == 49:
-        await ctx.send('🥳 🥳 🥳 🥳 <:lelcube:811058465383514132> 🥳 🥳 🥳')
-        await ctx.send('He goes to party')
-    if lelbot_tasks_index == 50:
-        await ctx.send(':airplane_departure: <:lelcube:811058465383514132>')
-        await ctx.send('He flies')
-    if lelbot_tasks_index == 51:
-        await ctx.send(':book: <:lelcube:811058465383514132>')
-        await ctx.send('He reads books')
-    if lelbot_tasks_index == 52:
-        await ctx.send(':mag: <:lelcube:811058465383514132>')
-        await ctx.send('He searches')
-    if lelbot_tasks_index == 53:
-        await ctx.send(':broom: <:lelcube:811058465383514132>')
-        await ctx.send('He does chores')
-    if lelbot_tasks_index == 54:
-        await ctx.send(':jack_o_lantern: :skull: <:lelcube:811058465383514132>')
-        await ctx.send('He is on spooky month')
-    if lelbot_tasks_index == 55:
-        await ctx.send('<:maum1:778489567036178464> :gem: <:lelcube:811058465383514132> <:maum2:778489689014403072>')
-        await ctx.send('He steals')
+    if index == "random":
+        lelbot_tasks_index = random.randint(1,65)
+        no_NOOOOO = True
+    else:
+        if int_index < 1 or int_index > 65:
+            await ctx.send("Invalid index! Please enter something between 1 and 65.")
+        else:
+            lelbot_tasks_index = int_index
+            no_NOOOOO = True
+
+    #choices = [':microphone2: <:lelcube:811058465383514132>&&He sings',':frame_photo: :paintbrush: <:lelcube:811058465383514132>&&He paints',':computer: <:lelcube:811058465383514132>&&He codes',':video_game: <:lelcube:811058465383514132>&&He play games',':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>',':tv: <:lelcube:811058465383514132>&&He watches tv',':hammer: <:lelcube:811058465383514132>&&He destroy stuff',':shower:\n<:lelcube:811058465383514132>&&He showers','<:lelcube:811058465383514132> :shopping_cart:&&He goes shopping',':balloon: <:lelcube:811058465383514132>&&He plays with balloon',':wastebasket: :newspaper2: <:lelcube:811058465383514132>&&He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee',':video_camera: <:lelcube:811058465383514132>&&He records a video',':pencil: <:lelcube:811058465383514132>&&He writes a text','<:Nextie:835598971518189621> :mag: <:lelcube:811058465383514132>&&He is trying to see nextie *but nextie has the size of a __pixel__*','<:lelcube:811058465383514132> :loudspeaker:&&He says potatopatata very loud',':cake: :fork_and_knife: <:lelcube:811058465383514132>&&He eats a cake',':iphone: <:lelcube:811058465383514132>&&He uses the phone',':pizza: <:lelcube:811058465383514132>&&He is 101% sure that pizza is pizza','<:clapping:811058070843162686> <:lelcube:811058465383514132>&&He claps','<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>&&He fights',':telephone_receiver: <:lelcube:811058465383514132>&&He calls people','<:lelcube:811058465383514132> :tent:&&He goes camping',':ballet_shoes: <:lelcube:811058465383514132>&&He uses a ballet shoes','<:lelcube:811058465383514132> :toothbrush: :toilet:&&He uses a ballet shoes',':tophat:\n<:lelcube:811058465383514132> :magic_wand:&&He magic man',':saxophone: <:lelcube:811058465383514132>&&He plays the saxophone cuz saxophones are cool','<:lelcube:811058465383514132> ']
+    if no_NOOOOO == True:
+        if lelbot_tasks_index == 1:
+            await ctx.send(f'🎙 <:lelcube:811058465383514132>')
+            await ctx.send(f'He sings')
+        if lelbot_tasks_index == 2:
+            await ctx.send(f':frame_photo: :paintbrush: <:lelcube:811058465383514132>')
+            await ctx.send(f'He paints')
+        if lelbot_tasks_index == 3:
+            await ctx.send(f':computer: <:lelcube:811058465383514132>')
+            await ctx.send(f'He codes')
+        if lelbot_tasks_index == 4:
+            await ctx.send(f':video_game: <:lelcube:811058465383514132>')
+            await ctx.send(f'He play games')
+        if lelbot_tasks_index == 5:
+            await ctx.send(f':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send(f'He kills potatos')
+        if lelbot_tasks_index == 6:
+            await ctx.send(f':tv: <:lelcube:811058465383514132>')
+            await ctx.send(f'He watches tv')
+        if lelbot_tasks_index == 7:
+            await ctx.send(f':hammer: <:lelcube:811058465383514132>')
+            await ctx.send(f'He destroy stuff')
+        if lelbot_tasks_index == 8:
+            await ctx.send(f':shower:\n<:lelcube:811058465383514132>')
+            await ctx.send(f'He showers')
+        if lelbot_tasks_index == 9:
+            await ctx.send(f'<:lelcube:811058465383514132> :shopping_cart:')
+            await ctx.send(f'He goes shopping')
+        if lelbot_tasks_index == 10:
+            await ctx.send(f':balloon: <:lelcube:811058465383514132>')
+            await ctx.send(f'He plays with balloon')
+        if lelbot_tasks_index == 11:
+            await ctx.send(f':wastebasket: :newspaper2: <:lelcube:811058465383514132>')
+            await ctx.send(f'He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee')
+        if lelbot_tasks_index == 12:
+            await ctx.send(f':video_camera: <:lelcube:811058465383514132>')
+            await ctx.send(f'He records a video')
+        if lelbot_tasks_index == 13:
+            await ctx.send(f':pencil: <:lelcube:811058465383514132>')
+            await ctx.send(f'He writes a text')
+        if lelbot_tasks_index == 14:
+            await ctx.send(f'<:Nextie:835598971518189621> :mag: <:lelcube:811058465383514132>')
+            worstjokeever = await ctx.send(f'He is trying to see nextie *but nextie have the size of a __pixel__*')
+            await worstjokeever.add_reaction('<:bassrolf:821948606701371462>')
+        if lelbot_tasks_index == 15:
+            await ctx.send(f'<:lelcube:811058465383514132> :loudspeaker:')
+            await ctx.send(f'He says potatopatata very loud')
+        if lelbot_tasks_index == 16:
+            await ctx.send(f':cake: :fork_and_knife: <:lelcube:811058465383514132>')
+            await ctx.send(f'He eats a cake')
+        if lelbot_tasks_index == 17:
+            await ctx.send(f':iphone: <:lelcube:811058465383514132>')
+            await ctx.send(f'He uses the phone')
+        if lelbot_tasks_index == 18:
+            await ctx.send(f':pizza: <:lelcube:811058465383514132>')
+            await ctx.send(f'He is 101% sure that pizza is pizza')
+        if lelbot_tasks_index == 19:
+            await ctx.send(f'<:clapping:811058070843162686> <:lelcube:811058465383514132>')
+            await ctx.send(f'He claps')
+        if lelbot_tasks_index == 20:
+            await ctx.send(f'<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>')
+            await ctx.send(f'He fights')
+        if lelbot_tasks_index == 21:
+            await ctx.send(f':telephone_receiver: <:lelcube:811058465383514132>')
+            await ctx.send(f'He calls people')
+        if lelbot_tasks_index == 22:
+            await ctx.send(f'<:lelcube:811058465383514132> :tent:')
+            await ctx.send(f'He goes camping')
+        if lelbot_tasks_index == 23:
+            await ctx.send(f':ballet_shoes: <:lelcube:811058465383514132>')
+            await ctx.send(f'He uses a ballet shoes')
+        if lelbot_tasks_index == 24:
+            await ctx.send(f'<:lelcube:811058465383514132> :toothbrush: :toilet:')
+            await ctx.send(f'He clean the toilet')
+        if lelbot_tasks_index == 25:
+            await ctx.send(f":tophat:\n<:lelcube:811058465383514132> :magic_wand:")
+            await ctx.send(f'He magic man')
+        if lelbot_tasks_index == 26:
+            await ctx.send(f':saxophone: <:lelcube:811058465383514132>')
+            await ctx.send(f'He plays the saxophone cuz saxophones are cool')
+        if lelbot_tasks_index == 27:
+            await ctx.send(f'<:lelcube:811058465383514132> <:okhand:811059019828428821>')
+            await ctx.send(f'He likes *something*')
+        if lelbot_tasks_index == 28:
+            await ctx.send(f'<:sweatwide1:818622702574632970><:lelcube:811058465383514132><:sweatwide2:818622715815526481>')
+            await ctx.send(f'He uses a disguise')
+        if lelbot_tasks_index == 29:
+            await ctx.send(f':sweat_smile: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send(f'He kills')
+        if lelbot_tasks_index == 30:
+            await ctx.send(f'<:maum1:778489567036178464> <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send(f'He will catch you')
+        if lelbot_tasks_index == 31:
+            await ctx.send(f'<:lelcube:811058465383514132> :dash:')
+            await ctx.send('He fards')
+        if lelbot_tasks_index == 32:
+            await ctx.send(f'<:lelcube:811058465383514132>\n:blue_car:')
+            await ctx.send('He drives a car')
+        if lelbot_tasks_index == 33:
+            await ctx.send(':boom: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send('He commits war crimes')
+        if lelbot_tasks_index == 34:
+            await ctx.send(':wolf: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send('He hunts')
+        if lelbot_tasks_index == 35:
+            await ctx.send(':cloud_rain:\n:umbrella:\n<:lelcube:811058465383514132>')
+            await ctx.send('He is on rain')
+        if lelbot_tasks_index == 36:
+            await ctx.send('<:lelcube:811058465383514132>\n:sailboat: :island:')
+            await ctx.send('He escapes island')
+        if lelbot_tasks_index == 37:
+            await ctx.send(':cooking: <:lelcube:811058465383514132>')
+            await ctx.send('He cooks')
+        if lelbot_tasks_index == 38:
+            await ctx.send(':ping_pong: <:lelcube:811058465383514132>')
+            await ctx.send('He plays ping pong')
+        if lelbot_tasks_index == 39:
+            await ctx.send(':guitar: <:lelcube:811058465383514132>')
+            await ctx.send('He plays guitar')
+        if lelbot_tasks_index == 40:
+            await ctx.send('<:blushing:821505454361935902> :heart: <:lelcube:811058465383514132>')
+            await ctx.send('He finds love')
+        if lelbot_tasks_index == 41:
+            await ctx.send(':desktop: :hammer: <:lelcube:811058465383514132>')
+            await ctx.send('He hacks')
+        if lelbot_tasks_index == 42:
+            await ctx.send(':telescope: <:lelcube:811058465383514132>')
+            await ctx.send('He sees the space')
+        if lelbot_tasks_index == 43:
+            await ctx.send(':microscope: <:lelcube:811058465383514132>')
+            await ctx.send('He finds the close ad button')
+        if lelbot_tasks_index == 44:
+            await ctx.send(':desktop: <:lelcube:811058465383514132>')
+            await ctx.send('He works on the computer')
+        if lelbot_tasks_index == 45:
+            await ctx.send(':moneybag: <:lelcube:811058465383514132>')
+            await ctx.send('He gets paid')
+        if lelbot_tasks_index == 46:
+            await ctx.send(':chart_with_upwards_trend: <:lelcube:811058465383514132>')
+            await ctx.send('He stonks')
+        if lelbot_tasks_index == 47:
+            await ctx.send(':house_with_garden: :money_with_wings: <:lelcube:811058465383514132>')
+            await ctx.send('He buys house')
+        if lelbot_tasks_index == 48:
+            await ctx.send('<:sweatsmile:811059266806480916> :gift: <:lelcube:811058465383514132>')
+            await ctx.send('He gets gift')
+        if lelbot_tasks_index == 49:
+            await ctx.send('🥳 🥳 🥳 🥳 <:lelcube:811058465383514132> 🥳 🥳 🥳')
+            await ctx.send('He goes to party')
+        if lelbot_tasks_index == 50:
+            await ctx.send(':airplane_departure: <:lelcube:811058465383514132>')
+            await ctx.send('He flies')
+        if lelbot_tasks_index == 51:
+            await ctx.send(':book: <:lelcube:811058465383514132>')
+            await ctx.send('He reads books')
+        if lelbot_tasks_index == 52:
+            await ctx.send(':mag: <:lelcube:811058465383514132>')
+            await ctx.send('He searches')
+        if lelbot_tasks_index == 53:
+            await ctx.send(':broom: <:lelcube:811058465383514132>')
+            await ctx.send('He does chores')
+        if lelbot_tasks_index == 54:
+            await ctx.send(':jack_o_lantern: :skull: <:lelcube:811058465383514132>')
+            await ctx.send('He is on spooky month')
+        if lelbot_tasks_index == 55:
+            await ctx.send('<:maum1:778489567036178464> :gem: <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send('He steals')
+        if lelbot_tasks_index == 56:
+            await ctx.send('<:lelcube:811058465383514132> :arrows_counterclockwise:')
+            await ctx.send('He spins')
+        if lelbot_tasks_index == 57:
+            await ctx.send('<:lelcube:811058465383514132> :zzz:\n:bed:')
+            await ctx.send('He sleeps')
+        if lelbot_tasks_index == 58:
+            await ctx.send('<:lelcube:811058465383514132>\n:bus:')
+            await ctx.send('He is on a bus')
+        if lelbot_tasks_index == 59:
+            await ctx.send(':placard: <:lelcube:811058465383514132>')
+            await ctx.send('He reads a sign')
+        if lelbot_tasks_index == 60:
+            await ctx.send(':bulb:\n<:lelcube:811058465383514132>')
+            await ctx.send('He gets an idea')
+        if lelbot_tasks_index == 61:
+            await ctx.send(':watch: <:lelcube:811058465383514132>')
+            await ctx.send('He watches a watch')
+        if lelbot_tasks_index == 62:
+            await ctx.send(':electric_plug: <:lelcube:811058465383514132>')
+            await ctx.send('He starts his new time machine')
+        if lelbot_tasks_index == 63:
+            await ctx.send(':test_tube: <:lelcube:811058465383514132>')
+            await ctx.send('He scientist')
+        if lelbot_tasks_index == 64:
+            await ctx.send('<:lelcube:811058465383514132>\n:couch:')
+            await ctx.send('He is on a couch')
+        if lelbot_tasks_index == 65:
+            await ctx.send('He flipped the messages')
+            await ctx.send(':level_slider: <:lelcube:811058465383514132>')
 
 @client.command(aliases=['embed'])
 async def embed2(ctx, *, embedsay):
@@ -507,9 +586,11 @@ async def embed2(ctx, *, embedsay):
     if '| ' not in embedsay:
         await ctx.send(f'You need a `|`!\nExample: Title | Description')
     else:
-        bed_embed=discord.Embed(title=f'{embedsay2[0]}', description=f'{embedsay2[1]}')
-        bed_embed.set_footer(text=f'Embed by {ctx.message.author}')
-        await ctx.send(embed=bed_embed)
+        SASBED_embed=discord.Embed(title=f'{embedsay2[0]}', description=f'{embedsay2[1]}', color=0xFECC4D)
+        SASBED_embed.set_footer(text=f'Embed by {ctx.message.author}')
+        webhook = await ctx.channel.create_webhook(name="Lelbot webhook", reason=f"{ctx.author} used the embed command")
+        msg = await webhook.send(embed=SASBED_embed, username=ctx.author.name, avatar_url=ctx.author.avatar_url)
+        await webhook.delete()
 
 @client.command()
 async def math(ctx, *, expression:str):
@@ -620,9 +701,13 @@ async def eightball(inter, question="yes"):
 
 @inter_client.slash_command(description="The good old help command")
 async def help(inter):
-    embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`", inline=False)
-    embed.set_footer(text="lel")
+    embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`", inline=False)
+    embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
+    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
+    embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
+    embed.add_field(name="Stuff that isn't really for fun", value="`embed <title> | <description>`, `math <expression>`, `poll <text>`, `randnum <min> <max>`, `suggest <suggestion>`, `roll`", inline=False)
     await inter.reply(embed=embed)
 
 @inter_client.slash_command(description="Chat with lelbot! But, his replies won't make any sense! Best idea!", options=[Option('message', 'Message :thumbsup:', OptionType.STRING, required=True)])
@@ -707,8 +792,8 @@ async def when(inter):
 
 @inter_client.slash_command(description="I don't know what i can put here :D", options=[Option('question','ahbgjivker', OptionType.STRING, required=True)])
 async def yesorno(inter, question):
-    helloyesorno = ['https://cdn.discordapp.com/attachments/811060678277333023/828721589981806632/Screenshot_20210405-141259_Fancade.jpg',
-            'https://cdn.discordapp.com/attachments/811060678277333023/828721531768012820/Screenshot_20210405-141109_Fancade.png']
+    helloyesorno = ['https://media.discordapp.net/attachments/806308041115959377/911742147655508038/hellono_but_big.png',
+            'https://media.discordapp.net/attachments/806308041115959377/911742147999445052/helloyes_but_big.png']
     embed=discord.Embed(title=question, description="", color=0xFECC4D)
     embed.set_footer(text=inter.author.id)
     embed.set_image(url=random.choice(helloyesorno))
@@ -728,7 +813,7 @@ async def attack(inter, someone="**literally no one**"):
 
 @inter_client.slash_command(description="Bam someone!", options=[Option('someone','>:c', OptionType.STRING, required=True), Option('reason','Why you want to bam someone',OptionType.STRING)])
 async def bam(inter, someone, reason='None'):
-    await inter.reply(f"{someone} has (not) been banned by {inter.author.mention} (Reason: {reason})", allowed_mentions = discord.AllowedMentions(everyone = False))
+    await inter.reply(f"{someone} has (not) been banned by {inter.author.mention} (Reason: {reason})")
 
 @inter_client.slash_command(description="Explode something!", options=[Option('something', 'Yes', OptionType.STRING, required=True)])
 async def boom(inter, something):
@@ -738,9 +823,9 @@ async def boom(inter, something):
 
 @inter_client.slash_command(description="Hackn't something!", options=[Option('something','hejusidghjk',OptionType.STRING,required=True)])
 async def hack(inter, something):
-    yo = await inter.reply(f"Getting access to {something}...", allowed_mentions = discord.AllowedMentions(everyone = False))
+    yo = await inter.reply(f"Getting access to {something}...")
     await asyncio.sleep(5)
-    await yo.edit(content=f"Found email! ({something}{str(random.randint(10000000,99999999))}@lelmail.com)", allowed_mentions = discord.AllowedMentions(everyone = False))
+    await yo.edit(content=f"Found email! ({something}{str(random.randint(10000000,99999999))}@lelmail.com)")
     await asyncio.sleep(2.5)
     await yo.edit(content="Found emojis from their phone cuz why not <:lelcube:811058465383514132>")
     await asyncio.sleep(3)
@@ -750,7 +835,7 @@ async def hack(inter, something):
     await asyncio.sleep(4)
     await yo.edit(content="Selling their data to a random person...")
     await asyncio.sleep(3.5)
-    await yo.edit(content=f"{inter.author.mention} Hacked {something} successfully!", allowed_mentions = discord.AllowedMentions(everyone = False))
+    await yo.edit(content=f"{inter.author.mention} Hacked {something} successfully!")
 
 @inter_client.slash_command(description="Get a random sandwich lol")
 async def randomsandwich(inter):
@@ -819,191 +904,241 @@ async def weirdtext(inter):
     a_lot_of_characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0']
     await inter.reply(f'{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}{random.choice(a_lot_of_characters)}')
 
-@inter_client.slash_command(description="See lelcube doing a random task")
-async def dostuff(inter):
-    lelbot_tasks_index = random.randint(1,55)
+@inter_client.slash_command(description="See lelcube doing a random task",options=[Option("index","If you don't put anything here, the index will be random",OptionType.INTEGER,required=False)])
+async def dostuff(ctx,index="random"):
+    no_NOOOOO = False
+    
+    try:
+        int_index = int(index)
+    except:
+        index = "random"
 
-    if lelbot_tasks_index == 1:
-        await inter.reply(f'🎙 <:lelcube:811058465383514132>')
-        await inter.reply(f'He sings')
-    if lelbot_tasks_index == 2:
-        await inter.reply(f':frame_photo: :paintbrush: <:lelcube:811058465383514132>')
-        await inter.reply(f'He paints')
-    if lelbot_tasks_index == 3:
-        await inter.reply(f':computer: <:lelcube:811058465383514132>')
-        await inter.reply(f'He codes')
-    if lelbot_tasks_index == 4:
-        await inter.reply(f':video_game: <:lelcube:811058465383514132>')
-        await inter.reply(f'He play games')
-    if lelbot_tasks_index == 5:
-        await inter.reply(f':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await inter.reply(f'He kills potatos')
-    if lelbot_tasks_index == 6:
-        await inter.reply(f':tv: <:lelcube:811058465383514132>')
-        await inter.reply(f'He watches tv')
-    if lelbot_tasks_index == 7:
-        await inter.reply(f':hammer: <:lelcube:811058465383514132>')
-        await inter.reply(f'He destroy stuff')
-    if lelbot_tasks_index == 8:
-        await inter.reply(f':shower:\n<:lelcube:811058465383514132>')
-        await inter.reply(f'He showers')
-    if lelbot_tasks_index == 9:
-        await inter.reply(f'<:lelcube:811058465383514132> :shopping_cart:')
-        await inter.reply(f'He goes shopping')
-    if lelbot_tasks_index == 10:
-        await inter.reply(f':balloon: <:lelcube:811058465383514132>')
-        await inter.reply(f'He plays with balloon')
-    if lelbot_tasks_index == 11:
-        await inter.reply(f':wastebasket: :newspaper2: <:lelcube:811058465383514132>')
-        await inter.reply(f'He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee')
-    if lelbot_tasks_index == 12:
-        await inter.reply(f':video_camera: <:lelcube:811058465383514132>')
-        await inter.reply(f'He records a video')
-    if lelbot_tasks_index == 13:
-        await inter.reply(f':pencil: <:lelcube:811058465383514132>')
-        await inter.reply(f'He writes a text')
-    if lelbot_tasks_index == 14:
-        await inter.reply(f'<:pixel:827617330237669406> :mag: <:lelcube:811058465383514132>')
-        worstjokeever = await inter.reply(f'He is trying to see nextie *but nextie have the size of a __pixel__*')
-        await worstjokeever.add_reaction('<:bassrolf:821948606701371462>')
-    if lelbot_tasks_index == 15:
-        await inter.reply(f'<:lelcube:811058465383514132> :loudspeaker:')
-        await inter.reply(f'He says potatopatata very loud')
-    if lelbot_tasks_index == 16:
-        await inter.reply(f':cake: :fork_and_knife: <:lelcube:811058465383514132>')
-        await inter.reply(f'He eats a cake')
-    if lelbot_tasks_index == 17:
-        await inter.reply(f':iphone: <:lelcube:811058465383514132>')
-        await inter.reply(f'He uses the phone')
-    if lelbot_tasks_index == 18:
-        await inter.reply(f':pizza: <:lelcube:811058465383514132>')
-        await inter.reply(f'He is 101% sure that pizza is pizza')
-    if lelbot_tasks_index == 19:
-        await inter.reply(f'<:clapping:811058070843162686> <:lelcube:811058465383514132>')
-        await inter.reply(f'He claps')
-    if lelbot_tasks_index == 20:
-        await inter.reply(f'<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>')
-        await inter.reply(f'He fights')
-    if lelbot_tasks_index == 21:
-        await inter.reply(f':telephone_receiver: <:lelcube:811058465383514132>')
-        await inter.reply(f'He calls people')
-    if lelbot_tasks_index == 22:
-        await inter.reply(f'<:lelcube:811058465383514132> :tent:')
-        await inter.reply(f'He goes camping')
-    if lelbot_tasks_index == 23:
-        await inter.reply(f':ballet_shoes: <:lelcube:811058465383514132>')
-        await inter.reply(f'He uses a ballet shoes')
-    if lelbot_tasks_index == 24:
-        await inter.reply(f'<:lelcube:811058465383514132> :toothbrush: :toilet:')
-        await inter.reply(f'He clean the toilet')
-    if lelbot_tasks_index == 25:
-        await inter.reply(f":tophat:\n<:lelcube:811058465383514132> :magic_wand:")
-        await inter.reply(f'He magic man')
-    if lelbot_tasks_index == 26:
-        await inter.reply(f':saxophone: <:lelcube:811058465383514132>')
-        await inter.reply(f'He plays the saxophone cuz saxophones are cool')
-    if lelbot_tasks_index == 27:
-        await inter.reply(f'<:lelcube:811058465383514132> <:okhand:811059019828428821>')
-        await inter.reply(f'He likes *something*')
-    if lelbot_tasks_index == 28:
-        await inter.reply(f'<:sweatwide1:818622702574632970><:lelcube:811058465383514132><:sweatwide2:818622715815526481>')
-        await inter.reply(f'He uses a disguise')
-    if lelbot_tasks_index == 29:
-        await inter.reply(f':sweat_smile: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await inter.reply(f'He kills')
-    if lelbot_tasks_index == 30:
-        await inter.reply(f'<:maum1:778489567036178464> <:lelcube:811058465383514132> <:maum2:778489689014403072>')
-        await inter.reply(f'He will catch you')
-    if lelbot_tasks_index == 31:
-        await inter.reply(f'<:lelcube:811058465383514132> :dash:')
-        await inter.reply('He fards')
-    if lelbot_tasks_index == 32:
-        await inter.reply(f'<:lelcube:811058465383514132>\n:blue_car:')
-        await inter.reply('He drives a car')
-    if lelbot_tasks_index == 33:
-        await inter.reply(':boom: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await inter.reply('He commits war crimes')
-    if lelbot_tasks_index == 34:
-        await inter.reply(':wolf: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
-        await inter.reply('He hunts')
-    if lelbot_tasks_index == 35:
-        await inter.reply(':cloud_rain:\n:umbrella:\n<:lelcube:811058465383514132>')
-        await inter.reply('He is on rain')
-    if lelbot_tasks_index == 36:
-        await inter.reply('<:lelcube:811058465383514132>\n:sailboat: :island:')
-        await inter.reply('He escapes island')
-    if lelbot_tasks_index == 37:
-        await inter.reply(':cooking: <:lelcube:811058465383514132>')
-        await inter.reply('He cooks')
-    if lelbot_tasks_index == 38:
-        await inter.reply(':ping_pong: <:lelcube:811058465383514132>')
-        await inter.reply('He plays ping pong')
-    if lelbot_tasks_index == 39:
-        await inter.reply(':guitar: <:lelcube:811058465383514132>')
-        await inter.reply('He plays guitar')
-    if lelbot_tasks_index == 40:
-        await inter.reply('<:blushing:821505454361935902> :heart: <:lelcube:811058465383514132>')
-        await inter.reply('He finds love')
-    if lelbot_tasks_index == 41:
-        await inter.reply(':desktop: :hammer: <:lelcube:811058465383514132>')
-        await inter.reply('He hacks')
-    if lelbot_tasks_index == 42:
-        await inter.reply(':telescope: <:lelcube:811058465383514132>')
-        await inter.reply('He sees the space')
-    if lelbot_tasks_index == 43:
-        await inter.reply(':microscope: <:lelcube:811058465383514132>')
-        await inter.reply('He finds the close ad button')
-    if lelbot_tasks_index == 44:
-        await inter.reply(':desktop: <:lelcube:811058465383514132>')
-        await inter.reply('He works on the computer')
-    if lelbot_tasks_index == 45:
-        await inter.reply(':moneybag: <:lelcube:811058465383514132>')
-        await inter.reply('He gets paid')
-    if lelbot_tasks_index == 46:
-        await inter.reply(':chart_with_upwards_trend: <:lelcube:811058465383514132>')
-        await inter.reply('He stonks')
-    if lelbot_tasks_index == 47:
-        await inter.reply(':house_with_garden: :money_with_wings: <:lelcube:811058465383514132>')
-        await inter.reply('He buys house')
-    if lelbot_tasks_index == 48:
-        await inter.reply('<:sweatsmile:811059266806480916> :gift: <:lelcube:811058465383514132>')
-        await inter.reply('He gets gift')
-    if lelbot_tasks_index == 49:
-        await inter.reply('🥳 🥳 🥳 🥳 <:lelcube:811058465383514132> 🥳 🥳 🥳')
-        await inter.reply('He goes to party')
-    if lelbot_tasks_index == 50:
-        await inter.reply(':airplane_departure: <:lelcube:811058465383514132>')
-        await inter.reply('He flies')
-    if lelbot_tasks_index == 51:
-        await inter.reply(':book: <:lelcube:811058465383514132>')
-        await inter.reply('He reads books')
-    if lelbot_tasks_index == 52:
-        await inter.reply(':mag: <:lelcube:811058465383514132>')
-        await inter.reply('He searches')
-    if lelbot_tasks_index == 53:
-        await inter.reply(':broom: <:lelcube:811058465383514132>')
-        await inter.reply('He does chores')
-    if lelbot_tasks_index == 54:
-        await inter.reply(':jack_o_lantern: :skull: <:lelcube:811058465383514132>')
-        await inter.reply('He is on spooky month')
-    if lelbot_tasks_index == 55:
-        await inter.reply('<:maum1:778489567036178464> :gem: <:lelcube:811058465383514132> <:maum2:778489689014403072>')
-        await inter.reply('He steals')
+    if index == "random":
+        lelbot_tasks_index = random.randint(1,65)
+        no_NOOOOO = True
+    else:
+        if int_index < 1 or int_index > 65:
+            await ctx.send("Invalid index! Please enter something between 1 and 65.")
+        else:
+            lelbot_tasks_index = int_index
+            no_NOOOOO = True
+
+    #choices = [':microphone2: <:lelcube:811058465383514132>&&He sings',':frame_photo: :paintbrush: <:lelcube:811058465383514132>&&He paints',':computer: <:lelcube:811058465383514132>&&He codes',':video_game: <:lelcube:811058465383514132>&&He play games',':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>',':tv: <:lelcube:811058465383514132>&&He watches tv',':hammer: <:lelcube:811058465383514132>&&He destroy stuff',':shower:\n<:lelcube:811058465383514132>&&He showers','<:lelcube:811058465383514132> :shopping_cart:&&He goes shopping',':balloon: <:lelcube:811058465383514132>&&He plays with balloon',':wastebasket: :newspaper2: <:lelcube:811058465383514132>&&He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee',':video_camera: <:lelcube:811058465383514132>&&He records a video',':pencil: <:lelcube:811058465383514132>&&He writes a text','<:Nextie:835598971518189621> :mag: <:lelcube:811058465383514132>&&He is trying to see nextie *but nextie has the size of a __pixel__*','<:lelcube:811058465383514132> :loudspeaker:&&He says potatopatata very loud',':cake: :fork_and_knife: <:lelcube:811058465383514132>&&He eats a cake',':iphone: <:lelcube:811058465383514132>&&He uses the phone',':pizza: <:lelcube:811058465383514132>&&He is 101% sure that pizza is pizza','<:clapping:811058070843162686> <:lelcube:811058465383514132>&&He claps','<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>&&He fights',':telephone_receiver: <:lelcube:811058465383514132>&&He calls people','<:lelcube:811058465383514132> :tent:&&He goes camping',':ballet_shoes: <:lelcube:811058465383514132>&&He uses a ballet shoes','<:lelcube:811058465383514132> :toothbrush: :toilet:&&He uses a ballet shoes',':tophat:\n<:lelcube:811058465383514132> :magic_wand:&&He magic man',':saxophone: <:lelcube:811058465383514132>&&He plays the saxophone cuz saxophones are cool','<:lelcube:811058465383514132> ']
+    if no_NOOOOO == True:
+        if lelbot_tasks_index == 1:
+            await ctx.send(f'🎙 <:lelcube:811058465383514132>')
+            await ctx.send(f'He sings')
+        if lelbot_tasks_index == 2:
+            await ctx.send(f':frame_photo: :paintbrush: <:lelcube:811058465383514132>')
+            await ctx.send(f'He paints')
+        if lelbot_tasks_index == 3:
+            await ctx.send(f':computer: <:lelcube:811058465383514132>')
+            await ctx.send(f'He codes')
+        if lelbot_tasks_index == 4:
+            await ctx.send(f':video_game: <:lelcube:811058465383514132>')
+            await ctx.send(f'He play games')
+        if lelbot_tasks_index == 5:
+            await ctx.send(f':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send(f'He kills potatos')
+        if lelbot_tasks_index == 6:
+            await ctx.send(f':tv: <:lelcube:811058465383514132>')
+            await ctx.send(f'He watches tv')
+        if lelbot_tasks_index == 7:
+            await ctx.send(f':hammer: <:lelcube:811058465383514132>')
+            await ctx.send(f'He destroy stuff')
+        if lelbot_tasks_index == 8:
+            await ctx.send(f':shower:\n<:lelcube:811058465383514132>')
+            await ctx.send(f'He showers')
+        if lelbot_tasks_index == 9:
+            await ctx.send(f'<:lelcube:811058465383514132> :shopping_cart:')
+            await ctx.send(f'He goes shopping')
+        if lelbot_tasks_index == 10:
+            await ctx.send(f':balloon: <:lelcube:811058465383514132>')
+            await ctx.send(f'He plays with balloon')
+        if lelbot_tasks_index == 11:
+            await ctx.send(f':wastebasket: :newspaper2: <:lelcube:811058465383514132>')
+            await ctx.send(f'He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee')
+        if lelbot_tasks_index == 12:
+            await ctx.send(f':video_camera: <:lelcube:811058465383514132>')
+            await ctx.send(f'He records a video')
+        if lelbot_tasks_index == 13:
+            await ctx.send(f':pencil: <:lelcube:811058465383514132>')
+            await ctx.send(f'He writes a text')
+        if lelbot_tasks_index == 14:
+            await ctx.send(f'<:Nextie:835598971518189621> :mag: <:lelcube:811058465383514132>')
+            worstjokeever = await ctx.send(f'He is trying to see nextie *but nextie have the size of a __pixel__*')
+            await worstjokeever.add_reaction('<:bassrolf:821948606701371462>')
+        if lelbot_tasks_index == 15:
+            await ctx.send(f'<:lelcube:811058465383514132> :loudspeaker:')
+            await ctx.send(f'He says potatopatata very loud')
+        if lelbot_tasks_index == 16:
+            await ctx.send(f':cake: :fork_and_knife: <:lelcube:811058465383514132>')
+            await ctx.send(f'He eats a cake')
+        if lelbot_tasks_index == 17:
+            await ctx.send(f':iphone: <:lelcube:811058465383514132>')
+            await ctx.send(f'He uses the phone')
+        if lelbot_tasks_index == 18:
+            await ctx.send(f':pizza: <:lelcube:811058465383514132>')
+            await ctx.send(f'He is 101% sure that pizza is pizza')
+        if lelbot_tasks_index == 19:
+            await ctx.send(f'<:clapping:811058070843162686> <:lelcube:811058465383514132>')
+            await ctx.send(f'He claps')
+        if lelbot_tasks_index == 20:
+            await ctx.send(f'<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>')
+            await ctx.send(f'He fights')
+        if lelbot_tasks_index == 21:
+            await ctx.send(f':telephone_receiver: <:lelcube:811058465383514132>')
+            await ctx.send(f'He calls people')
+        if lelbot_tasks_index == 22:
+            await ctx.send(f'<:lelcube:811058465383514132> :tent:')
+            await ctx.send(f'He goes camping')
+        if lelbot_tasks_index == 23:
+            await ctx.send(f':ballet_shoes: <:lelcube:811058465383514132>')
+            await ctx.send(f'He uses a ballet shoes')
+        if lelbot_tasks_index == 24:
+            await ctx.send(f'<:lelcube:811058465383514132> :toothbrush: :toilet:')
+            await ctx.send(f'He clean the toilet')
+        if lelbot_tasks_index == 25:
+            await ctx.send(f":tophat:\n<:lelcube:811058465383514132> :magic_wand:")
+            await ctx.send(f'He magic man')
+        if lelbot_tasks_index == 26:
+            await ctx.send(f':saxophone: <:lelcube:811058465383514132>')
+            await ctx.send(f'He plays the saxophone cuz saxophones are cool')
+        if lelbot_tasks_index == 27:
+            await ctx.send(f'<:lelcube:811058465383514132> <:okhand:811059019828428821>')
+            await ctx.send(f'He likes *something*')
+        if lelbot_tasks_index == 28:
+            await ctx.send(f'<:sweatwide1:818622702574632970><:lelcube:811058465383514132><:sweatwide2:818622715815526481>')
+            await ctx.send(f'He uses a disguise')
+        if lelbot_tasks_index == 29:
+            await ctx.send(f':sweat_smile: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send(f'He kills')
+        if lelbot_tasks_index == 30:
+            await ctx.send(f'<:maum1:778489567036178464> <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send(f'He will catch you')
+        if lelbot_tasks_index == 31:
+            await ctx.send(f'<:lelcube:811058465383514132> :dash:')
+            await ctx.send('He fards')
+        if lelbot_tasks_index == 32:
+            await ctx.send(f'<:lelcube:811058465383514132>\n:blue_car:')
+            await ctx.send('He drives a car')
+        if lelbot_tasks_index == 33:
+            await ctx.send(':boom: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send('He commits war crimes')
+        if lelbot_tasks_index == 34:
+            await ctx.send(':wolf: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
+            await ctx.send('He hunts')
+        if lelbot_tasks_index == 35:
+            await ctx.send(':cloud_rain:\n:umbrella:\n<:lelcube:811058465383514132>')
+            await ctx.send('He is on rain')
+        if lelbot_tasks_index == 36:
+            await ctx.send('<:lelcube:811058465383514132>\n:sailboat: :island:')
+            await ctx.send('He escapes island')
+        if lelbot_tasks_index == 37:
+            await ctx.send(':cooking: <:lelcube:811058465383514132>')
+            await ctx.send('He cooks')
+        if lelbot_tasks_index == 38:
+            await ctx.send(':ping_pong: <:lelcube:811058465383514132>')
+            await ctx.send('He plays ping pong')
+        if lelbot_tasks_index == 39:
+            await ctx.send(':guitar: <:lelcube:811058465383514132>')
+            await ctx.send('He plays guitar')
+        if lelbot_tasks_index == 40:
+            await ctx.send('<:blushing:821505454361935902> :heart: <:lelcube:811058465383514132>')
+            await ctx.send('He finds love')
+        if lelbot_tasks_index == 41:
+            await ctx.send(':desktop: :hammer: <:lelcube:811058465383514132>')
+            await ctx.send('He hacks')
+        if lelbot_tasks_index == 42:
+            await ctx.send(':telescope: <:lelcube:811058465383514132>')
+            await ctx.send('He sees the space')
+        if lelbot_tasks_index == 43:
+            await ctx.send(':microscope: <:lelcube:811058465383514132>')
+            await ctx.send('He finds the close ad button')
+        if lelbot_tasks_index == 44:
+            await ctx.send(':desktop: <:lelcube:811058465383514132>')
+            await ctx.send('He works on the computer')
+        if lelbot_tasks_index == 45:
+            await ctx.send(':moneybag: <:lelcube:811058465383514132>')
+            await ctx.send('He gets paid')
+        if lelbot_tasks_index == 46:
+            await ctx.send(':chart_with_upwards_trend: <:lelcube:811058465383514132>')
+            await ctx.send('He stonks')
+        if lelbot_tasks_index == 47:
+            await ctx.send(':house_with_garden: :money_with_wings: <:lelcube:811058465383514132>')
+            await ctx.send('He buys house')
+        if lelbot_tasks_index == 48:
+            await ctx.send('<:sweatsmile:811059266806480916> :gift: <:lelcube:811058465383514132>')
+            await ctx.send('He gets gift')
+        if lelbot_tasks_index == 49:
+            await ctx.send('🥳 🥳 🥳 🥳 <:lelcube:811058465383514132> 🥳 🥳 🥳')
+            await ctx.send('He goes to party')
+        if lelbot_tasks_index == 50:
+            await ctx.send(':airplane_departure: <:lelcube:811058465383514132>')
+            await ctx.send('He flies')
+        if lelbot_tasks_index == 51:
+            await ctx.send(':book: <:lelcube:811058465383514132>')
+            await ctx.send('He reads books')
+        if lelbot_tasks_index == 52:
+            await ctx.send(':mag: <:lelcube:811058465383514132>')
+            await ctx.send('He searches')
+        if lelbot_tasks_index == 53:
+            await ctx.send(':broom: <:lelcube:811058465383514132>')
+            await ctx.send('He does chores')
+        if lelbot_tasks_index == 54:
+            await ctx.send(':jack_o_lantern: :skull: <:lelcube:811058465383514132>')
+            await ctx.send('He is on spooky month')
+        if lelbot_tasks_index == 55:
+            await ctx.send('<:maum1:778489567036178464> :gem: <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send('He steals')
+        if lelbot_tasks_index == 56:
+            await ctx.send('<:lelcube:811058465383514132> :arrows_counterclockwise:')
+            await ctx.send('He spins')
+        if lelbot_tasks_index == 57:
+            await ctx.send('<:lelcube:811058465383514132> :zzz:\n:bed:')
+            await ctx.send('He sleeps')
+        if lelbot_tasks_index == 58:
+            await ctx.send('<:lelcube:811058465383514132>\n:bus:')
+            await ctx.send('He is on a bus')
+        if lelbot_tasks_index == 59:
+            await ctx.send(':placard: <:lelcube:811058465383514132>')
+            await ctx.send('He reads a sign')
+        if lelbot_tasks_index == 60:
+            await ctx.send(':bulb:\n<:lelcube:811058465383514132>')
+            await ctx.send('He gets an idea')
+        if lelbot_tasks_index == 61:
+            await ctx.send(':watch: <:lelcube:811058465383514132>')
+            await ctx.send('He watches a watch')
+        if lelbot_tasks_index == 62:
+            await ctx.send(':electric_plug: <:lelcube:811058465383514132>')
+            await ctx.send('He starts his new time machine')
+        if lelbot_tasks_index == 63:
+            await ctx.send(':test_tube: <:lelcube:811058465383514132>')
+            await ctx.send('He scientist')
+        if lelbot_tasks_index == 64:
+            await ctx.send('<:lelcube:811058465383514132>\n:couch:')
+            await ctx.send('He is on a couch')
+        if lelbot_tasks_index == 65:
+            await ctx.send('He flipped the messages')
+            await ctx.send(':level_slider: <:lelcube:811058465383514132>')
 
 @inter_client.slash_command(description="Builds a custom embed", options=[Option('title', 'Embed title', OptionType.STRING, required=True),Option('description', 'Embed description', OptionType.STRING,required=True),Option('color', 'Embed color', OptionType.STRING),Option('footer','Embed footer',OptionType.STRING),Option('url','Embed image url',OptionType.STRING)])
-async def embed(inter, title, description, color=None, footer="Super cook embed", url=None):
-    if color is not None:
+async def embed(inter, title, description, color=0xFECC4D, footer="Super cook embed", url=None):
+    if color != 0xFECC4D:
         try:
             color = await commands.ColorConverter().convert(inter, color)
         except:
-            color = None
+            color = await commands.ColorConverter().convert(inter, color)
     if color is None:
         color = discord.Color.default()
     embed=discord.Embed(title=title, description=description, color=color)
     embed.set_footer(text=f"{footer} • {inter.author} ({inter.author.id})")
     if url is not None:
         embed.set_image(url=url)
-    await inter.reply(embed=embed)
+    webhook = await inter.channel.create_webhook(name="Lelbot webhook", reason=f"{inter.author} used the embed command")
+    await webhook.send(embed=embed, username=inter.author.name, avatar_url=inter.author.avatar_url)
+    await webhook.delete()
+    await inter.reply("Posted embed!", ephemeral=True)
 
 @inter_client.slash_command(description="Get a random sweatsmile")
 async def sweatsmile(inter):
@@ -1053,9 +1188,10 @@ async def invite(inter):
 
 @inter_client.slash_command(description="About me 😉")
 async def aboutme(inter):
-    ABOTME_embed=discord.Embed(title=f'About Lelbot', description=f'Hello! Im lelbot! Im an AI created by hellory5n! (hellory5n is character, who really created me is hellory4n lel)\n\nthis is hellory5n: https://cdn.discordapp.com/attachments/811060678277333023/819620061869244426/Screenshot_20210311-141624_Fancade.jpg \n\nCREDITS\nDeveloped by hellory4n\nsome fun facts: SrMuffin136, Senjienji, Dylan Brew, shartok, Rubi, Nextie\nHosted in Discloud\nAnd thank you for using my commands!\n\nCurrent version: 1.1.6', color=0xFECC4D)
-    ABOTME_embed.set_footer(text="lel")
-    await inter.reply(embed=ABOTME_embed)
+    ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
+    ABOTME_embed.set_footer(text="Version 1.2")
+    ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
+    await inter.send(embed=ABOTME_embed)
 
 @client.command(aliases=['morecookis','morecookies'])
 async def morecookis2(ctx):
@@ -1216,28 +1352,44 @@ async def withdraw(inter, value):
 @inter_client.slash_command(description="See the leaderboard")
 async def leaderboard(inter):
     page = 0
-
     lb_uwu = ""
+    cook_list = {}
+    when_the = []
+
     with open("users.txt",'r') as f:
         txt = f.read()
-    
-    users = txt.split("\n")
 
-    def a_very_cook_function_that_split_a_list_into_chunks(l, n):
-        n = max(1, n)
-        return (l[i:i+n] for i in range(0, len(l), n))
+    t_x_t = txt.split("\n")
+    t_x_t.remove("nothing lol xd")
 
-    users_chunks = list(a_very_cook_function_that_split_a_list_into_chunks(users, 10))
+    for i in t_x_t:
+        with open(f"{i}.json",'r') as f:
+            ok = json.load(f)
+        when_the.append(ok['cash'] + ok['bank'])
 
-    for i in users_chunks[page]:
-        if not users.index(i) == 0:
-            with open(f"{i}.json", 'r') as file:
-                ok = json.load(file)
-            total = ok['cash'] + ok['bank']
-            #user = await client.fetch_user(int(i))
-            #lb_uwu = lb_uwu + user.name + ": " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-            lb_uwu = lb_uwu + "<@" + i + ">: " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-    
+        for i_ in when_the:
+            cook_list[i] = i_
+
+    def split_dict_into_chunks(input_dict, chunk_size):
+        res = []
+        new_dict = {}
+        for k, v in input_dict.items():
+            if len(new_dict) < chunk_size:
+                new_dict[k] = v
+            else:
+                res.append(new_dict)
+                new_dict = {k: v}
+        res.append(new_dict)
+        return res
+
+    cook_list = dict(sorted(cook_list.items(), key=lambda item: item[1]))
+    cook_list = dict(reversed(list(cook_list.items())))
+
+    users_chunks = split_dict_into_chunks(cook_list,10)
+
+    for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
     embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
     embed.set_footer(text=str(inter.author.id))
 
@@ -1302,14 +1454,8 @@ async def leaderboard(inter):
 
       lb_uwu = ""
 
-      for i in users_chunks[page]:
-        if not users_chunks[page].index(i) == 0:
-          with open(f"{i}.json", 'r') as file:
-            ok = json.load(file)
-          total = ok['cash'] + ok['bank']
-          #user = await client.fetch_user(int(i))
-          #lb_uwu = lb_uwu + user.name + ": " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-          lb_uwu = lb_uwu + "<@" + i + ">: " + str(total) + " <:lelgold:888933451410075689>" + "\n"
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
 
       embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
       embed.set_footer(text=str(inter.author.id))
@@ -1350,14 +1496,8 @@ async def leaderboard(inter):
 
       lb_uwu = ""
 
-      for i in users_chunks[page]:
-        if not users_chunks[page].index(i) == 0:
-          with open(f"{i}.json", 'r') as file:
-            ok = json.load(file)
-          total = ok['cash'] + ok['bank']
-          #user = await client.fetch_user(int(i))
-          #lb_uwu = lb_uwu + user.name + ": " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-          lb_uwu = lb_uwu + "<@" + i + ">: " + str(total) + " <:lelgold:888933451410075689>" + "\n"
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
 
       embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
       embed.set_footer(text=str(inter.author.id))
@@ -1383,7 +1523,7 @@ async def shop(inter):
     
     await inter.reply(items)
 
-@inter_client.slash_command(description="Buy something :)", options=[Option("item",description="The item you want to buy",type=OptionType.STRING,required=True,choices=[OptionChoice("Void","Void"),OptionChoice("Cooki","Cooki"),OptionChoice("Arnold cooki","Arnold cooki"),OptionChoice("Linux","Linux"),OptionChoice("Lelcube plushie","Lelcube plushie"),OptionChoice("Windows Vista","Windows Vista"),OptionChoice("Terrible laptop","Terrible laptop"),OptionChoice("Free bobux","Free bobux"),OptionChoice("Top secret lelcube images","Top secret lelcube images"),OptionChoice("Internet Explorer 12","Internet Explorer 12"),OptionChoice("Clippy","Clippy"),OptionChoice("Illegal DVD","Illegal DVD")]),Option("amount","The amount that you want to buy",OptionType.INTEGER,required=False)])
+@inter_client.slash_command(description="Buy something :)", options=[Option("item",description="The item you want to buy",type=OptionType.STRING,required=True,choices=[OptionChoice("Void","Void"),OptionChoice("Cooki","Cooki"),OptionChoice("Arnold cooki","Arnold cooki"),OptionChoice("Linux","Linux"),OptionChoice("Lelcube plushie","Lelcube plushie"),OptionChoice("Windows Vista","Windows Vista"),OptionChoice("Terrible laptop","Terrible laptop"),OptionChoice("Free bobux","Free bobux"),OptionChoice("Top secret lelcube images","Top secret lelcube images"),OptionChoice("Internet Explorer 12","Internet Explorer 12"),OptionChoice("Clippy","Clippy"),OptionChoice("Illegal DVD","Illegal DVD"),OptionChoice("eyePhone","eyePhone"),OptionChoice("iMark","iMark"),OptionChoice("Super snowman","Super snowman"),OptionChoice("Metal cake","Metal cake")]),Option("amount","The amount that you want to buy",OptionType.INTEGER,required=False)])
 async def buy(inter: SlashInteraction, item: str, amount=1):
     oh_nice = False
 
@@ -1455,7 +1595,7 @@ async def inventory(inter, user=None):
     except:
         await inter.reply("It looks like you don't have items. (If you actually have then this is a bug)")
 
-@inter_client.slash_command(description="Use an item that you have", options=[Option("item",description="The item you want to use",type=OptionType.STRING,required=True,choices=[OptionChoice("Void","Void"),OptionChoice("Cooki","Cooki"),OptionChoice("Arnold cooki","Arnold cooki"),OptionChoice("Linux","Linux"),OptionChoice("Lelcube plushie","Lelcube plushie"),OptionChoice("Windows Vista","Windows Vista"),OptionChoice("Terrible laptop","Terrible laptop"),OptionChoice("Free bobux","Free bobux"),OptionChoice("Top secret lelcube images","Top secret lelcube images"),OptionChoice("Internet Explorer 12","Internet Explorer 12"),OptionChoice("Clippy","Clippy"),OptionChoice("Illegal DVD","Illegal DVD")]),Option("amount","The amount that you want to use",OptionType.INTEGER,required=False)])
+@inter_client.slash_command(description="Use an item that you have", options=[Option("item",description="The item you want to use",type=OptionType.STRING,required=True,choices=[OptionChoice("Void","Void"),OptionChoice("Cooki","Cooki"),OptionChoice("Arnold cooki","Arnold cooki"),OptionChoice("Linux","Linux"),OptionChoice("Lelcube plushie","Lelcube plushie"),OptionChoice("Windows Vista","Windows Vista"),OptionChoice("Terrible laptop","Terrible laptop"),OptionChoice("Free bobux","Free bobux"),OptionChoice("Top secret lelcube images","Top secret lelcube images"),OptionChoice("Internet Explorer 12","Internet Explorer 12"),OptionChoice("Clippy","Clippy"),OptionChoice("Illegal DVD","Illegal DVD"),OptionChoice("eyePhone","eyePhone"),OptionChoice("iMark","iMark"),OptionChoice("Super snowman","Super snowman"),OptionChoice("Metal cake","Metal cake")]),Option("amount","The amount that you want to use",OptionType.INTEGER,required=False)])
 async def use(inter, item, amount=1):
     create_user_if_it_dont_exist(inter.author.id)
 
@@ -1518,7 +1658,7 @@ async def use(inter, item, amount=1):
 
             @on_click.timeout
             async def on_timeout():
-                await msg.edit(content="Timeout", components=[])
+                await msg.edit(components=[])
 
         elif item == "Windows Vista":
             msg = await inter.reply("Starting Windows...")
@@ -1582,7 +1722,7 @@ async def use(inter, item, amount=1):
 
             @on_click.timeout
             async def on_timeout():
-                await msg.edit(content="Timeout", components=[])
+                await msg.edit(components=[])
         elif item == "Free bobux":
             row = ActionRow(
                 Button(
@@ -1605,7 +1745,7 @@ async def use(inter, item, amount=1):
 
             @on_click.timeout
             async def on_timeout():
-                await msg.edit(content="Timeout", components=[])
+                await msg.edit(components=[])
         elif item == "Top secret lelcube images":
             await inter.reply(":soap: <:lelcube:811058465383514132>")
             await inter.send("You know what this means?????????? It means Lelcube has soap!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111111111111111111!!1!!1!!!1!")
@@ -1656,7 +1796,7 @@ async def use(inter, item, amount=1):
 
             @on_click.timeout
             async def on_timeout():
-                await msg.edit(content="Timeout", components=[])
+                await msg.edit(components=[])
         elif item == "Illegal DVD":
             await inter.reply(":police_car:")
             await asyncio.sleep(5)
@@ -1665,6 +1805,49 @@ async def use(inter, item, amount=1):
             await bam(inter, inter.author.name, "Buying illegal DVDs")
         elif item == "Arnold cooki":
             await inter.reply(":yum::yum:")
+        elif item == "eyePhone":
+            await inter.reply("Move your eye to use your eyePhone.")
+            await asyncio.sleep(1)
+            await inter.reply("*phone explodes cuz the sensor thinks you want to explode the phone*")
+        elif item == "iMark":
+            await inter.reply(":apple:")
+            await asyncio.sleep(3)
+
+            ues = ['Wait das not a mac >:ccccc',
+            '*iMark explodes*',
+            'iMark: I don\'t want to start today >:c',
+            'Uh oh. Looks like this hardware is from 1982.',
+            'Windows: Oh, is that a Windows computer?',
+            'https://cdn.discordapp.com/attachments/877602677394124820/877603176138817556/Welcome.mp4',
+            '*burns*',
+            '*screen shoots laser*',
+            '*iMark becomes an egg*']
+            lol_wot = await inter.reply(random.choice(ues))
+            await asyncio.sleep(3)
+            await lol_wot.edit(content="https://cdn.discordapp.com/attachments/811051812638556221/928413032634257428/unknown.png")
+        elif item == "Super snowman":
+            ads = ['**[AD] - Oreo**\nSTOP WHAT ARE YOU DOING!!!!!!!!!!\nSAY IMMA BUY AN OREO NOWWWWWWWWWWWWWW',
+            '**[AD] - Void**\nWant nothing? Then I can help you! Buy a void today! It\'s free!!!!',
+            '**[AD] - Cookis**\nWe all love cookis. But what if you could get a cooki now? Get a cooki now then, but, get our deliciously delicious cookis made by my mom!',
+            '**[AD] - Arnold cookis**\nThis is a very cook cooki made by the snake himself, Arnold!\n\nWhich is :\n• Super cook stuff for you!\n• Delicious! Everyone likes it!\n• Its also looks very good!\n\nLook what other people said 🤔\n> 🟧 Harold said : it\'s so cook! Even Jeremy likes it!\n>👩‍🦲 Mark said : A really nice cooki! It makes me fell so good!',
+            '**[AD] - Linux**\ndis os prety cook uwu pls by me',
+            '**[AD] - Lelcube plushie**\nLelcube, now as a marketable plushie!\nHug it! Punch it! Burn it! The possibilities aren\'t endless!',
+            '**[AD] - Windows Vista**\nThe wow starts now.\n\nMany new technologies, that will help build the future of Windows. There\'s the new Aero theme, which looks so good, that it makes you say "wow" 50 times. The start menu has been improved, and now it has a search bar, which you can use to find all of your stuff easily. We added gadgets, an incredible way of getting info, like the weather, or maybe a bunch of photos you have! Multitasking was taken to the next level. Imagine if all of your apps were on a 3D space, and you could switch between them. That\'s possible with Windows Vista. Office 2007 is here, and it is beautiful, and has a lot of new stuff. Easier. Safer. Better connected. More entertaining. Wow.',
+            '**[AD] - Terrible laptop**\n"Terrible" laptop? NO IT ACTUALLY IS GOOD IT HAS FANCY SUTFF WE USED A TABLET BOARD BUT TBATSOK EVERYONE DOE S THAT WHAT ARE Y OU DOING NOOOOOOO TRDUST ME THSI AGOOD',
+            '**[AD] - Free bobux**\nAlways wanted bobux, but you don\'t have money to buy it? Don\'t worry! Free bobux allows you get a lot of bobux, with just a couple of clicks.',
+            '**[AD] - eyePhone**\nWell it\'s an iPhone, but, with revolutionary eye trackers.\nNow you can use your phone, making weird eye gestures!\nEven tho no one asked for this feature, we decided to set new industry standards.\n\n:apple:\nThink different.',
+            '**[AD] - Top secret lelcube images**\nGIMME BOBUX :rage:',
+            '**[AD] - Internet Explorer 12**\nThe next evolution of the internet. Internet Explorer is back, more revolutionary than ever. Here\'s a list of the new features that will completely change everything.\n- Fluent Design theme\n- Removed many features\n- Browser is slower',
+            '**[AD] - Clippy**\nHello! I\'m clippy! I can help you! Ask anything to me, I have an answer!',
+            '**[AD] - Illegal DVD**\nwh-',
+            '**[AD] - iMark**\nSay hello to the new iMark.\nInspired by the best of apples (literally, apples). Transformed by the MM1 chip. Stands out in any space. Fits perfectly into your life.\n\nOne boring color.\nYou do boring silver\nOnly 10m. Now that\'s thin.\nAnd more than 1,000 pounds. Abracadabra.\nBrilliant 240p retina display.\n144p FaceTime HD camera.\nStudio-quality mic. (if that studio is garbage)\nNo speaker, who needs sounds\nThere are less apps for iMark than ever before.\niMark + eyePhone. Quite the pair.',
+            '**[AD] - Super snowman**\nHigh quality ad machine',
+            '**[AD] - Metal cake**\nWe love cakes, and we love metal, so we made a metal cake! It\'s extremely tasty, and it\'s good for the environment!']
+            await inter.reply(random.choice(ads))
+        elif item == "Metal cake":
+            await inter.reply("Hmm, metal tastes so good! I love it! Tasty! Delicious! Incredible!")
+            await asyncio.sleep(3)
+            await inter.reply("*explodes*")
 
 @inter_client.slash_command(description="Give money to another person", options=[Option("user","The user that will get your money",OptionType.USER,required=True),Option("amount","The amount of money that you will give",OptionType.INTEGER,required=True)])
 async def give_money(inter, user, amount):
@@ -1682,7 +1865,7 @@ async def give_money(inter, user, amount):
     
     if amount < 1 or not ok_i['cash'] > amount - 1:
         problems_ono = True
-        await inter.reply("No")
+        await inter.reply("You can't lol")
     
     if problems_ono == False:
         with open(output, 'r') as f_o:
@@ -1749,17 +1932,13 @@ async def reset_money(inter):
     @on_click.timeout
     async def on_timeout():
         if input_received == False:
-            await msg.edit(content="Timeout", components=[])
+            await msg.edit(components=[])
         else:
             pass
 
-@inter_client.slash_command(description="Give an item to someone", options=[Option("user","The user that will get the item",OptionType.USER,required=True),Option("item","The item that you will give", OptionType.STRING, required=True, choices=[OptionChoice("Void","Void"),OptionChoice("Cooki","Cooki"),OptionChoice("Arnold cooki","Arnold cooki"),OptionChoice("Linux","Linux"),OptionChoice("Lelcube plushie","Lelcube plushie"),OptionChoice("Windows Vista","Windows Vista"),OptionChoice("Terrible laptop","Terrible laptop"),OptionChoice("Free bobux","Free bobux"),OptionChoice("Top secret lelcube images","Top secret lelcube images"),OptionChoice("Internet Explorer 12","Internet Explorer 12"),OptionChoice("Clippy","Clippy"),OptionChoice("Illegal DVD","Illegal DVD")]), Option("amount","The amount that you will give",OptionType.INTEGER,required=False)])
+@inter_client.slash_command(description="Give an item to someone", options=[Option("user","The user that will get the item",OptionType.USER,required=True),Option("item","The item that you will give", OptionType.STRING, required=True, choices=[OptionChoice("Void","Void"),OptionChoice("Cooki","Cooki"),OptionChoice("Arnold cooki","Arnold cooki"),OptionChoice("Linux","Linux"),OptionChoice("Lelcube plushie","Lelcube plushie"),OptionChoice("Windows Vista","Windows Vista"),OptionChoice("Terrible laptop","Terrible laptop"),OptionChoice("Free bobux","Free bobux"),OptionChoice("Top secret lelcube images","Top secret lelcube images"),OptionChoice("Internet Explorer 12","Internet Explorer 12"),OptionChoice("Clippy","Clippy"),OptionChoice("Illegal DVD","Illegal DVD"),OptionChoice("eyePhone","eyePhone"),OptionChoice("iMark","iMark"),OptionChoice("Super snowman","Super snowman"),OptionChoice("Metal cake","Metal cake")]), Option("amount","The amount that you will give",OptionType.INTEGER,required=False)])
 async def give_item(inter, user, item, amount=1):
     problems_ono = False
-
-    if user.id == inter.author.id:
-        problems_ono = True
-        await inter.reply("You can't give an item for yourself", ephemeral=True)
     
     input = f"{str(inter.author.id)}_items.json"
     output = f"{str(user.id)}_items.json"
@@ -1769,7 +1948,7 @@ async def give_item(inter, user, item, amount=1):
     
     if amount < 1 or not ok_i[item] > amount - 1:
         problems_ono = True
-        await inter.reply("No")
+        await inter.reply("You can't lol")
     
     if problems_ono == False:
         with open(output, 'r') as f_o:
@@ -1796,6 +1975,13 @@ async def math(ctx, *, expression:str):
     expression = expression.replace("^", "**").replace("÷", "/").replace("×", "*")
     await ctx.reply(f"Math: {expression}\nResults: {float(eval(expression))}")
 
+@client.command()
+async def not_say(ctx, *, msg):
+    if ctx.author.id == 748560377763201185:
+        await ctx.send(msg)
+    else:
+        await ctx.send("You can't use this command lol")
+
 @inter_client.slash_command(description="Steal someone's money (don't do that, das bad >:c)", options=[Option("amount","The amount that you want to steal",OptionType.INTEGER,required=True),Option("user","The user that you will steal",OptionType.USER,required=True)])
 @dislash.cooldown(1, 60, commands.BucketType.user)
 async def rob(inter, amount, user):
@@ -1809,7 +1995,7 @@ async def rob(inter, amount, user):
     
     if amount < 1 or not ok_i['cash'] > amount - 1:
         problems_ono = True
-        await inter.reply("No")
+        await inter.reply("You can't lol")
     
     if problems_ono == False:
         with open(output, 'r') as f_o:
@@ -1840,7 +2026,7 @@ async def rob(inter, amount, user):
 
 @client.command()
 async def set_money(ctx, cash, bank, user_id):
-    if ctx.author.id == "insert your ID here":
+    if ctx.author.id == 748560377763201185:
         with open(f"{user_id}.json",'r') as f:
             ok = json.load(f)
         
@@ -1854,28 +2040,9 @@ async def set_money(ctx, cash, bank, user_id):
     else:
         await ctx.reply("You can't use this command lol")
 
-@tasks.loop(seconds = 3600)
-async def cook_loop():
-    statuses = ['/',
-    'Me has cook slash commands',
-    'Hey do you want free B O b u X?',
-    'Beep boop',
-    'Beep boop me is a bot and me don\'t breathe air cuz bots don\'t breathe air',
-    'lel',
-    'This text was written on 11/03/2021',
-    'I need potatos. Can you give me potatos?',
-    'Me likes potatos',
-    'Potatos are cook',
-    'There\'s so many good things you can do on your life, why you are reading this?',
-    'h uwu',
-    'Hello! My token is [REDACTED].',
-    'hgsfvusdijfv',
-    'You are cook :)']
-    await client.change_presence(status=discord.Status.idle, activity=discord.Game(f'Type l!help for help! {random.choice(statuses)}'))
-
 @client.command()
 async def random_status(ctx):
-    if ctx.author.id == "insert your ID here":
+    if ctx.author.id == 748560377763201185:
         cook_loop.start()
         await ctx.send("Boom")
     else:
@@ -2022,28 +2189,44 @@ async def with2(inter, value:int):
 @client.command(aliases=['leaderboard'])
 async def lb(inter):
     page = 0
-
     lb_uwu = ""
+    cook_list = {}
+    when_the = []
+
     with open("users.txt",'r') as f:
         txt = f.read()
-    
-    users = txt.split("\n")
 
-    def a_very_cook_function_that_split_a_list_into_chunks(l, n):
-        n = max(1, n)
-        return (l[i:i+n] for i in range(0, len(l), n))
+    t_x_t = txt.split("\n")
+    t_x_t.remove("nothing lol xd")
 
-    users_chunks = list(a_very_cook_function_that_split_a_list_into_chunks(users, 10))
+    for i in t_x_t:
+        with open(f"{i}.json",'r') as f:
+            ok = json.load(f)
+        when_the.append(ok['cash'] + ok['bank'])
 
-    for i in users_chunks[page]:
-        if not users.index(i) == 0:
-            with open(f"{i}.json", 'r') as file:
-                ok = json.load(file)
-            total = ok['cash'] + ok['bank']
-            #user = await client.fetch_user(int(i))
-            #lb_uwu = lb_uwu + user.name + ": " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-            lb_uwu = lb_uwu + "<@" + i + ">: " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-    
+        for i_ in when_the:
+            cook_list[i] = i_
+
+    def split_dict_into_chunks(input_dict, chunk_size):
+        res = []
+        new_dict = {}
+        for k, v in input_dict.items():
+            if len(new_dict) < chunk_size:
+                new_dict[k] = v
+            else:
+                res.append(new_dict)
+                new_dict = {k: v}
+        res.append(new_dict)
+        return res
+
+    cook_list = dict(sorted(cook_list.items(), key=lambda item: item[1]))
+    cook_list = dict(reversed(list(cook_list.items())))
+
+    users_chunks = split_dict_into_chunks(cook_list,10)
+
+    for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
     embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
     embed.set_footer(text=str(inter.author.id))
 
@@ -2108,14 +2291,8 @@ async def lb(inter):
 
       lb_uwu = ""
 
-      for i in users_chunks[page]:
-        if not users_chunks[page].index(i) == 0:
-          with open(f"{i}.json", 'r') as file:
-            ok = json.load(file)
-          total = ok['cash'] + ok['bank']
-          #user = await client.fetch_user(int(i))
-          #lb_uwu = lb_uwu + user.name + ": " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-          lb_uwu = lb_uwu + "<@" + i + ">: " + str(total) + " <:lelgold:888933451410075689>" + "\n"
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
 
       embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
       embed.set_footer(text=str(inter.author.id))
@@ -2156,14 +2333,8 @@ async def lb(inter):
 
       lb_uwu = ""
 
-      for i in users_chunks[page]:
-        if not users_chunks[page].index(i) == 0:
-          with open(f"{i}.json", 'r') as file:
-            ok = json.load(file)
-          total = ok['cash'] + ok['bank']
-          #user = await client.fetch_user(int(i))
-          #lb_uwu = lb_uwu + user.name + ": " + str(total) + " <:lelgold:888933451410075689>" + "\n"
-          lb_uwu = lb_uwu + "<@" + i + ">: " + str(total) + " <:lelgold:888933451410075689>" + "\n"
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
 
       embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
       embed.set_footer(text=str(inter.author.id))
@@ -2218,7 +2389,11 @@ async def buy2(inter, amount="1"):
                       SelectOption("Top secret lelcube images","Top secret lelcube images"),
                       SelectOption("Internet Explorer 12","Internet Explorer 12"),
                       SelectOption("Clippy","Clippy"),
-                      SelectOption("Illegal DVD","Illegal DVD")
+                      SelectOption("Illegal DVD","Illegal DVD"),
+                      SelectOption("eyePhone","eyePhone"),
+                      SelectOption("iMark","iMark"),
+                      SelectOption("Super snowman","Super snowman"),
+                      SelectOption("Metal cake","Metal cake")
                   ]
               )
           ]
@@ -2329,7 +2504,11 @@ async def use2(inter, amount="1"):
                       SelectOption("Top secret lelcube images","Top secret lelcube images"),
                       SelectOption("Internet Explorer 12","Internet Explorer 12"),
                       SelectOption("Clippy","Clippy"),
-                      SelectOption("Illegal DVD","Illegal DVD")
+                      SelectOption("Illegal DVD","Illegal DVD"),
+                      SelectOption("eyePhone","eyePhone"),
+                      SelectOption("iMark","iMark"),
+                      SelectOption("Super snowman","Super snowman"),
+                      SelectOption("Metal cake","Metal cake")
                   ]
               )
           ]
@@ -2402,7 +2581,7 @@ async def use2(inter, amount="1"):
 
                   @on_click.timeout
                   async def on_timeout():
-                      await msg.edit(content="Timeout", components=[])
+                      await msg.edit(components=[])
 
               elif item == "Windows Vista":
                   msg = await inter.reply("Starting Windows...")
@@ -2466,7 +2645,7 @@ async def use2(inter, amount="1"):
 
                   @on_click.timeout
                   async def on_timeout():
-                      await msg.edit(content="Timeout", components=[])
+                      await msg.edit(components=[])
               elif item == "Free bobux":
                   row = ActionRow(
                       Button(
@@ -2489,7 +2668,7 @@ async def use2(inter, amount="1"):
 
                   @on_click.timeout
                   async def on_timeout():
-                      await msg.edit(content="Timeout", components=[])
+                      await msg.edit(components=[])
               elif item == "Top secret lelcube images":
                   await inter.reply(":soap: <:lelcube:811058465383514132>")
                   await inter.send("You know what this means?????????? It means Lelcube has soap!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111111111111111111!!1!!1!!!1!")
@@ -2540,7 +2719,7 @@ async def use2(inter, amount="1"):
 
                   @on_click.timeout
                   async def on_timeout():
-                      await msg.edit(content="Timeout", components=[])
+                      await msg.edit(components=[])
               elif item == "Illegal DVD":
                   await inter.reply(":police_car:")
                   await asyncio.sleep(5)
@@ -2549,6 +2728,49 @@ async def use2(inter, amount="1"):
                   await bam(inter, inter.author.name, "Buying illegal DVDs")
               elif item == "Arnold cooki":
                   await inter.reply(":yum::yum:")
+              elif item == "eyePhone":
+                await inter.reply("Move your eye to use your eyePhone.")
+                await asyncio.sleep(1)
+                await inter.reply("*phone explodes cuz the sensor thinks you want to explode the phone*")
+              elif item == "iMark":
+                await inter.reply(":apple:")
+                await asyncio.sleep(3)
+
+                ues = ['Wait das not a mac >:ccccc',
+                '*iMark explodes*',
+                'iMark: I don\'t want to start today >:c',
+                'Uh oh. Looks like this hardware is from 1982.',
+                'Windows: Oh, is that a Windows computer?',
+                'https://cdn.discordapp.com/attachments/877602677394124820/877603176138817556/Welcome.mp4',
+                '*burns*',
+                '*screen shoots laser*',
+                '*iMark becomes an egg*']
+                lol_wot = await inter.reply(random.choice(ues))
+                await asyncio.sleep(3)
+                await lol_wot.edit(content="https://cdn.discordapp.com/attachments/811051812638556221/928413032634257428/unknown.png")
+              elif item == "Super snowman":
+                ads = ['**[AD] - Oreo**\nSTOP WHAT ARE YOU DOING!!!!!!!!!!\nSAY IMMA BUY AN OREO NOWWWWWWWWWWWWWW',
+                '**[AD] - Void**\nWant nothing? Then I can help you! Buy a void today! It\'s free!!!!',
+                '**[AD] - Cookis**\nWe all love cookis. But what if you could get a cooki now? Get a cooki now then, but, get our deliciously delicious cookis made by my mom!',
+                '**[AD] - Arnold cookis**\nThis is a very cook cooki made by the snake himself, Arnold!\n\nWhich is :\n• Super cook stuff for you!\n• Delicious! Everyone likes it!\n• Its also looks very good!\n\nLook what other people said 🤔\n> 🟧 Harold said : it\'s so cook! Even Jeremy likes it!\n>👩‍🦲 Mark said : A really nice cooki! It makes me fell so good!',
+                '**[AD] - Linux**\ndis os prety cook uwu pls by me',
+                '**[AD] - Lelcube plushie**\nLelcube, now as a marketable plushie!\nHug it! Punch it! Burn it! The possibilities aren\'t endless!',
+                '**[AD] - Windows Vista**\nThe wow starts now.\n\nMany new technologies, that will help build the future of Windows. There\'s the new Aero theme, which looks so good, that it makes you say "wow" 50 times. The start menu has been improved, and now it has a search bar, which you can use to find all of your stuff easily. We added gadgets, an incredible way of getting info, like the weather, or maybe a bunch of photos you have! Multitasking was taken to the next level. Imagine if all of your apps were on a 3D space, and you could switch between them. That\'s possible with Windows Vista. Office 2007 is here, and it is beautiful, and has a lot of new stuff. Easier. Safer. Better connected. More entertaining. Wow.',
+                '**[AD] - Terrible laptop**\n"Terrible" laptop? NO IT ACTUALLY IS GOOD IT HAS FANCY SUTFF WE USED A TABLET BOARD BUT TBATSOK EVERYONE DOE S THAT WHAT ARE Y OU DOING NOOOOOOO TRDUST ME THSI AGOOD',
+                '**[AD] - Free bobux**\nAlways wanted bobux, but you don\'t have money to buy it? Don\'t worry! Free bobux allows you get a lot of bobux, with just a couple of clicks.',
+                '**[AD] - eyePhone**\nWell it\'s an iPhone, but, with revolutionary eye trackers.\nNow you can use your phone, making weird eye gestures!\nEven tho no one asked for this feature, we decided to set new industry standards.\n\n:apple:\nThink different.',
+                '**[AD] - Top secret lelcube images**\nGIMME BOBUX :rage:',
+                '**[AD] - Internet Explorer 12**\nThe next evolution of the internet. Internet Explorer is back, more revolutionary than ever. Here\'s a list of the new features that will completely change everything.\n- Fluent Design theme\n- Removed many features\n- Browser is slower',
+                '**[AD] - Clippy**\nHello! I\'m clippy! I can help you! Ask anything to me, I have an answer!',
+                '**[AD] - Illegal DVD**\nwh-',
+                '**[AD] - iMark**\nSay hello to the new iMark.\nInspired by the best of apples (literally, apples). Transformed by the MM1 chip. Stands out in any space. Fits perfectly into your life.\n\nOne boring color.\nYou do boring silver\nOnly 10m. Now that\'s thin.\nAnd more than 1,000 pounds. Abracadabra.\nBrilliant 240p retina display.\n144p FaceTime HD camera.\nStudio-quality mic. (if that studio is garbage)\nNo speaker, who needs sounds\nThere are less apps for iMark than ever before.\niMark + eyePhone. Quite the pair.',
+                '**[AD] - Super snowman**\nHigh quality ad machine',
+                '**[AD] - Metal cake**\nWe love cakes, and we love metal, so we made a metal cake! It\'s extremely tasty, and it\'s good for the environment!']
+                await inter.reply(random.choice(ads))
+              elif item == "Metal cake":
+                await inter.reply("Hmm, metal tastes so good! I love it! Tasty! Delicious! Incredible!")
+                await asyncio.sleep(3)
+                await inter.reply("*explodes*")
       else:
           await inter.reply("You're not the author :P", ephemeral=True)
 
@@ -2568,7 +2790,7 @@ async def give_money2(inter, user:discord.User, amount:int):
     
     if amount < 1 or not ok_i['cash'] > amount - 1:
         problems_ono = True
-        await inter.reply("No")
+        await inter.reply("You can't lol")
     
     if problems_ono == False:
         with open(output, 'r') as f_o:
@@ -2635,17 +2857,13 @@ async def reset_money2(inter):
     @on_click.timeout
     async def on_timeout():
         if input_received == False:
-            await msg.edit(content="Timeout", components=[])
+            await msg.edit(components=[])
         else:
             pass
 
 @client.command(aliases=['give_item','give-item'])
 async def give_item2(inter, user:discord.Member, amount="1"):
     problems_ono = False
-
-    if user.id == inter.author.id:
-        problems_ono = True
-        await inter.reply("You can't give an item for yourself")
 
     try:
       amount = int(amount)
@@ -2671,7 +2889,11 @@ async def give_item2(inter, user:discord.Member, amount="1"):
                       SelectOption("Top secret lelcube images","Top secret lelcube images"),
                       SelectOption("Internet Explorer 12","Internet Explorer 12"),
                       SelectOption("Clippy","Clippy"),
-                      SelectOption("Illegal DVD","Illegal DVD")
+                      SelectOption("Illegal DVD","Illegal DVD"),
+                      SelectOption("eyePhone","eyePhone"),
+                      SelectOption("iMark","iMark"),
+                      SelectOption("Super snowman","Super snowman"),
+                      SelectOption("Metal cake","Metal cake")
                   ]
               )
           ]
@@ -2691,7 +2913,7 @@ async def give_item2(inter, user:discord.Member, amount="1"):
       
           if amount < 1 or not ok_i[item] > amount - 1:
               problems_ono = True
-              await inter.reply("No")
+              await inter.reply("You can't lol")
       
           if problems_ono == False:
               with open(output, 'r') as f_o:
@@ -2732,7 +2954,7 @@ async def rob2(inter, user:discord.User, amount):
       
       if amount < 1 or not ok_i['cash'] > amount - 1:
           problems_ono = True
-          await inter.reply("No")
+          await inter.reply("You can't lol")
       
       if problems_ono == False:
           with open(output, 'r') as f_o:
@@ -2760,6 +2982,190 @@ async def rob2(inter, user:discord.User, amount):
                   json.dump(ok_o, f_o)
               
               await inter.reply(f"You failed and lost {unu} <:lelgold:888933451410075689>")
+
+@inter_client.slash_command(description="For the people that don't like the new help command")
+async def classic_help(inter):
+    embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`", inline=False)
+    embed.set_footer(text="lel")
+    await inter.send(embed=embed)
+
+@client.command(aliases=['classic_help'])
+async def classic_help2(inter):
+    embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`", inline=False)
+    embed.set_footer(text="lel")
+    await inter.send(embed=embed)
+
+@inter_client.slash_command(description="Children of tommorow will have no understanding of the english language")
+async def wotcode(inter):
+    pass
+
+@wotcode.sub_command(description="Convert your text to wotcode",options=[Option("text","The text that will be converted",OptionType.STRING,required=True)])
+async def text_to_wotcode(inter,text):
+    text = text.lower()
+    text = text.replace("a","⏬")
+    text = text.replace("b","⛺")
+    text = text.replace("c","⚫")
+    text = text.replace("d","❌")
+    text = text.replace("e","➕")
+    text = text.replace("f","⛳")
+    text = text.replace("g","⏪")
+    text = text.replace("h","☝")
+    text = text.replace("i","⏳")
+    text = text.replace("j","☕")
+    text = text.replace("k","⛹")
+    text = text.replace("l","⛲")
+    text = text.replace("m","✋")
+    text = text.replace("n","⚓")
+    text = text.replace("o","✊")
+    text = text.replace("p","⚽")
+    text = text.replace("q","♋")
+    text = text.replace("r","⬛")
+    text = text.replace("s","⏰")
+    text = text.replace("t","❎")
+    text = text.replace("u","⛪")
+    text = text.replace("v","♎")
+    text = text.replace("w","☔")
+    text = text.replace("x","✍")
+    text = text.replace("y","⛔")
+    text = text.replace("z","⚡")
+    await inter.reply(f"`{text}`\n\n- {inter.author.mention}")
+
+@wotcode.sub_command(description="Convert wotcode to text",options=[Option("text","The text that will be converted",OptionType.STRING,required=True)])
+async def wotcode_to_text(inter,text):
+    text = text.replace("⏬","a")
+    text = text.replace("⛺","b")
+    text = text.replace("⚫","c")
+    text = text.replace("❌","d")
+    text = text.replace("➕","e")
+    text = text.replace("⛳","f")
+    text = text.replace("⏪","g")
+    text = text.replace("☝","h")
+    text = text.replace("⏳","i")
+    text = text.replace("☕","j")
+    text = text.replace("⛹","k")
+    text = text.replace("⛲","l")
+    text = text.replace("✋","m")
+    text = text.replace("⚓","n")
+    text = text.replace("✊","o")
+    text = text.replace("⚽","p")
+    text = text.replace("♋","q")
+    text = text.replace("⬛","r")
+    text = text.replace("⏰","s")
+    text = text.replace("❎","t")
+    text = text.replace("⛪","u")
+    text = text.replace("♎","v")
+    text = text.replace("☔","w")
+    text = text.replace("✍","x")
+    text = text.replace("⛔","y")
+    text = text.replace("⚡","z")
+    text = text.upper()
+    await inter.reply(f"`{text}`\n\n- {inter.author.mention}")
+
+@inter_client.slash_command(description="Give random name to a random thing")
+async def name(inter):
+    thing = [':cat:',":dog:",":chair:",":package:",":bed:",":wastebasket:",":coffee:",":printer:",":couch:","👩","🧑","👧","👩‍🦰","👶","👴","👨‍🦳","👨‍🦲","👱‍♂️","🙎","🧏","🤦","🤷","💇","🏃","🤸","🐵","🐺","🐯","🦒","🦊","🦝","🐮","🐷","🐹","🐰","🐻","🐼","🐸","🦓","🐴","🐔","🐳","🐟","🐘"]
+    name = ["Michael","Steve","Bob","Henry","Carl","Mark","Tom","John","Alan","James","Jack","Thomas","Martin","Susan","Paul","Mike","Michalan","Alanalex","Alex"]
+    await inter.send(f"{random.choice(thing)}\n:point_up: {random.choice(name)}")
+
+@client.command(aliases=['name'])
+async def name2(inter):
+    thing = [':cat:',":dog:",":chair:",":package:",":bed:",":wastebasket:",":coffee:",":printer:",":couch:","👩","🧑","👧","👩‍🦰","👶","👴","👨‍🦳","👨‍🦲","👱‍♂️","🙎","🧏","🤦","🤷","💇","🏃","🤸","🐵","🐺","🐯","🦒","🦊","🦝","🐮","🐷","🐹","🐰","🐻","🐼","🐸","🦓","🐴","🐔","🐳","🐟","🐘"]
+    name = ["Michael","Steve","Bob","Henry","Carl","Mark","Tom","John","Alan","James","Jack","Thomas","Martin","Susan","Paul","Mike","Michalan","Alex"]
+    await inter.send(f"{random.choice(thing)}\n:point_up: {random.choice(name)}")
+
+@inter_client.slash_command(description="Build a sandwich",options=[Option("size","The size of your sandwich",OptionType.INTEGER,required=True)])
+async def sandwich(inter,size):
+    stuff = [":tomato:",":leafy_green:",":cucumber:",":hot_pepper:",":corn:",":carrot:",":onion:",":potato:",":cheese:",":egg:",":butter:",":bacon:",":cut_of_meat:",":poultry_leg:",":meat_on_bone:"]
+    counter = 0
+    sandwich = ""
+    if size < 26:
+        while counter < size:
+            sandwich = sandwich + "\n" + random.choice(stuff)
+            counter += 1
+        await inter.reply(f":bread:{sandwich}\n:bread:")
+    else:
+        await inter.reply("How you're gonna eat that <:lelcube:811058465383514132>")
+
+@client.command(aliases=['sandwich'])
+async def sandwich2(inter,size):
+    try:
+        size = int(size)
+        stuff = [":tomato:",":leafy_green:",":cucumber:",":hot_pepper:",":corn:",":carrot:",":onion:",":potato:",":cheese:",":egg:",":butter:",":bacon:",":cut_of_meat:",":poultry_leg:",":meat_on_bone:"]
+        counter = 0
+        sandwich = ""
+        if size < 26:
+            while counter < size:
+                sandwich = sandwich + "\n" + random.choice(stuff)
+                counter += 1
+            await inter.reply(f":bread:{sandwich}\n:bread:")
+        else:
+            await inter.reply("How you're gonna eat that <:lelcube:811058465383514132>")
+    except:
+        await inter.reply("The size needs to be a number")
+
+@client.command(aliases=['text_to_wotcode'])
+async def text_to_wotcode2(inter,*,text):
+    text = text.lower()
+    text = text.replace("a","⏬")
+    text = text.replace("b","⛺")
+    text = text.replace("c","⚫")
+    text = text.replace("d","❌")
+    text = text.replace("e","➕")
+    text = text.replace("f","⛳")
+    text = text.replace("g","⏪")
+    text = text.replace("h","☝")
+    text = text.replace("i","⏳")
+    text = text.replace("j","☕")
+    text = text.replace("k","⛹")
+    text = text.replace("l","⛲")
+    text = text.replace("m","✋")
+    text = text.replace("n","⚓")
+    text = text.replace("o","✊")
+    text = text.replace("p","⚽")
+    text = text.replace("q","♋")
+    text = text.replace("r","⬛")
+    text = text.replace("s","⏰")
+    text = text.replace("t","❎")
+    text = text.replace("u","⛪")
+    text = text.replace("v","♎")
+    text = text.replace("w","☔")
+    text = text.replace("x","✍")
+    text = text.replace("y","⛔")
+    text = text.replace("z","⚡")
+    await inter.reply(f"`{text}`\n\n- {inter.author.mention}")
+
+@client.command(aliases=['wotcode_to_text'])
+async def wotcode_to_text2(inter,*,text):
+    text = text.replace("⏬","a")
+    text = text.replace("⛺","b")
+    text = text.replace("⚫","c")
+    text = text.replace("❌","d")
+    text = text.replace("➕","e")
+    text = text.replace("⛳","f")
+    text = text.replace("⏪","g")
+    text = text.replace("☝","h")
+    text = text.replace("⏳","i")
+    text = text.replace("☕","j")
+    text = text.replace("⛹","k")
+    text = text.replace("⛲","l")
+    text = text.replace("✋","m")
+    text = text.replace("⚓","n")
+    text = text.replace("✊","o")
+    text = text.replace("⚽","p")
+    text = text.replace("♋","q")
+    text = text.replace("⬛","r")
+    text = text.replace("⏰","s")
+    text = text.replace("❎","t")
+    text = text.replace("⛪","u")
+    text = text.replace("♎","v")
+    text = text.replace("☔","w")
+    text = text.replace("✍","x")
+    text = text.replace("⛔","y")
+    text = text.replace("⚡","z")
+    text = text.upper()
+    await inter.reply(f"`{text}`\n\n- {inter.author.mention}")
 
 token = "Insert token here"
 client.run(token)
