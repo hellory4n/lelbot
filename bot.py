@@ -112,7 +112,7 @@ async def boom2(ctx, *, exploded_lol):
 async def help(ctx):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
     embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`", inline=False)
-    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
     embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
@@ -207,7 +207,7 @@ async def randomstory2(ctx):
 @client.command()
 async def aboutme(ctx):
         embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-        embed.set_footer(text="Version 1.2")
+        embed.set_footer(text="Version 1.3.1")
         embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
         await ctx.send(embed=embed)
 
@@ -703,7 +703,7 @@ async def eightball(inter, question="yes"):
 async def help(inter):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
     embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`", inline=False)
-    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
     embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
@@ -1189,7 +1189,7 @@ async def invite(inter):
 @inter_client.slash_command(description="About me 😉")
 async def aboutme(inter):
     ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.2")
+    ABOTME_embed.set_footer(text="Version 1.3.1")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await inter.send(embed=ABOTME_embed)
 
@@ -3166,6 +3166,144 @@ async def wotcode_to_text2(inter,*,text):
     text = text.replace("⚡","z")
     text = text.upper()
     await inter.reply(f"`{text}`\n\n- {inter.author.mention}")
+
+@inter_client.slash_command(description="Make a sentence, will it be nonsense? (yes)",options=[Option("dumbness","How smort lelbot will be when making the sentence",OptionType.INTEGER,required=True,choices=[OptionChoice("Smart",1),OptionChoice("n ot so smaort",2),OptionChoice("fjhsdkmnfbekjnsdnfjls",3)])])
+async def sentence(inter,dumbness):
+    nouns = ['eye', 'thought', 'hospital', 'bath', 'order', 'finger', 'drink', 'development', 'run', 'rabbit', 'quartz', 'baseball', 'spark', 'point', 'square', 'boat', 'shape', 'dock', 'vegetable', 'play', 'stream', 'boot', 'plantation', 'visitor', 'industry', 'work', 'lunchroom', 'view', 'hair', 'temper', 'passenger', 'price', 'food', 'gate', 'toothbrush', 'ice', 'shame', 'cherries', 'island', 'butter', 'receipt', 'friend', 'action', 'seat', 'van', 'hope', 'regret', 'cactus', 'peace', 'discussion', 'ghost', 'team', 'measure', 'idea', 'children', 'oil', 'pipe', 'bomb', 'car', 'wind', 'shirt', 'trade', 'wine', 'eyes', 'friends', 'rose', 'spring', 'acoustics', 'leg', 'edge', 'sugar', 'stretch', 'meat', 'daughter', 'surprise', 'science', 'behavior', 'argument', 'chance', 'size', 'suit', 'hand', 'marble', 'number', 'canvas', 'fish', 'bone', 'cup', 'grade', 'sidewalk', 'root', 'trucks', 'women', 'flowers', 'rat', 'fog', 'tooth', 'bed', 'week', 'hat', 'mom', 'interest', 'fork', 'notebook', 'celery', 'fold', 'pot', 'ray', 'camera', 'sail', 'quiet', 'blow', 'jam', 'rule', 'position', 'front', 'condition', 'zoo', 'minister', 'year', 'thumb', 'route', 'umbrella', 'farm', 'wing', 'hole', 'stocking', 'dust', 'ants', 'doctor', 'destruction', 'water', 'birthday', 'cloth', 'border', 'laugh', 'show', 'fireman', 'town', 'appliance', 'knowledge', 'sofa', 'afternoon', 'attack', 'pan', 'bee', 'rhythm', 'blade', 'man', 'steam', 'drop', 'roll', 'potato', 'string', 'teaching', 'cent', 'card', 'honey', 'grape', 'kiss', 'eggs', 'beef', 'religion', 'dinner', 'ocean', 'story', 'sound', 'camp', 'smash', 'current', 'driving', 'shake', 'basket', 'baby', 'adjustment', 'wire', 'arithmetic', 'cat', 'esophagus']
+    adj = ['tangible', 'delightful', 'lyrical', 'wakeful', 'free', 'relieved', 'arrogant', 'worthless', 'awesome', 'stupendous', 'mixed', 'rough', 'long-term', 'illustrious', 'anxious', 'typical', 'straight', 'tremendous', 'striped', 'overt', 'jittery', 'empty', 'stereotyped', 'impolite', 'broken', 'superficial', 'open', 'cheerful', 'fixed', 'equable', 'large', 'hanging', 'hungry', 'unaccountable', 'bizarre', 'few', 'wealthy', 'successful', 'depressed', 'grey', 'deep', 'enchanting', 'married', 'huge', 'black-and-white', 'sincere', 'receptive', 'hard', 'marvelous', 'tired', 'handsomely', 'hilarious', 'clear', 'drunk', 'dependent', 'glossy', 'noxious', 'untidy', 'hot', 'snotty', 'magenta', 'chilly', 'organic', 'dangerous', 'sad', 'different', 'overconfident', 'understood', 'wonderful', 'utopian', 'fascinated', 'boring', 'lame', 'bouncy', 'apathetic', 'materialistic', 'lazy', 'adorable', 'selfish', 'lucky', 'sneaky', 'witty', 'possessive', 'rotten', 'parallel', 'disgusting', 'medical', 'harmonious', 'tested', 'important', 'unnatural', 'uncovered', 'clever', 'habitual', 'kindly', 'daily', 'busy', 'fine', 'enchanted', 'brave', 'two', 'enthusiastic', 'pointless', 'easy', 'inconclusive', 'abject', 'fantastic', 'spicy', 'normal', 'damaged', 'dry', 'disastrous', 'difficult', 'lethal', 'valuable', 'silent', 'lonely', 'square', 'female', 'grumpy', 'slow', 'innocent', 'poor', 'thirsty', 'embarrassed', 'messy', 'necessary', 'sleepy', 'even', 'best']
+    verbs = ['trouble', 'memorize', 'force', 'label', 'return', 'practice', 'punch', 'disapprove', 'serve', 'separate', 'paint', 'plug', 'exercise', 'squeeze', 'pretend', 'attempt', 'command', 'copy', 'form', 'time', 'note', 'taste', 'question', 'plant', 'jail', 'manage', 'reduce', 'rescue', 'list', 'grab', 'regret', 'obtain', 'interest', 'shade', 'nod', 'hang', 'ruin', 'cheer', 'harm', 'rely', 'record', 'unpack', 'deliver', 'cough', 'listen', 'doubt', 'include', 'gather', 'cheat', 'call', 'trap', 'protect', 'connect', 'cover', 'fix', 'reply', 'remain', 'long', 'blind', 'clap', 'encourage', 'help', 'start', 'identify', 'offend', 'embarrass', 'supply', 'try', 'ban', 'compare', 'please', 'welcome', 'dream', 'attract', 'move', 'impress', 'float', 'plan', 'double', 'remind', 'support', 'level', 'desert', 'part', 'contain', 'unlock', 'judge', 'scream', 'rob', 'develop', 'suspend', 'annoy', 'reproduce', 'rain', 'program', 'launch', 'burn', 'hop', 'dance', 'last', 'accept', 'push', 'press', 'heal', 'permit', 'load', 'melt', 'rock', 'talk', 'notice', 'learn', 'match', 'breathe', 'polish', 'undress', 'interfere', 'succeed', 'like', 'twist', 'happen', 'smell', 'slap', 'hate', 'worry', 'handle', 'report', 'complete', 'lie', 'want', 'phone', 'marry', 'analyze', 'smoke']
+    amount = ['some', 'a lot', 'many', 'almost all', 'all', 'every single', 'quite a lot', 'not quite a lot', 'a huge amount of', 'a small amount of', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'hundreds of', 'thousands of', 'millions of', 'billions of', 'infinity']
+    
+    if dumbness == 3:
+        tha_ultimate_combo_lol = [nouns,adj,verbs,amount,amount]
+
+        c = 0
+        when_the = ""
+        while c < 10:
+            ues = random.choice(tha_ultimate_combo_lol)
+            more_ues = random.choice(ues)
+            when_the = when_the + more_ues + " "
+            c += 1
+    
+        await inter.reply(when_the)
+    if dumbness == 2:
+        when_the = random.choice(amount) + " " + random.choice(adj) + " " + random.choice(nouns) + " " + random.choice(verbs) + " " + random.choice(nouns)
+        await inter.reply(when_the)
+    if dumbness == 1:
+        nouns = ['eye', 'thought', 'hospital', 'bath', 'order', 'finger', 'drink', 'development', 'run', 'rabbit', 'quartz', 'baseball', 'spark', 'point', 'square', 'boat', 'shape', 'dock', 'vegetable', 'play', 'stream', 'boot', 'plantation', 'visitor', 'industry', 'work', 'lunchroom', 'view', 'hair', 'temper', 'passenger', 'price', 'food', 'gate', 'toothbrush', 'ice', 'shame', 'cherries', 'island', 'butter', 'receipt', 'friend', 'action', 'seat', 'van', 'hope', 'regret', 'cactus', 'peace', 'discussion', 'ghost', 'team', 'measure', 'idea', 'children', 'oil', 'pipe', 'bomb', 'car', 'wind', 'shirt', 'trade', 'wine', 'eyes', 'friends', 'rose', 'spring', 'acoustics', 'leg', 'edge', 'sugar', 'stretch', 'meat', 'daughter', 'surprise', 'science', 'behavior', 'argument', 'chance', 'size', 'suit', 'hand', 'marble', 'number', 'canvas', 'fish', 'bone', 'cup', 'grade', 'sidewalk', 'root', 'trucks', 'women', 'flowers', 'rat', 'fog', 'tooth', 'bed', 'week', 'hat', 'mom', 'interest', 'fork', 'notebook', 'celery', 'fold', 'pot', 'ray', 'camera', 'sail', 'quiet', 'blow', 'jam', 'rule', 'position', 'front', 'condition', 'zoo', 'minister', 'year', 'thumb', 'route', 'umbrella', 'farm', 'wing', 'hole', 'stocking', 'dust', 'ants', 'doctor', 'destruction', 'water', 'birthday', 'cloth', 'border', 'laugh', 'show', 'fireman', 'town', 'appliance', 'knowledge', 'sofa', 'afternoon', 'attack', 'pan', 'bee', 'rhythm', 'blade', 'man', 'steam', 'drop', 'roll', 'potato', 'string', 'teaching', 'cent', 'card', 'honey', 'grape', 'kiss', 'eggs', 'beef', 'religion', 'dinner', 'ocean', 'story', 'sound', 'camp', 'smash', 'current', 'driving', 'shake', 'basket', 'baby', 'adjustment', 'wire', 'arithmetic', 'cat', 'esophagus']
+        plural_nouns = ['eyes', 'thoughts', 'hospitals', 'baths', 'orders', 'fingers', 'drinks', 'developments', 'runs', 'rabbits', 'quartz', 'baseballs', 'sparks', 'points', 'squares', 'boats', 'shapes', 'docks', 'vegetables', 'plays', 'streams', 'boots', 'plantations', 'visitors', 'industrys', 'works', 'lunchrooms', 'views', 'hairs', 'tempers', 'passengers', 'prices', 'foods', 'gates', 'toothbrushes', 'ices', 'shames', 'cherries', 'islands', 'butters', 'receipts', 'friends', 'actions', 'seats', 'vans', 'hopes', 'regrets', 'cactuses', 'peaces', 'discussions', 'ghosts', 'teams', 'measures', 'ideas', 'childrens', 'oils', 'pipes', 'bombs', 'cars', 'winds', 'shirts', 'trades', 'wines', 'eyes', 'friends', 'roses', 'springs', 'acoustics', 'legs', 'edges', 'sugars', 'stretchs', 'meats', 'daughters', 'surprises', 'sciences', 'behaviors', 'arguments', 'chances', 'sizes', 'suits', 'hands', 'marbles', 'numbers', 'canvases', 'fishes', 'bones', 'cups', 'grades', 'sidewalks', 'roots', 'trucks', 'womens', 'flowers', 'rats', 'fogs', 'tooths', 'beds', 'weeks', 'hats', 'moms', 'interests', 'forks', 'notebooks', 'celerys', 'folds', 'pots', 'rays', 'cameras', 'sails', 'quiets', 'blows', 'jams', 'rules', 'positions', 'fronts', 'conditions', 'zoos', 'ministers', 'years', 'thumbs', 'routes', 'umbrellas', 'farms', 'wings', 'holes', 'stockings', 'dusts', 'ants', 'doctors', 'destructions', 'waters', 'birthdays', 'clothes', 'borders', 'laughs', 'shows', 'firemans', 'towns', 'appliances', 'knowledges', 'sofas', 'afternoons', 'attacks', 'pans', 'bees', 'rhythms', 'blades', 'mans', 'steams', 'drops', 'rolls', 'potatos', 'strings', 'teachings', 'cents', 'cards', 'honeys', 'grapes', 'kisses', 'eggs', 'beefs', 'religions', 'dinners', 'oceans', 'stories', 'sounds', 'camps', 'smashes', 'currents', 'drivings', 'shakes', 'baskets', 'babies', 'adjustments', 'wires', 'arithmetics', 'cats', 'esophaguses']
+        adj = ['tangible', 'delightful', 'lyrical', 'wakeful', 'free', 'relieved', 'arrogant', 'worthless', 'awesome', 'stupendous', 'mixed', 'rough', 'long-term', 'illustrious', 'anxious', 'typical', 'straight', 'tremendous', 'striped', 'overt', 'jittery', 'empty', 'stereotyped', 'impolite', 'broken', 'superficial', 'open', 'cheerful', 'fixed', 'equable', 'large', 'hanging', 'hungry', 'unaccountable', 'bizarre', 'few', 'wealthy', 'successful', 'depressed', 'grey', 'deep', 'enchanting', 'married', 'huge', 'black-and-white', 'sincere', 'receptive', 'hard', 'marvelous', 'tired', 'handsomely', 'hilarious', 'clear', 'drunk', 'dependent', 'glossy', 'noxious', 'untidy', 'hot', 'snotty', 'magenta', 'chilly', 'organic', 'dangerous', 'sad', 'different', 'overconfident', 'understood', 'wonderful', 'utopian', 'fascinated', 'boring', 'lame', 'bouncy', 'apathetic', 'materialistic', 'lazy', 'adorable', 'selfish', 'lucky', 'sneaky', 'witty', 'possessive', 'rotten', 'parallel', 'disgusting', 'medical', 'harmonious', 'tested', 'important', 'unnatural', 'uncovered', 'clever', 'habitual', 'kindly', 'daily', 'busy', 'fine', 'enchanted', 'brave', 'two', 'enthusiastic', 'pointless', 'easy', 'inconclusive', 'abject', 'fantastic', 'spicy', 'normal', 'damaged', 'dry', 'disastrous', 'difficult', 'lethal', 'valuable', 'silent', 'lonely', 'square', 'female', 'grumpy', 'slow', 'innocent', 'poor', 'thirsty', 'embarrassed', 'messy', 'necessary', 'sleepy', 'even', 'best']
+        verbs = ['trouble', 'memorize', 'force', 'label', 'return', 'practice', 'punch', 'disapprove', 'serve', 'separate', 'paint', 'plug', 'exercise', 'squeeze', 'pretend', 'attempt', 'command', 'copy', 'form', 'time', 'note', 'taste', 'question', 'plant', 'jail', 'manage', 'reduce', 'rescue', 'list', 'grab', 'regret', 'obtain', 'interest', 'shade', 'nod', 'hang', 'ruin', 'cheer', 'harm', 'rely', 'record', 'unpack', 'deliver', 'cough', 'listen', 'doubt', 'include', 'gather', 'cheat', 'call', 'trap', 'protect', 'connect', 'cover', 'fix', 'reply', 'remain', 'long', 'blind', 'clap', 'encourage', 'help', 'start', 'identify', 'offend', 'embarrass', 'supply', 'try', 'ban', 'compare', 'please', 'welcome', 'dream', 'attract', 'move', 'impress', 'float', 'plan', 'double', 'remind', 'support', 'level', 'desert', 'part', 'contain', 'unlock', 'judge', 'scream', 'rob', 'develop', 'suspend', 'annoy', 'reproduce', 'rain', 'program', 'launch', 'burn', 'hop', 'dance', 'last', 'accept', 'push', 'press', 'heal', 'permit', 'load', 'melt', 'rock', 'talk', 'notice', 'learn', 'match', 'breathe', 'polish', 'undress', 'interfere', 'succeed', 'like', 'twist', 'happen', 'smell', 'slap', 'hate', 'worry', 'handle', 'report', 'complete', 'lie', 'want', 'phone', 'marry', 'analyze', 'smoke']
+        multiple_amount = ['some', 'a lot of', 'many', 'almost all of the', 'all', 'quite a lot of', 'not quite a lot of', 'a huge amount of', 'a small amount of', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'hundreds of', 'thousands of', 'millions of', 'billions of', 'infinity']
+        not_multiple_amount = ['a','1','every single']
+
+        is_plural = random.randint(0,1)
+        if is_plural == 0:
+            noun = random.choice(nouns)
+            amount = random.choice(not_multiple_amount)
+            a = random.choice(adj)
+            if amount == "a":
+                if a.startswith("a") == True or a.startswith("e") == True or a.startswith("i") == True or a.startswith("o") == True or a.startswith("u") == True:
+                    amount = "an"
+        else:
+            noun = random.choice(plural_nouns)
+            amount = random.choice(multiple_amount)
+            a = random.choice(adj)
+        
+        print(is_plural)
+        message = amount + " " + a + " " + noun + " " + random.choice(verbs) + " " + random.choice(plural_nouns)
+        message = message.capitalize()
+        await inter.reply(message)
+
+@client.command(aliases=["sentence"])
+async def sentence2(inter):
+    msg = await inter.reply("How smort lelbot will be when making the sentence?",components=[
+              SelectMenu(
+                  custom_id="list",
+                  placeholder="ues",
+                  max_values=1,
+                  options=[
+                      SelectOption("Smart", 1),
+                      SelectOption("notso smort", 2),
+                      SelectOption("fjhsdkmnfbekjnsdnfjls", 3)
+                  ]
+              )
+          ]
+    )
+
+    oldinter = inter
+    inter = await msg.wait_for_dropdown()
+    if inter.author.id == oldinter.author.id:
+        labels = [option.label for option in inter.select_menu.selected_options]
+        dumbness = "#".join(labels)
+        
+        nouns = ['eye', 'thought', 'hospital', 'bath', 'order', 'finger', 'drink', 'development', 'run', 'rabbit', 'quartz', 'baseball', 'spark', 'point', 'square', 'boat', 'shape', 'dock', 'vegetable', 'play', 'stream', 'boot', 'plantation', 'visitor', 'industry', 'work', 'lunchroom', 'view', 'hair', 'temper', 'passenger', 'price', 'food', 'gate', 'toothbrush', 'ice', 'shame', 'cherries', 'island', 'butter', 'receipt', 'friend', 'action', 'seat', 'van', 'hope', 'regret', 'cactus', 'peace', 'discussion', 'ghost', 'team', 'measure', 'idea', 'children', 'oil', 'pipe', 'bomb', 'car', 'wind', 'shirt', 'trade', 'wine', 'eyes', 'friends', 'rose', 'spring', 'acoustics', 'leg', 'edge', 'sugar', 'stretch', 'meat', 'daughter', 'surprise', 'science', 'behavior', 'argument', 'chance', 'size', 'suit', 'hand', 'marble', 'number', 'canvas', 'fish', 'bone', 'cup', 'grade', 'sidewalk', 'root', 'trucks', 'women', 'flowers', 'rat', 'fog', 'tooth', 'bed', 'week', 'hat', 'mom', 'interest', 'fork', 'notebook', 'celery', 'fold', 'pot', 'ray', 'camera', 'sail', 'quiet', 'blow', 'jam', 'rule', 'position', 'front', 'condition', 'zoo', 'minister', 'year', 'thumb', 'route', 'umbrella', 'farm', 'wing', 'hole', 'stocking', 'dust', 'ants', 'doctor', 'destruction', 'water', 'birthday', 'cloth', 'border', 'laugh', 'show', 'fireman', 'town', 'appliance', 'knowledge', 'sofa', 'afternoon', 'attack', 'pan', 'bee', 'rhythm', 'blade', 'man', 'steam', 'drop', 'roll', 'potato', 'string', 'teaching', 'cent', 'card', 'honey', 'grape', 'kiss', 'eggs', 'beef', 'religion', 'dinner', 'ocean', 'story', 'sound', 'camp', 'smash', 'current', 'driving', 'shake', 'basket', 'baby', 'adjustment', 'wire', 'arithmetic', 'cat', 'esophagus']
+        adj = ['tangible', 'delightful', 'lyrical', 'wakeful', 'free', 'relieved', 'arrogant', 'worthless', 'awesome', 'stupendous', 'mixed', 'rough', 'long-term', 'illustrious', 'anxious', 'typical', 'straight', 'tremendous', 'striped', 'overt', 'jittery', 'empty', 'stereotyped', 'impolite', 'broken', 'superficial', 'open', 'cheerful', 'fixed', 'equable', 'large', 'hanging', 'hungry', 'unaccountable', 'bizarre', 'few', 'wealthy', 'successful', 'depressed', 'grey', 'deep', 'enchanting', 'married', 'huge', 'black-and-white', 'sincere', 'receptive', 'hard', 'marvelous', 'tired', 'handsomely', 'hilarious', 'clear', 'drunk', 'dependent', 'glossy', 'noxious', 'untidy', 'hot', 'snotty', 'magenta', 'chilly', 'organic', 'dangerous', 'sad', 'different', 'overconfident', 'understood', 'wonderful', 'utopian', 'fascinated', 'boring', 'lame', 'bouncy', 'apathetic', 'materialistic', 'lazy', 'adorable', 'selfish', 'lucky', 'sneaky', 'witty', 'possessive', 'rotten', 'parallel', 'disgusting', 'medical', 'harmonious', 'tested', 'important', 'unnatural', 'uncovered', 'clever', 'habitual', 'kindly', 'daily', 'busy', 'fine', 'enchanted', 'brave', 'two', 'enthusiastic', 'pointless', 'easy', 'inconclusive', 'abject', 'fantastic', 'spicy', 'normal', 'damaged', 'dry', 'disastrous', 'difficult', 'lethal', 'valuable', 'silent', 'lonely', 'square', 'female', 'grumpy', 'slow', 'innocent', 'poor', 'thirsty', 'embarrassed', 'messy', 'necessary', 'sleepy', 'even', 'best']
+        verbs = ['trouble', 'memorize', 'force', 'label', 'return', 'practice', 'punch', 'disapprove', 'serve', 'separate', 'paint', 'plug', 'exercise', 'squeeze', 'pretend', 'attempt', 'command', 'copy', 'form', 'time', 'note', 'taste', 'question', 'plant', 'jail', 'manage', 'reduce', 'rescue', 'list', 'grab', 'regret', 'obtain', 'interest', 'shade', 'nod', 'hang', 'ruin', 'cheer', 'harm', 'rely', 'record', 'unpack', 'deliver', 'cough', 'listen', 'doubt', 'include', 'gather', 'cheat', 'call', 'trap', 'protect', 'connect', 'cover', 'fix', 'reply', 'remain', 'long', 'blind', 'clap', 'encourage', 'help', 'start', 'identify', 'offend', 'embarrass', 'supply', 'try', 'ban', 'compare', 'please', 'welcome', 'dream', 'attract', 'move', 'impress', 'float', 'plan', 'double', 'remind', 'support', 'level', 'desert', 'part', 'contain', 'unlock', 'judge', 'scream', 'rob', 'develop', 'suspend', 'annoy', 'reproduce', 'rain', 'program', 'launch', 'burn', 'hop', 'dance', 'last', 'accept', 'push', 'press', 'heal', 'permit', 'load', 'melt', 'rock', 'talk', 'notice', 'learn', 'match', 'breathe', 'polish', 'undress', 'interfere', 'succeed', 'like', 'twist', 'happen', 'smell', 'slap', 'hate', 'worry', 'handle', 'report', 'complete', 'lie', 'want', 'phone', 'marry', 'analyze', 'smoke']
+        amount = ['some', 'a lot', 'many', 'almost all', 'all', 'every single', 'quite a lot', 'not quite a lot', 'a huge amount of', 'a small amount of', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'hundreds of', 'thousands of', 'millions of', 'billions of', 'infinity']
+        
+        if dumbness == "fjhsdkmnfbekjnsdnfjls":
+            tha_ultimate_combo_lol = [nouns,adj,verbs,amount,amount]
+
+            c = 0
+            when_the = ""
+            while c < 10:
+                ues = random.choice(tha_ultimate_combo_lol)
+                more_ues = random.choice(ues)
+                when_the = when_the + more_ues + " "
+                c += 1
+        
+            await msg.edit(content=when_the,components=[])
+        if dumbness == "notso smort":
+            when_the = random.choice(amount) + " " + random.choice(adj) + " " + random.choice(nouns) + " " + random.choice(verbs) + " " + random.choice(nouns)
+            await msg.edit(content=when_the,components=[])
+        if dumbness == "Smart":
+            nouns = ['eye', 'thought', 'hospital', 'bath', 'order', 'finger', 'drink', 'development', 'run', 'rabbit', 'quartz', 'baseball', 'spark', 'point', 'square', 'boat', 'shape', 'dock', 'vegetable', 'play', 'stream', 'boot', 'plantation', 'visitor', 'industry', 'work', 'lunchroom', 'view', 'hair', 'temper', 'passenger', 'price', 'food', 'gate', 'toothbrush', 'ice', 'shame', 'cherries', 'island', 'butter', 'receipt', 'friend', 'action', 'seat', 'van', 'hope', 'regret', 'cactus', 'peace', 'discussion', 'ghost', 'team', 'measure', 'idea', 'children', 'oil', 'pipe', 'bomb', 'car', 'wind', 'shirt', 'trade', 'wine', 'eyes', 'friends', 'rose', 'spring', 'acoustics', 'leg', 'edge', 'sugar', 'stretch', 'meat', 'daughter', 'surprise', 'science', 'behavior', 'argument', 'chance', 'size', 'suit', 'hand', 'marble', 'number', 'canvas', 'fish', 'bone', 'cup', 'grade', 'sidewalk', 'root', 'trucks', 'women', 'flowers', 'rat', 'fog', 'tooth', 'bed', 'week', 'hat', 'mom', 'interest', 'fork', 'notebook', 'celery', 'fold', 'pot', 'ray', 'camera', 'sail', 'quiet', 'blow', 'jam', 'rule', 'position', 'front', 'condition', 'zoo', 'minister', 'year', 'thumb', 'route', 'umbrella', 'farm', 'wing', 'hole', 'stocking', 'dust', 'ants', 'doctor', 'destruction', 'water', 'birthday', 'cloth', 'border', 'laugh', 'show', 'fireman', 'town', 'appliance', 'knowledge', 'sofa', 'afternoon', 'attack', 'pan', 'bee', 'rhythm', 'blade', 'man', 'steam', 'drop', 'roll', 'potato', 'string', 'teaching', 'cent', 'card', 'honey', 'grape', 'kiss', 'eggs', 'beef', 'religion', 'dinner', 'ocean', 'story', 'sound', 'camp', 'smash', 'current', 'driving', 'shake', 'basket', 'baby', 'adjustment', 'wire', 'arithmetic', 'cat', 'esophagus']
+            plural_nouns = ['eyes', 'thoughts', 'hospitals', 'baths', 'orders', 'fingers', 'drinks', 'developments', 'runs', 'rabbits', 'quartz', 'baseballs', 'sparks', 'points', 'squares', 'boats', 'shapes', 'docks', 'vegetables', 'plays', 'streams', 'boots', 'plantations', 'visitors', 'industrys', 'works', 'lunchrooms', 'views', 'hairs', 'tempers', 'passengers', 'prices', 'foods', 'gates', 'toothbrushes', 'ices', 'shames', 'cherries', 'islands', 'butters', 'receipts', 'friends', 'actions', 'seats', 'vans', 'hopes', 'regrets', 'cactuses', 'peaces', 'discussions', 'ghosts', 'teams', 'measures', 'ideas', 'childrens', 'oils', 'pipes', 'bombs', 'cars', 'winds', 'shirts', 'trades', 'wines', 'eyes', 'friends', 'roses', 'springs', 'acoustics', 'legs', 'edges', 'sugars', 'stretchs', 'meats', 'daughters', 'surprises', 'sciences', 'behaviors', 'arguments', 'chances', 'sizes', 'suits', 'hands', 'marbles', 'numbers', 'canvases', 'fishes', 'bones', 'cups', 'grades', 'sidewalks', 'roots', 'trucks', 'womens', 'flowers', 'rats', 'fogs', 'tooths', 'beds', 'weeks', 'hats', 'moms', 'interests', 'forks', 'notebooks', 'celerys', 'folds', 'pots', 'rays', 'cameras', 'sails', 'quiets', 'blows', 'jams', 'rules', 'positions', 'fronts', 'conditions', 'zoos', 'ministers', 'years', 'thumbs', 'routes', 'umbrellas', 'farms', 'wings', 'holes', 'stockings', 'dusts', 'ants', 'doctors', 'destructions', 'waters', 'birthdays', 'clothes', 'borders', 'laughs', 'shows', 'firemans', 'towns', 'appliances', 'knowledges', 'sofas', 'afternoons', 'attacks', 'pans', 'bees', 'rhythms', 'blades', 'mans', 'steams', 'drops', 'rolls', 'potatos', 'strings', 'teachings', 'cents', 'cards', 'honeys', 'grapes', 'kisses', 'eggs', 'beefs', 'religions', 'dinners', 'oceans', 'stories', 'sounds', 'camps', 'smashes', 'currents', 'drivings', 'shakes', 'baskets', 'babies', 'adjustments', 'wires', 'arithmetics', 'cats', 'esophaguses']
+            adj = ['tangible', 'delightful', 'lyrical', 'wakeful', 'free', 'relieved', 'arrogant', 'worthless', 'awesome', 'stupendous', 'mixed', 'rough', 'long-term', 'illustrious', 'anxious', 'typical', 'straight', 'tremendous', 'striped', 'overt', 'jittery', 'empty', 'stereotyped', 'impolite', 'broken', 'superficial', 'open', 'cheerful', 'fixed', 'equable', 'large', 'hanging', 'hungry', 'unaccountable', 'bizarre', 'few', 'wealthy', 'successful', 'depressed', 'grey', 'deep', 'enchanting', 'married', 'huge', 'black-and-white', 'sincere', 'receptive', 'hard', 'marvelous', 'tired', 'handsomely', 'hilarious', 'clear', 'drunk', 'dependent', 'glossy', 'noxious', 'untidy', 'hot', 'snotty', 'magenta', 'chilly', 'organic', 'dangerous', 'sad', 'different', 'overconfident', 'understood', 'wonderful', 'utopian', 'fascinated', 'boring', 'lame', 'bouncy', 'apathetic', 'materialistic', 'lazy', 'adorable', 'selfish', 'lucky', 'sneaky', 'witty', 'possessive', 'rotten', 'parallel', 'disgusting', 'medical', 'harmonious', 'tested', 'important', 'unnatural', 'uncovered', 'clever', 'habitual', 'kindly', 'daily', 'busy', 'fine', 'enchanted', 'brave', 'two', 'enthusiastic', 'pointless', 'easy', 'inconclusive', 'abject', 'fantastic', 'spicy', 'normal', 'damaged', 'dry', 'disastrous', 'difficult', 'lethal', 'valuable', 'silent', 'lonely', 'square', 'female', 'grumpy', 'slow', 'innocent', 'poor', 'thirsty', 'embarrassed', 'messy', 'necessary', 'sleepy', 'even', 'best']
+            verbs = ['trouble', 'memorize', 'force', 'label', 'return', 'practice', 'punch', 'disapprove', 'serve', 'separate', 'paint', 'plug', 'exercise', 'squeeze', 'pretend', 'attempt', 'command', 'copy', 'form', 'time', 'note', 'taste', 'question', 'plant', 'jail', 'manage', 'reduce', 'rescue', 'list', 'grab', 'regret', 'obtain', 'interest', 'shade', 'nod', 'hang', 'ruin', 'cheer', 'harm', 'rely', 'record', 'unpack', 'deliver', 'cough', 'listen', 'doubt', 'include', 'gather', 'cheat', 'call', 'trap', 'protect', 'connect', 'cover', 'fix', 'reply', 'remain', 'long', 'blind', 'clap', 'encourage', 'help', 'start', 'identify', 'offend', 'embarrass', 'supply', 'try', 'ban', 'compare', 'please', 'welcome', 'dream', 'attract', 'move', 'impress', 'float', 'plan', 'double', 'remind', 'support', 'level', 'desert', 'part', 'contain', 'unlock', 'judge', 'scream', 'rob', 'develop', 'suspend', 'annoy', 'reproduce', 'rain', 'program', 'launch', 'burn', 'hop', 'dance', 'last', 'accept', 'push', 'press', 'heal', 'permit', 'load', 'melt', 'rock', 'talk', 'notice', 'learn', 'match', 'breathe', 'polish', 'undress', 'interfere', 'succeed', 'like', 'twist', 'happen', 'smell', 'slap', 'hate', 'worry', 'handle', 'report', 'complete', 'lie', 'want', 'phone', 'marry', 'analyze', 'smoke']
+            multiple_amount = ['some', 'a lot of', 'many', 'almost all of the', 'all', 'quite a lot of', 'not quite a lot of', 'a huge amount of', 'a small amount of', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'hundreds of', 'thousands of', 'millions of', 'billions of', 'infinity']
+            not_multiple_amount = ['a','1','every single']
+
+            is_plural = random.randint(0,1)
+            if is_plural == 0:
+                noun = random.choice(nouns)
+                amount = random.choice(not_multiple_amount)
+                a = random.choice(adj)
+                if amount == "a":
+                    if a.startswith("a") == True or a.startswith("e") == True or a.startswith("i") == True or a.startswith("o") == True or a.startswith("u") == True:
+                        amount = "an"
+            else:
+                noun = random.choice(plural_nouns)
+                amount = random.choice(multiple_amount)
+                a = random.choice(adj)
+            
+            print(is_plural)
+            message = amount + " " + a + " " + noun + " " + random.choice(verbs) + " " + random.choice(plural_nouns)
+            message = message.capitalize()
+            await msg.edit(content=message,components=[])
+
+@inter_client.slash_command(description="Who is [insert someone here]?",options=[Option("someone","The",OptionType.STRING,required=True)])
+async def who(inter,someone):
+    thing = ['popilol', 'lelcube', 'cube', 'cat', '`furry`', 'dog', 'human', 'banana', 'couch', 'printer', 'monke', 'muffin', 'bot', 'computer', 'snek', 'bread', 'tree', 'box', 'flower', 'planet']
+    adj = ['rich', 'poor', 'nonsense', 'lel', 'digital', 'blue', 'red', 'yellow', 'green', 'orange', 'purple', 'pink', 'black', 'white', 'gray', 'boring', 'completely normal', 'fantastic', 'awesome', 'big', 'huge', 'small', 'tiny', 'giant', 'toxic', 'weird', 'heavy', 'simple', 'tall', 'ugly', 'butiful', 'thin', 'invisible']
+    place = ['candy land', 'the lelverse', '__**brazil**__', 'another universe', 'a hard drive', 'your imagination', "hellory5n's bot lab with a lot of trash", 'bobux secret laboratory', 'mars', 'the moon', '***a place***', '(x=nan, y=nan, z=nan)', "the place where there's an infinity thing generator", "Windows XP's wallpaper", 'blue void']
+
+    the = "A " + random.choice(adj) + " " + random.choice(thing) + " in " + random.choice(place)
+    embed = discord.Embed(title=f"Who {someone}?",description=the,color=0xFECC4D)
+    embed.set_footer(text=f"{inter.author} ({str(inter.author.id)})")
+    await inter.reply(embed=embed)
+
+@client.command(aliases=['who'])
+async def who2(inter,*,someone):
+    thing = ['popilol', 'lelcube', 'cube', 'cat', '`furry`', 'dog', 'human', 'banana', 'couch', 'printer', 'monke', 'muffin', 'bot', 'computer', 'snek', 'bread', 'tree', 'box', 'flower', 'planet']
+    adj = ['A rich', 'A poor', 'A nonsense', 'A lel', 'A digital', 'A blue', 'A red', 'A yellow', 'A green', 'A orange', 'A purple', 'A pink', 'A black', 'A white', 'A gray', 'A boring', 'A completely normal', 'A fantastic', 'An awesome', 'A big', 'A huge', 'A small', 'A tiny', 'A giant', 'A toxic', 'A weird', 'A heavy', 'A simple', 'A tall', 'An ugly', 'A butiful', 'A thin', 'An invisible']
+    place = ['candy land', 'the lelverse', '__**brazil**__', 'another universe', 'a hard drive', 'your imagination', "hellory5n's bot lab with a lot of trash", 'bobux secret laboratory', 'mars', 'the moon', '***a place***', '(x=nan, y=nan, z=nan)', "the place where there's an infinity thing generator", "Windows XP's wallpaper", 'blue void']
+
+    the = random.choice(adj) + " " + random.choice(thing) + " in " + random.choice(place)
+    embed = discord.Embed(title=f"Who {someone}?",description=the,color=0xFECC4D)
+    embed.set_footer(text=f"{inter.author} ({str(inter.author.id)})")
+    await inter.reply(embed=embed)
 
 token = "Insert token here"
 client.run(token)
