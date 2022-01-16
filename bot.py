@@ -3305,5 +3305,521 @@ async def who2(inter,*,someone):
     embed.set_footer(text=f"{inter.author} ({str(inter.author.id)})")
     await inter.reply(embed=embed)
 
+@inter_client.slash_command(description="ues")
+async def snowball(inter):
+    pass
+
+@snowball.sub_command(description="Collect snowballs")
+@dislash.cooldown(1, 10, commands.BucketType.user)
+async def collect(inter):
+    with open("snowball_users.txt",'r') as file:
+        txt = file.read()
+    
+    if not str(inter.author.id) in txt:
+        txt = txt + "\n" + str(inter.author.id)
+        with open("snowball_hits.json",'r') as f:
+                b_a_l_l_s = json.load(f)
+
+        b_a_l_l_s[str(inter.author.id)] = 0
+
+        with open("snowball_hits.json",'w') as f:
+           json.dump(b_a_l_l_s,f)
+
+    with open("snowball_users.txt",'w') as file:
+        file.write(txt)
+
+    with open("snowball_thing.json",'r') as f:
+        balls = json.load(f)
+    
+    ono = False
+
+    try:
+        if not balls[str(inter.author.id)] == 5:
+            balls[str(inter.author.id)] = balls[str(inter.author.id)] + 1
+        else:
+            await inter.reply("You have too many snowballs!")
+            ono = True
+    except:
+        balls[str(inter.author.id)] = 1
+    
+    with open("snowball_thing.json",'w') as f:
+        json.dump(balls,f)
+
+    if ono == False:
+        if balls[str(inter.author.id)] == 1:
+            await inter.reply(":white_circle: <:lelcube:811058465383514132>")
+            await inter.reply("You got a snowball!")
+        elif balls[str(inter.author.id)] == 2:
+            await inter.reply(":white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.reply("You got another snowball!")
+        elif balls[str(inter.author.id)] == 3:
+            await inter.reply("<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n:white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.reply("You got another another snowball!")
+        elif balls[str(inter.author.id)] == 4:
+            await inter.reply("<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n:white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.reply("Ok you are getting too many snowballs")
+        elif balls[str(inter.author.id)] == 5:
+            await inter.reply("<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n:white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.reply("Das a lot of snowballs")
+
+@snowball.sub_command(description="Throw snowballs",options=[Option("target","ues",OptionType.STRING,required=True)])
+async def throw(inter,target):
+    with open("snowball_thing.json",'r') as f:
+        balls = json.load(f)
+    
+    ono = False
+
+    try:
+        if not balls[str(inter.author.id)] < 1:
+            balls[str(inter.author.id)] = balls[str(inter.author.id)] - 1
+        else:
+            await inter.reply("<:lelcube:811058465383514132> :thumbsup:")
+            await inter.reply("You don't have snowballs")
+            ono = True
+    except:
+        await inter.reply("<:lelcube:811058465383514132> :thumbsup:")
+        await inter.reply("You don't have snowballs")
+        ono = True
+
+    if ono == False:
+        with open("snowball_thing.json",'w') as f:
+            json.dump(balls,f)
+
+        ues = random.randint(1,1000)
+
+        if ues > 500:
+            with open("snowball_hits.json",'r') as f:
+                b_a_l_l_s = json.load(f)
+
+            try:
+                b_a_l_l_s[str(inter.author.id)] = b_a_l_l_s[str(inter.author.id)] + 1
+            except:
+                b_a_l_l_s[str(inter.author.id)] = 1
+
+            with open("snowball_hits.json",'w') as f:
+                json.dump(b_a_l_l_s,f)
+
+            await inter.reply(":deaf_person: :arrow_left: :white_circle: <:lelcube:811058465383514132>")
+            await inter.reply(f"{inter.author.mention} attacked {target}!")
+        else:
+            await inter.reply("<:void:834904392008335360> :arrow_upper_left:\n:deaf_person: <:void:834904392008335360> :white_circle: <:lelcube:811058465383514132>")
+            await inter.reply(f"{inter.author.mention} missed lol")
+
+@client.command(aliases=['collect','snowball_collect','snow_collect','snowball-collect','snow-collect'])
+@commands.cooldown(1, 10, commands.BucketType.user)
+async def collect2(inter):
+    with open("snowball_users.txt",'r') as file:
+        txt = file.read()
+    
+    if not str(inter.author.id) in txt:
+        txt = txt + "\n" + str(inter.author.id)
+        with open("snowball_hits.json",'r') as f:
+                b_a_l_l_s = json.load(f)
+
+        b_a_l_l_s[str(inter.author.id)] = 0
+
+        with open("snowball_hits.json",'w') as f:
+           json.dump(b_a_l_l_s,f)
+
+    with open("snowball_users.txt",'w') as file:
+        file.write(txt)
+
+    with open("snowball_thing.json",'r') as f:
+        balls = json.load(f)
+    
+    ono = False
+
+    try:
+        if not balls[str(inter.author.id)] == 5:
+            balls[str(inter.author.id)] = balls[str(inter.author.id)] + 1
+        else:
+            await inter.reply("You have too many snowballs!")
+            ono = True
+    except:
+        balls[str(inter.author.id)] = 1
+    
+    with open("snowball_thing.json",'w') as f:
+        json.dump(balls,f)
+
+    if ono == False:
+        if balls[str(inter.author.id)] == 1:
+            await inter.reply(":white_circle: <:lelcube:811058465383514132>")
+            await inter.send("You got a snowball!")
+        elif balls[str(inter.author.id)] == 2:
+            await inter.reply(":white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.send("You got another snowball!")
+        elif balls[str(inter.author.id)] == 3:
+            await inter.reply("<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n:white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.send("You got another another snowball!")
+        elif balls[str(inter.author.id)] == 4:
+            await inter.reply("<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n:white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.send("Ok you are getting too many snowballs")
+        elif balls[str(inter.author.id)] == 5:
+            await inter.reply("<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n<:void:834904392008335360> <:void:834904392008335360> :white_circle:\n:white_circle: <:lelcube:811058465383514132> :white_circle:")
+            await inter.send("Das a lot of snowballs")
+
+@client.command(aliases=['throw','snowball_throw','snow_throw','snowball-throw','snow-throw'])
+async def throw2(inter,*,target):
+    with open("snowball_thing.json",'r') as f:
+        balls = json.load(f)
+    
+    ono = False
+
+    try:
+        if not balls[str(inter.author.id)] < 1:
+            balls[str(inter.author.id)] = balls[str(inter.author.id)] - 1
+        else:
+            await inter.reply("<:lelcube:811058465383514132> :thumbsup:")
+            await inter.reply("You don't have snowballs")
+            ono = True
+    except:
+        await inter.reply("<:lelcube:811058465383514132> :thumbsup:")
+        await inter.reply("You don't have snowballs")
+        ono = True
+
+    if ono == False:
+        with open("snowball_thing.json",'w') as f:
+            json.dump(balls,f)
+
+        ues = random.randint(1,1000)
+
+        if ues > 500:
+            with open("snowball_hits.json",'r') as f:
+                b_a_l_l_s = json.load(f)
+
+            try:
+                b_a_l_l_s[str(inter.author.id)] = b_a_l_l_s[str(inter.author.id)] + 1
+            except:
+                b_a_l_l_s[str(inter.author.id)] = 1
+
+            with open("snowball_hits.json",'w') as f:
+                json.dump(b_a_l_l_s,f)
+
+            await inter.reply(":deaf_person: :arrow_left: :white_circle: <:lelcube:811058465383514132>")
+            await inter.send(f"{inter.author.mention} attacked {target}!")
+        else:
+            await inter.reply("<:void:834904392008335360> :arrow_upper_left:\n:deaf_person: <:void:834904392008335360> :white_circle: <:lelcube:811058465383514132>")
+            await inter.send(f"{inter.author.mention} missed lol")
+
+@snowball.sub_command(description="See who is the best throwing at throwing snowballs!")
+async def lleaderboard(inter):
+    page = 0
+    lb_uwu = ""
+    cook_list = {}
+    when_the = []
+
+    with open("snowball_users.txt",'r') as f:
+        txt = f.read()
+
+    t_x_t = txt.split("\n")
+    t_x_t.remove("nothing lol xd")
+
+    with open("snowball_hits.json",'r') as f:
+        balls = json.load(f)
+
+    for i in t_x_t:
+        when_the.append(balls[i])
+
+        for i_ in when_the:
+            cook_list[i] = i_
+
+    def split_dict_into_chunks(input_dict, chunk_size):
+        res = []
+        new_dict = {}
+        for k, v in input_dict.items():
+            if len(new_dict) < chunk_size:
+                new_dict[k] = v
+            else:
+                res.append(new_dict)
+                new_dict = {k: v}
+        res.append(new_dict)
+        return res
+
+    cook_list = dict(sorted(cook_list.items(), key=lambda item: item[1]))
+    cook_list = dict(reversed(list(cook_list.items())))
+
+    users_chunks = split_dict_into_chunks(cook_list,10)
+
+    for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
+    embed=discord.Embed(title=f"Snow leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
+    embed.set_footer(text=str(inter.author.id))
+
+    can_go_back = True
+    can_go_forward = True
+
+    if page+1 == 1:
+        can_go_back = False
+
+    if page+1 == len(users_chunks):
+        can_go_forward = False
+
+    row = ActionRow(
+        Button(
+            style=ButtonStyle.blurple,
+            label="Previous page",
+            custom_id="prev_button",
+            disabled=not can_go_back
+        ),
+        Button(
+            style=ButtonStyle.blurple,
+            label="Next page",
+            custom_id="next_button",
+            disabled=not can_go_forward
+        )
+    )
+    msg = await inter.reply(embed=embed, components=[row])
+
+    on_click = msg.create_click_listener(timeout=120)
+
+    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+    async def on_wrong_user(inter):
+        await inter.reply("You're not the author :P", ephemeral=True)
+
+    @on_click.matching_id("prev_button")
+    async def on_prev_button(inter):
+      nonlocal page
+      can_go_back = True
+      can_go_forward = True
+      page -= 1
+
+      if page == 0:
+        can_go_back = False
+
+      if page == len(users_chunks)-1:
+        can_go_forward = False
+
+      newrow = ActionRow(
+        Button(
+          style=ButtonStyle.blurple,
+          label="Previous page",
+          custom_id="prev_button",
+          disabled=not can_go_back
+        ),
+        Button(
+          style=ButtonStyle.blurple,
+          label="Next page",
+          custom_id="next_button",
+          disabled=not can_go_forward
+          )
+        )
+
+      lb_uwu = ""
+
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
+      embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
+      embed.set_footer(text=str(inter.author.id))
+
+      await msg.edit(embed=embed, components=[newrow])
+
+    @on_click.timeout
+    async def on_timeout():
+        await msg.edit(components=[])
+    
+    @on_click.matching_id("next_button")
+    async def on_next_button(inter):
+      nonlocal page
+      can_go_back = True
+      can_go_forward = True
+      page += 1
+
+      if page == 0:
+        can_go_back = False
+
+      if page == len(users_chunks)-1:
+        can_go_forward = False
+
+      newrow = ActionRow(
+        Button(
+          style=ButtonStyle.blurple,
+          label="Previous page",
+          custom_id="prev_button",
+          disabled=not can_go_back
+        ),
+        Button(
+          style=ButtonStyle.blurple,
+          label="Next page",
+          custom_id="next_button",
+          disabled=not can_go_forward
+          )
+        )
+
+      lb_uwu = ""
+
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
+      embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
+      embed.set_footer(text=str(inter.author.id))
+
+      await msg.edit(embed=embed, components=[newrow])
+
+    @on_click.timeout
+    async def on_timeout():
+        await msg.edit(components=[])
+
+@client.command(aliases=['snow_leaderboard','snowball_lb','snowball_leaderboard','snow-lb','snow-leaderboard','snowball-lb','snowball-leaderboard'])
+async def snow_lb(inter):
+    page = 0
+    lb_uwu = ""
+    cook_list = {}
+    when_the = []
+
+    with open("snowball_users.txt",'r') as f:
+        txt = f.read()
+
+    t_x_t = txt.split("\n")
+    t_x_t.remove("nothing lol xd")
+
+    with open("snowball_hits.json",'r') as f:
+        balls = json.load(f)
+
+    for i in t_x_t:
+        when_the.append(balls[i])
+
+        for i_ in when_the:
+            cook_list[i] = i_
+
+    def split_dict_into_chunks(input_dict, chunk_size):
+        res = []
+        new_dict = {}
+        for k, v in input_dict.items():
+            if len(new_dict) < chunk_size:
+                new_dict[k] = v
+            else:
+                res.append(new_dict)
+                new_dict = {k: v}
+        res.append(new_dict)
+        return res
+
+    cook_list = dict(sorted(cook_list.items(), key=lambda item: item[1]))
+    cook_list = dict(reversed(list(cook_list.items())))
+
+    users_chunks = split_dict_into_chunks(cook_list,10)
+
+    for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
+    embed=discord.Embed(title=f"Snow leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
+    embed.set_footer(text=str(inter.author.id))
+
+    can_go_back = True
+    can_go_forward = True
+
+    if page+1 == 1:
+        can_go_back = False
+
+    if page+1 == len(users_chunks):
+        can_go_forward = False
+
+    row = ActionRow(
+        Button(
+            style=ButtonStyle.blurple,
+            label="Previous page",
+            custom_id="prev_button",
+            disabled=not can_go_back
+        ),
+        Button(
+            style=ButtonStyle.blurple,
+            label="Next page",
+            custom_id="next_button",
+            disabled=not can_go_forward
+        )
+    )
+    msg = await inter.reply(embed=embed, components=[row])
+
+    on_click = msg.create_click_listener(timeout=120)
+
+    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+    async def on_wrong_user(inter):
+        await inter.reply("You're not the author :P", ephemeral=True)
+
+    @on_click.matching_id("prev_button")
+    async def on_prev_button(inter):
+      nonlocal page
+      can_go_back = True
+      can_go_forward = True
+      page -= 1
+
+      if page == 0:
+        can_go_back = False
+
+      if page == len(users_chunks)-1:
+        can_go_forward = False
+
+      newrow = ActionRow(
+        Button(
+          style=ButtonStyle.blurple,
+          label="Previous page",
+          custom_id="prev_button",
+          disabled=not can_go_back
+        ),
+        Button(
+          style=ButtonStyle.blurple,
+          label="Next page",
+          custom_id="next_button",
+          disabled=not can_go_forward
+          )
+        )
+
+      lb_uwu = ""
+
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
+      embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
+      embed.set_footer(text=str(inter.author.id))
+
+      await msg.edit(embed=embed, components=[newrow])
+
+    @on_click.timeout
+    async def on_timeout():
+        await msg.edit(components=[])
+    
+    @on_click.matching_id("next_button")
+    async def on_next_button(inter):
+      nonlocal page
+      can_go_back = True
+      can_go_forward = True
+      page += 1
+
+      if page == 0:
+        can_go_back = False
+
+      if page == len(users_chunks)-1:
+        can_go_forward = False
+
+      newrow = ActionRow(
+        Button(
+          style=ButtonStyle.blurple,
+          label="Previous page",
+          custom_id="prev_button",
+          disabled=not can_go_back
+        ),
+        Button(
+          style=ButtonStyle.blurple,
+          label="Next page",
+          custom_id="next_button",
+          disabled=not can_go_forward
+          )
+        )
+
+      lb_uwu = ""
+
+      for key,value in users_chunks[page].items():
+        lb_uwu = lb_uwu + "<@" + str(key) + ">: " + str(value) + "\n"
+
+      embed=discord.Embed(title=f"Leaderboard (Page {page+1}/{len(users_chunks)})",description=lb_uwu,color=0xFECC4D)
+      embed.set_footer(text=str(inter.author.id))
+
+      await msg.edit(embed=embed, components=[newrow])
+
+    @on_click.timeout
+    async def on_timeout():
+        await msg.edit(components=[])
+
 token = "Insert token here"
 client.run(token)
