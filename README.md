@@ -153,6 +153,12 @@ These are the files that you need to download to make lelbot work correctly:
 > lelnums.json
 > 
 > users.txt
+>
+> snowball_users.txt
+>
+> snowball_thing.json
+> 
+> snowball_hits.json
 
 **4. Put the bot token in bot.py**
 
