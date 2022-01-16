@@ -106,6 +106,26 @@ Simple! Just click [here](https://discord.com/api/oauth2/authorize?client_id=822
 
 `l!rob <user> <amount>` - Steal the lelgolds of another person
 
+`l!classic_help` - Get the classic help design
+
+`l!text_to_wotcode` - wot
+
+`l!wotcode_to_text` - code
+
+`l!name` - Gives a random name to a random thing
+
+`l!sandwich <size>` - Builds a sandwich
+
+`l!sentence` - Makes a sentence
+
+`l!who <something>` - I need to put a description?
+
+`l!collect` - Collect snowballs
+
+`l!throw <target` - Throw a snowball
+
+`l!snow-lb` - See who's better at throwing snowballs
+
 ## Hosting lelbot
 
 Wants to host a modified version of lelbot? Please read these stuff below before doing that!
