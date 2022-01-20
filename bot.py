@@ -111,10 +111,10 @@ async def boom2(ctx, *, exploded_lol):
 @client.command(aliases=['commands'])
 async def help(ctx):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
-    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`", inline=False)
-    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`", inline=False)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
-    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
+    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`",inline=False)
     embed.add_field(name="Snowballs",value="`collect`, `throw <target>`, `snow_lb`",inline=False)
     embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
     embed.add_field(name="Stuff that isn't really for fun", value="`embed <title> | <description>`, `math <expression>`, `poll <text>`, `randnum <min> <max>`, `suggest <suggestion>`, `roll`", inline=False)
@@ -703,8 +703,8 @@ async def eightball(inter, question="yes"):
 @inter_client.slash_command(description="The good old help command")
 async def help(inter):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
-    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`", inline=False)
-    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`", inline=False)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
     embed.add_field(name="Snowballs",value="`collect`, `throw <target>`, `snow_lb`",inline=False)
@@ -2988,14 +2988,14 @@ async def rob2(inter, user:discord.User, amount):
 @inter_client.slash_command(description="For the people that don't like the new help command")
 async def classic_help(inter):
     embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`", inline=False)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`", inline=False)
     embed.set_footer(text="lel")
     await inter.send(embed=embed)
 
 @client.command(aliases=['classic_help'])
 async def classic_help2(inter):
     embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`", inline=False)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`", inline=False)
     embed.set_footer(text="lel")
     await inter.send(embed=embed)
 
@@ -3822,6 +3822,144 @@ async def snow_lb(inter):
     @on_click.timeout
     async def on_timeout():
         await msg.edit(components=[])
+
+@inter_client.slash_command(description="Where is [insert something here]",options=[Option("something","the",OptionType.STRING,required=True)])
+async def where(inter,something):
+    place = ['candy land', 'the lelverse', '__**brazil**__', 'another universe', 'a hard drive', 'your imagination', "hellory5n's bot lab with a lot of trash", 'bobux secret laboratory', 'mars', 'the moon', '***a place***', '(x=nan, y=nan, z=nan)', "the place where there's an infinity thing generator", "Windows XP's wallpaper", 'blue void','ues dimension','weirdimension','lelbot\'s basement']
+    embed = discord.Embed(title=f"Where {something}?",description=f"In {random.choice(place)}",color=0xFECC4D)
+    embed.set_footer(text=f"{inter.author} ({inter.author.id})")
+    await inter.reply(embed=embed)
+
+@client.command(aliases=['where'])
+async def where2(inter,*,something):
+    place = ['candy land', 'the lelverse', '__**brazil**__', 'another universe', 'a hard drive', 'your imagination', "hellory5n's bot lab with a lot of trash", 'bobux secret laboratory', 'mars', 'the moon', '***a place***', '(x=nan, y=nan, z=nan)', "the place where there's an infinity thing generator", "Windows XP's wallpaper", 'blue void','ues dimension','weirdimension','lelbot\'s basement']
+    embed = discord.Embed(title=f"Where {something}?",description=f"In {random.choice(place)}",color=0xFECC4D)
+    embed.set_footer(text=f"{inter.author} ({inter.author.id})")
+    await inter.reply(embed=embed)
+
+@inter_client.slash_command(description="Build a PC that probably wouldn't work irl")
+async def buildpc(inter):
+    oses = ['Windows','macOS','Linux']
+    OS = random.choice(oses)
+    if OS == 'Windows':
+        os_version = ['1.0','2.0','3.0','3.1','NT 3.1','95','NT 4.0','98','98 SE','2000','Me','XP','Vista','7','8','8.1','10','11']
+        OSVER = random.choice(os_version)
+    if OS == 'macOS':
+        os_version = ['1.0','2.0','3.0','4.0','5.0','6.0','7','8','9','10.0 Cheetah','10.1 Puma','10.2 Jaguar','10.3 Panther','10.4 Tiger','10.5 Leopard','10.6 Snow Leopard','10.7 Lion','10.8 Mountain Lion','10.9 Mavericks','10.10 Yosemite','10.11 El Capitan','10.12 Sierra','10.13 High Sierra','10.14 Mojave','10.15 Catalina','11 Big Sur','12 Monterey']
+        OSVER = random.choice(os_version)
+    if OS == 'Linux':
+        os_distros = ['Mint','Ubuntu','Pop_OS!','elementary OS','Fedora','Zorin','Deepin','Solus','Manjaro','Debian','MX','OpenSUSE','CentOS']
+        OSVER = random.choice(os_distros)
+    ram = random.randint(1,1024)
+    ram2 = ['KB','MB','GB']
+    ramtype = 'DDR' + str(random.randint(1,5))
+    RAM = str(ram) + random.choice(ram2) + " " + ramtype
+    HDD = random.choice(['','None'])
+    if HDD == '':
+        hdd = random.randint(1,1024)
+        hdd2 = ['KB','MB','GB','TB']
+        HDD = str(hdd) + random.choice(hdd2)
+    SSD = random.choice(['','None'])
+    if SSD == '':
+        ssd = random.randint(1,1024)
+        ssd2 = ['KB','MB','GB','TB']
+        SSD = str(ssd) + random.choice(ssd2)
+    cpu1 = ['Intel','AMD','PowerPC','Apple']
+    CPU1 = random.choice(cpu1)
+    if CPU1 == 'Intel':
+        cpu2 = ['Pentium I','Pentium II','Pentium III','Pentium IV','Celeron','Atom','Core Duo','Core i3','Core i5','Core i7','Core i9']
+        CPU2 = random.choice(cpu2)
+    elif CPU1 == 'AMD':
+        cpu2 = ['Ryzen 1000','Ryzen 2000','Ryzen 3000','Ryzen 4000','Ryzen 5000']
+        CPU2 = random.choice(cpu2)
+    elif CPU1 == 'PowerPC':
+        cpu2 = ['600','700','7400','970','G1','G2','G3','G4','G5','G6']
+        CPU2 = random.choice(cpu2)
+    elif CPU1 == 'Apple':
+        CPU2 = 'M1'
+    cpu3 = random.randint(1,1000)
+    cpu4 = ['KHz','MHz','GHz']
+    CPU = CPU1 + " " + CPU2 + " " + str(cpu3) + " " + random.choice(cpu4)
+    gpu1 = ['NVIDIA GeForce','AMD Radeon']
+    GPU1 = random.choice(gpu1)
+    if GPU1 == 'NVIDIA GeForce':
+        GPU2 = ['256','2 MX200','3 Ti200','4 MX420','FX 5100','6200A','7900 GTX','8800 GTX','9800 GTX','GTS 150','GTX 260','GT 340','GTX 460','GTX 555','GTX 645','GTX 745','GTX 950','GTX 1050','TITAN V','GTX 1650','RTX 2060','RTX 3050']
+    elif GPU1 == 'AMD Radeon':
+        GPU2 = ['7000','320','8500','9000','9500','X300','Xpress 200','X700','X550 XT','Xpress X1200','X1300','HD 2350','HD 3410','3000 Graphics','HD 4350','HD 4200 Graphics','HD 5450','HD 6350','HD 6370D','HD 7350','HD 7310','HD 3750','R5 220','R5 330','R5 430','520','RX Vega 56','VII','RX 5300','RX 6400']
+    gpu2043 = random.randint(1,1000)
+    gpu2943 = ['KB','MB','GB']
+    GPU = GPU1 + " " + random.choice(GPU2) + " " + str(gpu2043) + random.choice(gpu2943)
+    screenres = str(random.randint(1,5000)) + "x" + str(random.randint(1,5000))
+    screensiz = str(random.randint(1,20)) + " inches"
+    screentype = random.choice(['CRT','OLED','DLPT','LCD','plasma display'])
+    screencolors = str(random.randint(1,16000000))
+    SCREEN = screenres + " " + screensiz + " " + screentype + " screen with " + screencolors + " colors"
+
+    embed = discord.Embed(title=f"Very cook PC",description=f"OS: {OS} {OSVER}\nRAM: {RAM}\nHDD: {HDD}\nSSD: {SSD}\nCPU: {CPU}\nGPU: {GPU}\nScreen: {SCREEN}",color=0xFECC4D)
+    embed.set_footer(text=f"{inter.author} ({inter.author.id})")
+    await inter.reply(embed=embed)
+
+@client.command(aliases=['buildpc','build_pc','build-pc'])
+async def buildpc2(inter):
+    oses = ['Windows','macOS','Linux']
+    OS = random.choice(oses)
+    if OS == 'Windows':
+        os_version = ['1.0','2.0','3.0','3.1','NT 3.1','95','NT 4.0','98','98 SE','2000','Me','XP','Vista','7','8','8.1','10','11']
+        OSVER = random.choice(os_version)
+    if OS == 'macOS':
+        os_version = ['1.0','2.0','3.0','4.0','5.0','6.0','7','8','9','10.0 Cheetah','10.1 Puma','10.2 Jaguar','10.3 Panther','10.4 Tiger','10.5 Leopard','10.6 Snow Leopard','10.7 Lion','10.8 Mountain Lion','10.9 Mavericks','10.10 Yosemite','10.11 El Capitan','10.12 Sierra','10.13 High Sierra','10.14 Mojave','10.15 Catalina','11 Big Sur','12 Monterey']
+        OSVER = random.choice(os_version)
+    if OS == 'Linux':
+        os_distros = ['Mint','Ubuntu','Pop_OS!','elementary OS','Fedora','Zorin','Deepin','Solus','Manjaro','Debian','MX','OpenSUSE','CentOS']
+        OSVER = random.choice(os_distros)
+    ram = random.randint(1,1024)
+    ram2 = ['KB','MB','GB']
+    ramtype = 'DDR' + str(random.randint(1,5))
+    RAM = str(ram) + random.choice(ram2) + " " + ramtype
+    HDD = random.choice(['','None'])
+    if HDD == '':
+        hdd = random.randint(1,1024)
+        hdd2 = ['KB','MB','GB','TB']
+        HDD = str(hdd) + random.choice(hdd2)
+    SSD = random.choice(['','None'])
+    if SSD == '':
+        ssd = random.randint(1,1024)
+        ssd2 = ['KB','MB','GB','TB']
+        SSD = str(ssd) + random.choice(ssd2)
+    cpu1 = ['Intel','AMD','PowerPC','Apple']
+    CPU1 = random.choice(cpu1)
+    if CPU1 == 'Intel':
+        cpu2 = ['Pentium I','Pentium II','Pentium III','Pentium IV','Celeron','Atom','Core Duo','Core i3','Core i5','Core i7','Core i9']
+        CPU2 = random.choice(cpu2)
+    elif CPU1 == 'AMD':
+        cpu2 = ['Ryzen 1000','Ryzen 2000','Ryzen 3000','Ryzen 4000','Ryzen 5000']
+        CPU2 = random.choice(cpu2)
+    elif CPU1 == 'PowerPC':
+        cpu2 = ['600','700','7400','970','G1','G2','G3','G4','G5','G6']
+        CPU2 = random.choice(cpu2)
+    elif CPU1 == 'Apple':
+        CPU2 = 'M1'
+    cpu3 = random.randint(1,1000)
+    cpu4 = ['KHz','MHz','GHz']
+    CPU = CPU1 + " " + CPU2 + " " + str(cpu3) + " " + random.choice(cpu4)
+    gpu1 = ['NVIDIA GeForce','AMD Radeon']
+    GPU1 = random.choice(gpu1)
+    if GPU1 == 'NVIDIA GeForce':
+        GPU2 = ['256','2 MX200','3 Ti200','4 MX420','FX 5100','6200A','7900 GTX','8800 GTX','9800 GTX','GTS 150','GTX 260','GT 340','GTX 460','GTX 555','GTX 645','GTX 745','GTX 950','GTX 1050','TITAN V','GTX 1650','RTX 2060','RTX 3050']
+    elif GPU1 == 'AMD Radeon':
+        GPU2 = ['7000','320','8500','9000','9500','X300','Xpress 200','X700','X550 XT','Xpress X1200','X1300','HD 2350','HD 3410','3000 Graphics','HD 4350','HD 4200 Graphics','HD 5450','HD 6350','HD 6370D','HD 7350','HD 7310','HD 3750','R5 220','R5 330','R5 430','520','RX Vega 56','VII','RX 5300','RX 6400']
+    gpu2043 = random.randint(1,1000)
+    gpu2943 = ['KB','MB','GB']
+    GPU = GPU1 + " " + random.choice(GPU2) + " " + str(gpu2043) + random.choice(gpu2943)
+    screenres = str(random.randint(1,5000)) + "x" + str(random.randint(1,5000))
+    screensiz = str(random.randint(1,20)) + " inches"
+    screentype = random.choice(['CRT','OLED','DLPT','LCD','plasma display'])
+    screencolors = str(random.randint(1,16000000))
+    SCREEN = screenres + " " + screensiz + " " + screentype + " screen with " + screencolors + " colors"
+
+    embed = discord.Embed(title=f"Very cook PC",description=f"OS: {OS} {OSVER}\nRAM: {RAM}\nHDD: {HDD}\nSSD: {SSD}\nCPU: {CPU}\nGPU: {GPU}\nScreen: {SCREEN}",color=0xFECC4D)
+    embed.set_footer(text=f"{inter.author} ({inter.author.id})")
+    await inter.reply(embed=embed)
 
 token = "Insert token here"
 client.run(token)
