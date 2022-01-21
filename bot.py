@@ -372,14 +372,16 @@ async def dostuff2(ctx,index="random"):
         index = "random"
 
     if index == "random":
-        lelbot_tasks_index = random.randint(1,65)
+        lelbot_tasks_index = random.randint(1,75)
         no_NOOOOO = True
     else:
-        if int_index < 1 or int_index > 65:
-            await ctx.send("Invalid index! Please enter something between 1 and 65.")
+        if int_index < 1 or int_index > 75:
+            await ctx.send("Invalid index! Please enter something between 1 and 75.")
         else:
             lelbot_tasks_index = int_index
             no_NOOOOO = True
+
+    lelcube = "<:lelcube:811058465383514132>"
 
     #choices = [':microphone2: <:lelcube:811058465383514132>&&He sings',':frame_photo: :paintbrush: <:lelcube:811058465383514132>&&He paints',':computer: <:lelcube:811058465383514132>&&He codes',':video_game: <:lelcube:811058465383514132>&&He play games',':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>',':tv: <:lelcube:811058465383514132>&&He watches tv',':hammer: <:lelcube:811058465383514132>&&He destroy stuff',':shower:\n<:lelcube:811058465383514132>&&He showers','<:lelcube:811058465383514132> :shopping_cart:&&He goes shopping',':balloon: <:lelcube:811058465383514132>&&He plays with balloon',':wastebasket: :newspaper2: <:lelcube:811058465383514132>&&He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee',':video_camera: <:lelcube:811058465383514132>&&He records a video',':pencil: <:lelcube:811058465383514132>&&He writes a text','<:Nextie:835598971518189621> :mag: <:lelcube:811058465383514132>&&He is trying to see nextie *but nextie has the size of a __pixel__*','<:lelcube:811058465383514132> :loudspeaker:&&He says potatopatata very loud',':cake: :fork_and_knife: <:lelcube:811058465383514132>&&He eats a cake',':iphone: <:lelcube:811058465383514132>&&He uses the phone',':pizza: <:lelcube:811058465383514132>&&He is 101% sure that pizza is pizza','<:clapping:811058070843162686> <:lelcube:811058465383514132>&&He claps','<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>&&He fights',':telephone_receiver: <:lelcube:811058465383514132>&&He calls people','<:lelcube:811058465383514132> :tent:&&He goes camping',':ballet_shoes: <:lelcube:811058465383514132>&&He uses a ballet shoes','<:lelcube:811058465383514132> :toothbrush: :toilet:&&He uses a ballet shoes',':tophat:\n<:lelcube:811058465383514132> :magic_wand:&&He magic man',':saxophone: <:lelcube:811058465383514132>&&He plays the saxophone cuz saxophones are cool','<:lelcube:811058465383514132> ']
     if no_NOOOOO == True:
@@ -579,6 +581,37 @@ async def dostuff2(ctx,index="random"):
         if lelbot_tasks_index == 65:
             await ctx.send('He flipped the messages')
             await ctx.send(':level_slider: <:lelcube:811058465383514132>')
+        if lelbot_tasks_index == 66:
+            await ctx.send(f'{lelcube} :selfie:')
+            await ctx.send('He takes a selfie')
+        if lelbot_tasks_index == 67:
+            await ctx.send(f':left_facing_fist: {lelcube}')
+            await ctx.send('He punches')
+        if lelbot_tasks_index == 68:
+            await ctx.send(f':mouse_three_button: :hammer: {lelcube}')
+            await ctx.send('He clicks on the "get free bobux" button 999999999 times')
+        if lelbot_tasks_index == 69:
+            #nice
+            await ctx.send(f"{lelcube}\n:evergreen_tree:")
+            await ctx.send('He is on a tree')
+        if lelbot_tasks_index == 70:
+            await ctx.send(f"{lelcube}\n:full_moon_with_face:")
+            await ctx.send('He is on the moon')
+        if lelbot_tasks_index == 71:
+            await ctx.send(f":arrow_left: {lelcube} :cloud_tornado:")
+            await ctx.send('He runs cuz there\'s a tornado')
+        if lelbot_tasks_index == 72:
+            await ctx.send(f'{lelcube}\n:ship:')
+            await ctx.send('He is on a ship')
+        if lelbot_tasks_index == 73:
+            await ctx.send(f':taco: {lelcube}')
+            await ctx.send('He eats a taco')
+        if lelbot_tasks_index == 74:
+            await ctx.send(f':spoon: {lelcube}')
+            await ctx.send('He has a super cook spoon')
+        if lelbot_tasks_index == 75:
+            await ctx.send(f':cup_with_straw: {lelcube}')
+            await ctx.send('He drinks water')
 
 @client.command(aliases=['embed'])
 async def embed2(ctx, *, embedsay):
@@ -916,14 +949,16 @@ async def dostuff(ctx,index="random"):
         index = "random"
 
     if index == "random":
-        lelbot_tasks_index = random.randint(1,65)
+        lelbot_tasks_index = random.randint(1,75)
         no_NOOOOO = True
     else:
-        if int_index < 1 or int_index > 65:
-            await ctx.send("Invalid index! Please enter something between 1 and 65.")
+        if int_index < 1 or int_index > 75:
+            await ctx.send("Invalid index! Please enter something between 1 and 75.")
         else:
             lelbot_tasks_index = int_index
             no_NOOOOO = True
+
+    lelcube = "<:lelcube:811058465383514132>"
 
     #choices = [':microphone2: <:lelcube:811058465383514132>&&He sings',':frame_photo: :paintbrush: <:lelcube:811058465383514132>&&He paints',':computer: <:lelcube:811058465383514132>&&He codes',':video_game: <:lelcube:811058465383514132>&&He play games',':potato: <:Gun:816099538619072553> <:lelcube:811058465383514132>',':tv: <:lelcube:811058465383514132>&&He watches tv',':hammer: <:lelcube:811058465383514132>&&He destroy stuff',':shower:\n<:lelcube:811058465383514132>&&He showers','<:lelcube:811058465383514132> :shopping_cart:&&He goes shopping',':balloon: <:lelcube:811058465383514132>&&He plays with balloon',':wastebasket: :newspaper2: <:lelcube:811058465383514132>&&He doesnt like to read cuz reading is boring and i just noticed that to use discord you have to read which is boring so technicly using discord is boring but is not eeeeeeeeeeeee',':video_camera: <:lelcube:811058465383514132>&&He records a video',':pencil: <:lelcube:811058465383514132>&&He writes a text','<:Nextie:835598971518189621> :mag: <:lelcube:811058465383514132>&&He is trying to see nextie *but nextie has the size of a __pixel__*','<:lelcube:811058465383514132> :loudspeaker:&&He says potatopatata very loud',':cake: :fork_and_knife: <:lelcube:811058465383514132>&&He eats a cake',':iphone: <:lelcube:811058465383514132>&&He uses the phone',':pizza: <:lelcube:811058465383514132>&&He is 101% sure that pizza is pizza','<:clapping:811058070843162686> <:lelcube:811058465383514132>&&He claps','<:lelcube:811058465383514132> :vs: <:sweatsmile:811059266806480916>&&He fights',':telephone_receiver: <:lelcube:811058465383514132>&&He calls people','<:lelcube:811058465383514132> :tent:&&He goes camping',':ballet_shoes: <:lelcube:811058465383514132>&&He uses a ballet shoes','<:lelcube:811058465383514132> :toothbrush: :toilet:&&He uses a ballet shoes',':tophat:\n<:lelcube:811058465383514132> :magic_wand:&&He magic man',':saxophone: <:lelcube:811058465383514132>&&He plays the saxophone cuz saxophones are cool','<:lelcube:811058465383514132> ']
     if no_NOOOOO == True:
@@ -1123,6 +1158,37 @@ async def dostuff(ctx,index="random"):
         if lelbot_tasks_index == 65:
             await ctx.send('He flipped the messages')
             await ctx.send(':level_slider: <:lelcube:811058465383514132>')
+        if lelbot_tasks_index == 66:
+            await ctx.send(f'{lelcube} :selfie:')
+            await ctx.send('He takes a selfie')
+        if lelbot_tasks_index == 67:
+            await ctx.send(f':left_facing_fist: {lelcube}')
+            await ctx.send('He punches')
+        if lelbot_tasks_index == 68:
+            await ctx.send(f':mouse_three_button: :hammer: {lelcube}')
+            await ctx.send('He clicks on the "get free bobux" button 999999999 times')
+        if lelbot_tasks_index == 69:
+            #nice
+            await ctx.send(f"{lelcube}\n:evergreen_tree:")
+            await ctx.send('He is on a tree')
+        if lelbot_tasks_index == 70:
+            await ctx.send(f"{lelcube}\n:full_moon_with_face:")
+            await ctx.send('He is on the moon')
+        if lelbot_tasks_index == 71:
+            await ctx.send(f":arrow_left: {lelcube} :cloud_tornado:")
+            await ctx.send('He runs cuz there\'s a tornado')
+        if lelbot_tasks_index == 72:
+            await ctx.send(f'{lelcube}\n:ship:')
+            await ctx.send('He is on a ship')
+        if lelbot_tasks_index == 73:
+            await ctx.send(f':taco: {lelcube}')
+            await ctx.send('He eats a taco')
+        if lelbot_tasks_index == 74:
+            await ctx.send(f':spoon: {lelcube}')
+            await ctx.send('He has a super cook spoon')
+        if lelbot_tasks_index == 75:
+            await ctx.send(f':cup_with_straw: {lelcube}')
+            await ctx.send('He drinks water')
 
 @inter_client.slash_command(description="Builds a custom embed", options=[Option('title', 'Embed title', OptionType.STRING, required=True),Option('description', 'Embed description', OptionType.STRING,required=True),Option('color', 'Embed color', OptionType.STRING),Option('footer','Embed footer',OptionType.STRING),Option('url','Embed image url',OptionType.STRING)])
 async def embed(inter, title, description, color=0xFECC4D, footer="Super cook embed", url=None):
@@ -3852,7 +3918,10 @@ async def buildpc(inter):
         OSVER = random.choice(os_distros)
     ram = random.randint(1,1024)
     ram2 = ['KB','MB','GB']
-    ramtype = 'DDR' + str(random.randint(1,5))
+    if random.choice(['DDR','SDR']) == 'DDR':
+        ramtype = 'DDR' + str(random.randint(1,5))
+    else:
+        ramtype = 'SDR'
     RAM = str(ram) + random.choice(ram2) + " " + ramtype
     HDD = random.choice(['','None'])
     if HDD == '':
@@ -3891,7 +3960,7 @@ async def buildpc(inter):
     GPU = GPU1 + " " + random.choice(GPU2) + " " + str(gpu2043) + random.choice(gpu2943)
     screenres = str(random.randint(1,5000)) + "x" + str(random.randint(1,5000))
     screensiz = str(random.randint(1,20)) + " inches"
-    screentype = random.choice(['CRT','OLED','DLPT','LCD','plasma display'])
+    screentype = random.choice(['CRT','OLED','DLPT','LCD','plasma display','LED'])
     screencolors = str(random.randint(1,16000000))
     SCREEN = screenres + " " + screensiz + " " + screentype + " screen with " + screencolors + " colors"
 
@@ -3914,7 +3983,10 @@ async def buildpc2(inter):
         OSVER = random.choice(os_distros)
     ram = random.randint(1,1024)
     ram2 = ['KB','MB','GB']
-    ramtype = 'DDR' + str(random.randint(1,5))
+    if random.choice(['DDR','SDR']) == 'DDR':
+        ramtype = 'DDR' + str(random.randint(1,5))
+    else:
+        ramtype = 'SDR'
     RAM = str(ram) + random.choice(ram2) + " " + ramtype
     HDD = random.choice(['','None'])
     if HDD == '':
@@ -3953,7 +4025,7 @@ async def buildpc2(inter):
     GPU = GPU1 + " " + random.choice(GPU2) + " " + str(gpu2043) + random.choice(gpu2943)
     screenres = str(random.randint(1,5000)) + "x" + str(random.randint(1,5000))
     screensiz = str(random.randint(1,20)) + " inches"
-    screentype = random.choice(['CRT','OLED','DLPT','LCD','plasma display'])
+    screentype = random.choice(['CRT','OLED','DLPT','LCD','plasma display','LED'])
     screencolors = str(random.randint(1,16000000))
     SCREEN = screenres + " " + screensiz + " " + screentype + " screen with " + screencolors + " colors"
 
