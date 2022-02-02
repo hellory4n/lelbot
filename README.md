@@ -145,7 +145,7 @@ Wants to host a modified version of lelbot? Please read these stuff below before
 
 0.2. Python
 
-> lelbot already was tested on Python 3.8.2, 3.9.2 and 3.9.7, I don't know what other versions work with it tho
+> lelbot already was tested on Python 3.8.2, 3.9.2, 3.9.7 and 3.8.10, I don't know what other versions work with it tho
 
 0.3. Discord.py and dislash.py
 
