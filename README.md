@@ -157,7 +157,7 @@ I hope you know how to make a Discord bot :sweat_smile:
 
 **2. Get Python**
 
-lelbot was tested on Python 3.8.2, 3.9.2 and 3.9.7, but I'm not sure what other versions support it
+lelbot was tested on Python 3.8.2, 3.9.2, 3.9.7 and 3.8.10, but I'm not sure what other versions support it
 
 **3. Download the files**
 
