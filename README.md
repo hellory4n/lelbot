@@ -126,6 +126,8 @@ Simple! Just click [here](https://discord.com/api/oauth2/authorize?client_id=822
 
 `l!snow-lb` - See who's better at throwing snowballs
 
+`l!adventure` - An adventure
+
 ## Hosting lelbot
 
 Wants to host a modified version of lelbot? Please read these stuff below before doing that!
