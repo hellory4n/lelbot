@@ -111,7 +111,7 @@ async def boom2(ctx, *, exploded_lol):
 @client.command(aliases=['commands'])
 async def help(ctx):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
-    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`", inline=False)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`", inline=False)
     embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`",inline=False)
@@ -208,7 +208,7 @@ async def randomstory2(ctx):
 @client.command()
 async def aboutme(ctx):
         embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-        embed.set_footer(text="Version 1.3.1")
+        embed.set_footer(text="Version 1.4")
         embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
         await ctx.send(embed=embed)
 
@@ -736,7 +736,7 @@ async def eightball(inter, question="yes"):
 @inter_client.slash_command(description="The good old help command")
 async def help(inter):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
-    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`", inline=False)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`", inline=False)
     embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
@@ -1257,7 +1257,7 @@ async def invite(inter):
 @inter_client.slash_command(description="About me 😉")
 async def aboutme(inter):
     ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.3.1")
+    ABOTME_embed.set_footer(text="Version 1.4")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await inter.send(embed=ABOTME_embed)
 
@@ -3054,14 +3054,14 @@ async def rob2(inter, user:discord.User, amount):
 @inter_client.slash_command(description="For the people that don't like the new help command")
 async def classic_help(inter):
     embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`", inline=False)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`, `l!adventure`", inline=False)
     embed.set_footer(text="lel")
     await inter.send(embed=embed)
 
 @client.command(aliases=['classic_help'])
 async def classic_help2(inter):
     embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`", inline=False)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`, `l!adventure`", inline=False)
     embed.set_footer(text="lel")
     await inter.send(embed=embed)
 
@@ -4032,6 +4032,2782 @@ async def buildpc2(inter):
     embed = discord.Embed(title=f"Very cook PC",description=f"OS: {OS} {OSVER}\nRAM: {RAM}\nHDD: {HDD}\nSSD: {SSD}\nCPU: {CPU}\nGPU: {GPU}\nScreen: {SCREEN}",color=0xFECC4D)
     embed.set_footer(text=f"{inter.author} ({inter.author.id})")
     await inter.reply(embed=embed)
+
+@inter_client.slash_command(description="A really cook adventure")
+@dislash.cooldown(1, 120, commands.BucketType.user)
+async def adventure(inter):
+    #Easily get emojis
+    lelcube = "<:lelcube:811058465383514132>"
+    left_gun = "<:Gun:816099538619072553>"
+    right_gun = "<:nuG:915809814947463168>"
+    hellory5n = "<:hellory5n:915028960604200982>"
+    sweatsmileHD = "<:sweatsmile_hd:916863610096062514>"
+    button = "<:stoppedsweatbutton:916336148446601257>"
+    left_punch = ":left_facing_fist:"
+    right_punch = ":right_facing_fist:"
+    castle = ":european_castle:"
+    lelthink = "<:lelthink:915041532636201031>"
+    void = "<:void:834904392008335360>"
+    sweatgun = "<:sweatgun:917083708576657449>"
+    sweathmm = "<:sweathmm:941526218170314753>"
+    sweatidkanymore = "<:sweatidontknowanymore:941526218094837841>"
+    hellory4n = "<:hellory4n:821460090225426482>"
+    sweatcube = "<:sweatcube:868356676661686289>"
+    superlelcube = "<:superlelcube:916875806746226698>"
+
+    async def story():
+        nonlocal inter
+
+        row = ActionRow(
+            Button(
+                style=ButtonStyle.blurple,
+                label="Yes",
+                custom_id="yes_button"
+            ),
+            Button(
+                style=ButtonStyle.blurple,
+                label="No",
+                custom_id="no_button"
+            )
+        )
+
+        scn = await inter.send(lelthink)
+        msg = await inter.send("See the intro?",components=[row])
+
+        async def hellory5nfightlol():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f"{superlelcube} :hand_splayed: {hellory5n} :door: {castle}")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="Chairs exist?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Become lelcube","Become lelcube", emoji=lelcube),
+                            SelectOption("Die","Die", emoji="💀"),
+                            SelectOption("Continue", "Continue", emoji="⏩"),
+                            SelectOption("Give up", "Give up", emoji="🧦") 
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Become lelcube":
+                    await msg.edit(content="**Superlelcube**\nOOOOOOOOOOOOOOOOOOOOOOOOO",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :hand_splayed: {hellory5n} :door: {castle}")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {left_punch} {hellory5n} :door: {castle}")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{void} {castle}\n{lelcube}\n{void}\n{void}")
+                    await msg.edit(content="**You lost**\nseriously", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5nfightlol()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Die":
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":headstone: :hand_splayed: {hellory5n} :door: {castle}")
+                    await msg.edit(content="**You lost**", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5nfightlol()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Give up":
+                    await scn.edit(content=f"{superlelcube} :loudspeaker: :hand_splayed: {hellory5n} :door: {castle}")
+                    await msg.edit(content="**Superlelcube**\n**__H E Y   S W E A T S M I L E   H D   I   N E E D   Y O U R   H E L P__**",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} {castle}\n{superlelcube}\n{void}\n:helicopter:")
+                    await msg.edit(content="*SUPER_MEGA_ULTRA_COOK_MUSIC.MP3*")
+                    await asyncio.sleep(5)
+                    await scn.edit(content=f"{superlelcube} {void} {sweatsmileHD}")
+                    await msg.edit(content="**Sweatsmile HD**\nOk so the castle is gonna explode?")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Superlelcube**\nNo, I gave up")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{superlelcube} {left_gun} {sweatsmileHD}")
+                    await msg.edit(content="**You lost**\n*won!!1!!111", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5nfightlol()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Continue":
+                    help = "> EVERYONE IN THE CHAT SEND LELCUBES"
+                    await msg.edit(content="**Superlelcube**\nEVERYONE IN THE CHAT SEND LELCUBES",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**hellory5n**\nlol\n\n> EVERYONE IN THE CHAT SEND LELCUBES")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{superlelcube} {left_punch} {hellory5n} :door: {castle}")
+                    await msg.edit(content=help)
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} {castle}\n{superlelcube}\n{void}\n{void}\n:mountain:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} :fire:\n:fire: {superlelcube} :fire:\n{void} :fire:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{superlelcube} :fire: :fire: :fire: :fire: :fire: {castle}")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await msg.edit(content="Ok you don't need to send more lelcubes")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You won**\nCook :cook:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{superlelcube}\n:helicopter:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{superlelcube} {sweatsmileHD}")
+                    await msg.edit(content="**Sweatsmile HD**\nOh ma gawd tha castle exploded")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":cat2: {superlelcube} {sweatsmileHD}")
+                    await msg.edit(content="**Superlelcube**\nI also spawned a cat")
+                    await asyncio.sleep(3)
+                    await msg.edit(content=f"Congrats {inter.author.mention} :clap:")
+
+
+
+
+                        
+
+        async def lab():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":test_tube: :scientist: {lelthink} :cat2:")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="Doors brings you closer to the things you hate.",
+                        max_values=1,
+                        options=[
+                            SelectOption("Become superlelcube","Become superlelcube", emoji=superlelcube),
+                            SelectOption("Punch the test tube","Punch the test tube",emoji="🤛"),
+                            SelectOption("Watch a tutorial", "Watch a tutorial", emoji="📺"),
+                            SelectOption("Go down", "Go down", emoji="⬇️") 
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Punch the test tube":
+                    await scn.edit(content=f":test_tube: {left_punch} {lelcube} :scientist: :cat2:")
+                    await msg.edit(content="**Scientist**\nHEY WHAT ARE YOU DOING",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":boom: {left_punch} {lelcube} :scientist: :cat2:")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Scientist**\nHmm, this smells like apples")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You lost**\nI ran out of ways of commenting your low amount of intelligence without violating a rule in many servers that lelbot joined", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await lab()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Go down":
+                    await scn.edit(content=f":hammer: {lelcube} :cat2:")
+                    await msg.edit(components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":hole: {lelcube}")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":hole:\n{lelcube}\n{void}\n:cyclone:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {void} {void} {void} :name_badge: :beginner:")
+                    await asyncio.sleep(5)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nescf1f2f3f4f5f6f7f8f9f10f11f12fnlockinsertprtscdelbackspace/\*\"'1!2@3#4$5%6¨7&8\*9(0)-_=+backspacenumlock-+tabqwertyuiop`´[{enter7home8up9pgupcapslockasdfghjklç^~]}4left56rightshift|\\zxcvbnm,<.>;:shift1end2down3pgdnctrlfnwindowsaltspacealtgrleftupdownright0ins,delenter", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await lab()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Watch a tutorial":
+                    await scn.edit(content=f":test_tube: :scientist: :iphone: {lelcube} :cat2:")
+                    await msg.edit(components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Phone**\nhello guys today i'm [incomprehensible sounds]")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":test_tube: :scientist: {right_gun} :iphone: {lelcube} :cat2:")
+                    await msg.edit(content="**You lost**\nTip: Always lower the volume of your phone when you're gonna watch a tutorial when you are in a flying castle full of people that want to kill you hold on that's too specific", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await lab()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+
+                if option == "Become superlelcube":
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="But I want to become superlelcube :(",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{void} {void} :satellite_orbital:\n:test_tube: :scientist: {lelcube} :cat2:")
+                    await msg.edit(content="**You lost**\nSTOP", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await msg.edit(content="**You lost**\nOk fine",components=[])
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**Lelcube**\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{void} {void} :satellite_orbital:\n{void} {void} :fist:\n:test_tube: :scientist: {superlelcube} :cat2:")
+                        await msg.edit(content="*super_epok_music.mp3*")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f":cyclone:\n{superlelcube} :cat2:")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{hellory5n}\n:chair: {void} {superlelcube}")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**hellory5n**\nWait how you got here like that")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**Superlelcube**\nI became superlelcube, a clone of myself that is powered by messages with lelcube.")
+                        await asyncio.sleep(5)
+                        await msg.edit(content="**Superlelcube**\nThere's so many lelcubes in messages that now I'm able of teleporting and other stuff.")
+                        await asyncio.sleep(5)
+                        await msg.edit(content="**hellory5n**\nOk.")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{hellory5n} {right_gun} {superlelcube}")
+                        await msg.edit(content="** **")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{hellory5n}\n:fire: :fire: :fire: :fire: :fire: {superlelcube}")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{hellory5n}\n:chair:\n{void} {void} {void} {superlelcube}")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{superlelcube} {left_punch} {hellory5n}")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{superlelcube} :hand_splayed: {hellory5n} :door: {castle}")
+                        await msg.edit(content="**hellory5n**\nNow you have 3 options.")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**hellory5n**\n1: Die")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**hellory5n**\n2: Continue")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**hellory5n**\nAnd 3: Give up.")
+                        await asyncio.sleep(3)
+                        await hellory5nfightlol()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+
+
+
+
+
+
+
+
+
+        async def gaems():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":tv: :video_game: {sweathmm} {lelthink} :cat2:")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="hjyukl",
+                        max_values=1,
+                        options=[
+                            SelectOption("Become superlelcube","Become superlelcube", emoji=superlelcube),
+                            SelectOption("Do nothing","Do nothing",emoji=lelcube),
+                            SelectOption("Play the first game that the stop store shows you", "Play the first game that the stop store shows you", emoji="🙂"),
+                            SelectOption("Ignore this guy", "Ignore this guy", emoji="👍") 
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Become superlelcube":
+                    await scn.edit(content=f":tv: :video_game: {sweathmm} {lelcube} :cat2:")
+                    await msg.edit(content="**Lelcube**\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":tv: :video_game: {sweathmm} {lelcube} {left_gun} :cat2:")
+                    await msg.edit(content="**You lost**\nWhy you're still trying", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await gaems()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Do nothing":
+                    await scn.edit(content=f":tv: :video_game: {sweathmm} {lelcube} :cat2:")
+                    await msg.edit(components=[])
+                    await asyncio.sleep(60)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nHow can a room full of married people be empty? There's not a single person there", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await gaems()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Ignore this guy":
+                    await scn.edit(content=f":door:  {lelcube} :cat2:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(1)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":door: :satellite_orbital: {lelcube} :cat2:")
+                    await msg.edit(content="**You lost**\naeiou", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await gaems()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Play the first game that the stop store shows you":
+                    await scn.edit(content=f":tv: :video_game: {sweathmm} :iphone: {lelcube} :cat2:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(5)
+                    await scn.edit(content=f":cat2: {right_punch} {button}")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":iphone: {lelcube} :cat2: {void} :magic_wand: :robot:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":test_tube: :scientist: {lelcube} :cat2:")
+                    await asyncio.sleep(3)
+                    await lab()
+
+
+
+
+
+
+
+        async def whysomanycomputerslol():
+                nonlocal inter
+                nonlocal scn
+                nonlocal msg
+
+                await scn.edit(content=f"{lelthink} :man: :desktop:")
+                await msg.edit(content="** **",components=[
+                        SelectMenu(
+                            custom_id="ues",
+                            placeholder="Hola",
+                            max_values=1,
+                            options=[
+                                SelectOption("Become superlelcube","Become superlelcube", emoji=superlelcube),
+                                SelectOption("Spawn a cat","Spawn a cat",emoji="🐈"),
+                                SelectOption("Monke", "Monke", emoji="🐒"),
+                                SelectOption("Magically create a dragon", "Magically create a dragon", emoji="🐉") 
+                            ]
+                        )
+                    ]
+                )
+
+                oldinter = inter
+                inter = await msg.wait_for_dropdown()
+                if inter.author.id == oldinter.author.id:
+                    labels = [option.label for option in inter.select_menu.selected_options]
+                    option = "#".join(labels)
+
+                    if option == "Become superlelcube":
+                        await scn.edit(content=f"{lelcube} :man: :desktop:")
+                        await msg.edit(content="**Lelcube**\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",components=[])
+                        await asyncio.sleep(3)
+
+                        row = ActionRow(
+                            Button(
+                                style=ButtonStyle.blurple,
+                                label="Again",
+                                custom_id="retry_button",
+                                emoji="🔄"
+                            )
+                        )
+
+                        await scn.edit(content=f"{lelcube} {left_gun} :man: :desktop:")
+                        await msg.edit(content="**You lost**\nSilence, please", components=[row])
+
+                        on_click = msg.create_click_listener(timeout=9900)
+
+                        @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                        async def on_wrong_user(inter):
+                            await inter.reply("You're not the author :P", ephemeral=True)
+
+                        @on_click.matching_id("retry_button")
+                        async def on_retry_button(inter):
+                            await whysomanycomputerslol()
+
+                        @on_click.timeout
+                        async def on_timeout():
+                            await msg.edit(components=[])
+                    
+                    if option == "Monke":
+                        await scn.edit(content=f":test_tube: {lelcube}")
+                        await msg.edit(components=[])
+                        await asyncio.sleep(3)
+                        await scn.edit(content=":monkey: :man: :desktop:")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=":monkey: :monkey: :desktop:")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=":monkey: :monkey: :monkey:")
+                        await asyncio.sleep(3)
+
+                        row = ActionRow(
+                            Button(
+                                style=ButtonStyle.blurple,
+                                label="Again",
+                                custom_id="retry_button",
+                                emoji="🔄"
+                            )
+                        )
+
+                        await msg.edit(content="**:monkey: :monkey:**\n:monkey:", components=[row])
+
+                        on_click = msg.create_click_listener(timeout=9900)
+
+                        @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                        async def on_wrong_user(inter):
+                            await inter.reply("You're not the author :P", ephemeral=True)
+
+                        @on_click.matching_id("retry_button")
+                        async def on_retry_button(inter):
+                            await whysomanycomputerslol()
+
+                        @on_click.timeout
+                        async def on_timeout():
+                            await msg.edit(components=[])
+                    
+                    if option == "Magically create a dragon":
+                        await scn.edit(content=f":tophat:\n{lelcube} :magic_wand: :man: :desktop:")
+                        await msg.edit(components=[])
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{lelcube} :dragon: :man: :desktop:")
+                        await asyncio.sleep(3)
+
+                        row = ActionRow(
+                            Button(
+                                style=ButtonStyle.blurple,
+                                label="Again",
+                                custom_id="retry_button",
+                                emoji="🔄"
+                            )
+                        )
+
+                        await scn.edit(content=":fire: :dragon: :man: :desktop:")
+                        await msg.edit(content="**You lost**\nIt's impressive the ways you find to die", components=[row])
+
+                        on_click = msg.create_click_listener(timeout=9900)
+
+                        @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                        async def on_wrong_user(inter):
+                            await inter.reply("You're not the author :P", ephemeral=True)
+
+                        @on_click.matching_id("retry_button")
+                        async def on_retry_button(inter):
+                            await whysomanycomputerslol()
+
+                        @on_click.timeout
+                        async def on_timeout():
+                            await msg.edit(components=[])
+                    
+                    if option == "Spawn a cat":
+                        await scn.edit(content=f"{lelcube} :satellite: :man: :desktop:")
+                        await msg.edit(components=[])
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f"{lelcube} :cat2: :man: :desktop:")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f":desktop: {left_punch} :cat2:")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f":door: :arrow_left: {lelcube} :cat2:")
+                        await asyncio.sleep(3)
+                        await scn.edit(content=f":level_slider: {lelcube} :cat2:")
+                        await msg.edit(content="*elevator_music.mp3*")
+                        await asyncio.sleep(3)
+                        await gaems()
+
+
+
+
+
+
+
+        async def alotofboxesomguwuveryepok():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":hole: {lelcube} :package: :package: :package:")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="WUjjuhersrnmymo yujkoiw wi vwi ll doew/?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Become superlelcube","Become superlelcube", emoji=superlelcube),
+                            SelectOption("Go to the hole","Go to the hole",emoji="🕳"),
+                            SelectOption("Open the box", "Open the box", emoji="📦"),
+                            SelectOption("Punch everything lol", "Punch everything lol", emoji="🤛") 
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Become superlelcube":
+                    await msg.edit(content="**Lelcube**\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":hole: {superlelcube} :package: :package: :package:")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":hole: {superlelcube} {left_gun} :package: :package: :package:")
+                    await msg.edit(content="**Box (don't ask which one lollllllllll)**\nBruh I was sleeping")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nTechnology.", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await alotofboxesomguwuveryepok()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Go to the hole":
+                    await scn.edit(content=f"{lelcube}\n:arrow_down:\n:hole:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{lelcube} {void} {left_gun} :person_bald:")
+                    await msg.edit(content="**You lost**\nIt's like going to the market then when you get there, you return to home", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await alotofboxesomguwuveryepok()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Open the box":
+                    await scn.edit(content=f"{lelcube} :point_right: :package:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Box**\nhey i was sleeping!")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{lelcube} {left_gun} :package:")
+                    await msg.edit(content="**You lost**\nEveryone here has a gun, even boxes", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await alotofboxesomguwuveryepok()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Punch everything lol":
+                    await scn.edit(content=f"{lelcube} {right_punch} {void}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await whysomanycomputerslol()
+
+
+
+
+
+
+
+
+
+        async def cafeteria():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f"{lelcube} {left_gun} :deaf_person: :curry:")
+            await msg.edit(content="**Michael (deaf person)**\nHEY WHAT THE FANCADE ARE YOU DOING",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="Whnthdrj tyyhouh uylwil l ldow?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Become superlelcube","Become superlelcube", emoji=superlelcube),
+                            SelectOption("Steal the food","Steal the food",emoji="🍛"),
+                            SelectOption("Hack the physics", "Hack the physics", emoji="🧑‍💻"),
+                            SelectOption("Constantly say \"I refuse\"", "Constantly say \"I refuse\"", emoji="❌")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Become superlelcube":
+                    await msg.edit(content="**Lelcube**\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{superlelcube} {left_gun} :deaf_person: :curry:")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{hellory5n} {right_gun} {superlelcube} {left_gun} :deaf_person: :curry:")
+                    await msg.edit(content="**You lost**\nBigger numbers are better, 2 people that want to shoot you is better than 1!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await cafeteria()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Steal the food":
+                    await scn.edit(content=f"{left_gun} :deaf_person: {lelcube} :curry:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":deaf_person: {right_gun} {lelcube} :curry:")
+                    await msg.edit(content="**You lost**\nYe this didn't really help", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await cafeteria()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Hack the physics":
+                    await scn.edit(content=f"{lelcube} :computer: {left_gun} :deaf_person: :curry:")
+                    await msg.edit(content="**Lelcube**\nI'm gonna hack physics!",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{lelcube}\n:arrow_down:\n{void}\n{void}\n:mountain:")
+                    await msg.edit(content="**You lost**\nOops", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await cafeteria()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Constantly say \"I refuse\"":
+                    irefuse = "**Lelcube**\nI refuse"
+                    await msg.edit(content=irefuse,components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Michael**\nYou are *that* idiot?? That will never work! *shoots*")
+                    await asyncio.sleep(3)
+                    await msg.edit(content=irefuse)
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :person_bald: {sweatgun} :man:")
+                    await msg.edit(content="**Sweatgun**\nHEY WHAT ARE YOU DOING YOU'RE GONNA DIE")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube**\n***__I refuse__***")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube}\n:cup_with_straw:\n:chair: {void}")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":bricks:\n:fist:\n{lelcube}")
+                    await asyncio.sleep(3)
+                    await alotofboxesomguwuveryepok()
+
+
+
+
+
+
+
+        async def hellory5n_defender():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f"{lelthink} {void} :desktop: {sweatcube}")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="W h a t   y o u   w i l l   d o ?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Install Doors XP","Install Doors XP", emoji="💿"),
+                            SelectOption("Ask who is sweatcube","Ask who is sweatcube",emoji="👤"),
+                            SelectOption("Magically create 20000 turtles", "Magically create 20000 turtles", emoji="🐢"),
+                            SelectOption("Make a music", "Make a music", emoji="🎶")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Install Doors XP":
+                    await scn.edit(content=f"{lelcube} :cd: :desktop: {sweatcube}")
+                    await msg.edit(content="**Lelcube**\nHey, can I install Doors XP?",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatcube**\nSure")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{sweatcube} {void} :desktop: {lelcube}")
+                    await msg.edit(content="*title.wma*")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatcube**\nhold on")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nWhat is the limit of dumbness?", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5n_defender()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Ask who is sweatcube":
+                    await scn.edit(content=f"{lelcube} {void} :desktop: {sweatcube}")
+                    await msg.edit(content="**Lelcube**\nWho are you?",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatcube**\nI am...")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {void} :desktop: {lelcube}")
+                    await msg.edit(content="**Lelcube?**\nYOU!!!")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nTop 10 biggest plot twists", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5n_defender()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Make a music":
+                    await scn.edit(content=f":headphones:\n{lelcube} :iphone:")
+                    await msg.edit(content="*epok_music.mp3*",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":headphones:\n{lelcube} :iphone: :desktop: {sweatcube}")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatcube**\nThat's a nice music, I wonder what is playing it")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatcube**\nOh")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nHey, at least you made a nice music!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5n_defender()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Magically create 20000 turtles":
+                    await scn.edit(content=f"{lelcube} :ballot_box: :desktop: {sweatcube}")
+                    await msg.edit(content="**Lelcube**\nImma create a bunch of turtles",components=[])
+                    await asyncio.sleep(5)
+                    await msg.edit(content="**Sweatcube**\n??????????")
+                    await asyncio.sleep(1)
+                    await scn.edit(content=":turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle: :turtle:")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :level_slider:")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube**\nThe collision is quite buggy")
+                    await asyncio.sleep(3) #man this program sleeps a lot
+                    await msg.edit(content="*elevator_music.mp3*")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :curry: :deaf_person: {void}")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await cafeteria()
+
+
+
+
+
+
+
+        async def thecookestbotroomevermadeomgveryepok():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":robot: :robot: {lelthink}")
+            await msg.edit(content="ertytreshrdtjrehrj",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Use a rocket","Use a rocket", emoji="🚀"),
+                            SelectOption("Ask what is 0 divided by 0","Ask what is 0 divided by 0",emoji="❔"),
+                            SelectOption("Punch the bots", "Punch the bots", emoji="🤛"),
+                            SelectOption("Build a skyscraper", "Build a skyscraper", emoji="🔧")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Ask what is 0 divided by 0":
+                    await msg.edit(content="**Bot (don't ask which one)**\nImagine that you have 0 cookis, and you split them evenly among 0 friends.",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Bot (don't ask which one)**\nHow many cookis each person get?")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Bot (don't ask which one)**\nSee? It doesn't make sense.")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Bot (don't ask which one)**\nAnd cooki monster is sad because there are no cookis!")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Bot (don't ask which one)**\nAnd you are sad because you have no friends!")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nOh wow, this escalated quickly", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await thecookestbotroomevermadeomgveryepok()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+
+                if option == "Punch the bots":
+                    await scn.edit(content=f":robot: :robot: {left_punch} {lelcube}")
+                    await msg.edit(content="*epok_music_ues.mp3*",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":robot: {right_gun} {left_punch} {lelcube}")
+                    await msg.edit(content="**You lost**\nGet a mechanical arm", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await thecookestbotroomevermadeomgveryepok()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Build a skyscraper":
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":robot: :robot: {lelcube}")
+                    await msg.edit(content="**You lost**\nNo, I won't say anything funny just cuz you made something infinitely stupid", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await thecookestbotroomevermadeomgveryepok()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Use a rocket":
+                    await scn.edit(content=f":robot: :robot: {lelcube} :rocket:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {void} :bricks:\n:rocket: :arrow_right: :bricks:")
+                    await asyncio.sleep(3)
+                    await hellory5n_defender()
+
+
+
+
+
+
+        async def hellory5n_room():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":tv: {hellory5n} {sweatgun} :moneybag: {lelthink}")
+            await msg.edit(content=":arrow_down: look at dis",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Throw the moneybag","Throw the moneybag", emoji="🚀"),
+                            SelectOption("Watch stuff","Watch stuff",emoji="👀"),
+                            SelectOption("Give the money", "Give the money", emoji="🤝"),
+                            SelectOption("Scream", "Scream", emoji="😱")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Throw the moneybag":
+                    await scn.edit(content=f"{hellory5n} :arrow_left: :moneybag:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{hellory5n} {right_gun} {lelcube}")
+                    await msg.edit(content="**You lost**\nAre you trying to make a death speedrun? A normal person wouldn't do this. Oh, considering how dumb you are, this makes a lot of sense", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5n_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Watch stuff":
+                    await scn.edit(content=f":tv: {hellory5n} {sweatgun} {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":timer:")
+                    await msg.edit(content="*10 minutes later...*")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{hellory5n} {right_gun} {lelcube}")
+                    await msg.edit(content="**You lost**\nI need a new word to describe your insane amount of dumbness", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5n_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Scream":
+                    await scn.edit(content=f":tv: {hellory5n} {sweatgun} {lelcube}")
+                    await msg.edit(content="**Lelcube**\nAAAAAAAAAAAAAAAAAAAAAAAAA",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{hellory5n} {right_gun} {lelcube}")
+                    await msg.edit(content="**You lost**\nWhy did the worker get fired from the orange juice factory? Lack of concentration.", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await hellory5n_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Give the money":
+                    await scn.edit(content=f":tv: {hellory5n} {sweatgun} :moneybag: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nI want to give money to you guys!",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**hellory5n**\nWait, by analyzing the 1337th pixel of this moneybag, that is *our* money!")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatgun**\nIdc i want mone lollllll")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{button} {void} {void} {sweatgun} :moneybag: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nOk imma only give tha mone if you press that button")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatgun**\nOk")
+                    await scn.edit(content=f":wave: {lelcube}")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{button} {left_punch} {sweatgun}")
+                    await msg.edit(content="**hellory5n**\nHEY WHAT ARE YOU DOINGGGGGGGGGGGG")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await asyncio.sleep(3)
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You won**\nCook")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube}\n:arrow_down:\n{void}\n{void}\n:mountain:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube}\n:helicopter:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{sweatsmileHD} {lelcube}")
+                    await msg.edit(content="**Sweatsmile HD**\nᴠᴇʀʏ ᴇᴘᴏᴋ")
+
+
+
+
+
+
+
+
+        async def computer_room():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":desktop: {sweathmm} :desktop: {sweatidkanymore} {lelthink}")
+            await msg.edit(content="**Sweathmm**\nOh no, the program is broken!\n\n**Sweatidkanymore**\nWe need to fix it fast before the entire castle breaks!",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Ask to use the computer","Ask to use the computer", emoji="🖥️"),
+                            SelectOption("Eat pretty delicious stuff","Eat pretty delicious stuff",emoji="😋"),
+                            SelectOption("Throw watermelons", "Throw watermelons", emoji="🍉"),
+                            SelectOption("Play ping pong", "Play ping pong", emoji="🏓")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Ask to use the computer":
+                    await scn.edit(content=f":desktop: {sweathmm} :desktop: {sweatidkanymore} {lelcube}")
+                    await msg.edit(content="**Lelcube**\nCan I use the computer?",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweathmm**\nI'M LITERALLY FIXING A PROBLEM THAT CAN DESTROY THE ENTIRE CASTLE ARE YOU CRAZY\n\n**Sweatidkanymore**\nWait, isn't him lelcube?")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You lost**\nsmort:brain:", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await computer_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Throw watermelons":
+                    await scn.edit(content=f":desktop: :arrow_left: :watermelon: {lelcube}")
+                    await msg.edit(content="***EPOK_MUSIC.MP3***",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":boom: {sweathmm}")
+                    await msg.edit(content="**Sweathmm**\nOH NOOOOOOOOOOOOO THE CASTLE WIL LL EPLOXLDO EDJHDKFLKGHK")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You lost**\nI'm speechless- wait...")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":telephone: :grey_question:")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{hellory4n} :telephone: :grey_question:")
+                    await msg.edit(content="**hellory4n**\nHello!")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**You lost guy**\nHi, can I give the \"dumbest person\" trophy to lelcube?")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**hellory4n**\nok")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":grey_question:")
+                    await msg.edit(content="**You lost guy**\nAnd the dumbest person trophy goes to...")
+                    await asyncio.sleep(3)
+                    await msg.edit(content=f"**You lost guy**\nLELCUBE!!!")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":clap: {sweatsmileHD} :clap: :deaf_person: :clap: :person_bald:")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":trophy: {lelcube}")
+                    await msg.edit(content="**You lost**\nAt least you got a trophy for being the dumbest person!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await computer_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Play ping pong":
+                    await scn.edit(content=f":desktop: {sweathmm} :desktop: {sweatidkanymore} {lelcube}")
+                    await msg.edit(content="**Lelcube**\nHey let's play ping pong",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatidontknowanymore**\nYes!")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{sweatidkanymore} :ping_pong: {lelcube}")
+                    await msg.edit(content="**You lost**\nWho doesn't like ping pong?", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await computer_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Eat pretty delicious stuff":
+                    await scn.edit(content=f":fries: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{sweathmm} :fries: {lelcube}")
+                    await msg.edit(content="**Sweathmm**\nHi can I eat your fries")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube**\nOnly if you allow me go to the next room without me commiting ded")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweathmm**\nOk")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":level_slider: :wastebasket: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nThis is trash")
+                    await asyncio.sleep(3)
+                    await hellory5n_room()
+
+
+
+
+
+
+
+
+        async def electrical():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":electric_plug: :control_knobs: :control_knobs: :control_knobs: {lelthink}")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Manage energy","Manage energy", emoji="🧠"),
+                            SelectOption("Create an entire OS from scratch","Create an entire OS from scratch",emoji="💻"),
+                            SelectOption("Shutdown power", "Shutdown power", emoji="🔌"),
+                            SelectOption("Destroy stuff", "Destroy stuff", emoji="💥")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Manage energy":
+                    await scn.edit(content=castle)
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You lost**\nSo smart!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await electrical()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Create an entire OS from scratch":
+                    await scn.edit(content=f":keyboard: :hammer: {lelcube}")
+                    await msg.edit(content="**Lelcube**\n*programming*",components=[])
+                    await asyncio.sleep(10)
+                    
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nYou know this one? A robot and a human walk into a bar *`Message only available for WhatsApp 2 userss`*", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await electrical()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Shutdown power":
+                    await scn.edit(content=f":electric_plug: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{castle}\n:arrow_down:{void}\n{void}\n:volcano:")
+                    await msg.edit(content="**You lost**\nWe do a large amount of trolling", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await electrical()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Destroy stuff":
+                    await scn.edit(content=f":ant: :hammer: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":level_slider: {lelcube} :clock10:")
+                    await msg.edit(content="*elevator music*")
+                    await asyncio.sleep(3)
+                    await computer_room()
+
+
+
+
+
+
+
+        async def bank():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":moneybag: :robot: {lelthink}")
+            await msg.edit(content="**Bot**\nInsert a card.",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="ono you don't have card wat u will do",
+                        max_values=1,
+                        options=[
+                            SelectOption("Do nothing","Do nothing", emoji="🙅"),
+                            SelectOption("Play RPS", "Play RPS", emoji="👊"),
+                            SelectOption("Throw a bunch of bombs", "Throw a bunch of bombs", emoji="💣"),
+                            SelectOption("Plant trees","Plant trees",emoji="🌲")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Do nothing":
+                    await scn.edit(content=f":moneybag: :robot: {lelcube}")
+                    await msg.edit(content="(the game didn't broke)",components=[])
+                    await asyncio.sleep(60)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nI wish there was an achievements system so I could give you one", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await bank()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Play RPS":
+                    await scn.edit(content=f":moneybag: :robot: :scissors: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":moneybag: :robot: {right_gun} :scissors: {lelcube}")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await msg.edit(content="**You lost**\nThey released a new RPS update???", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await bank()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Throw a bunch of bombs":
+                    await scn.edit(content=f":moneybag: :robot: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: :bomb: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You lost**\nlelbot story mode speedrun any%", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await bank()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Plant trees":
+                    await scn.edit(content=f":moneybag: :robot: :evergreen_tree: {lelcube} :thumbsup:")
+                    await msg.edit(content="**Bot**\neiuryb4 ie ty48t8ibu4nwiuteyh4iwuoeurui4jweuygrhi94ywgeuyt8y74",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Bot**\nI HATE TREEESSSSSSSSS THEY EXPLODED ALL OF MY SANDWICHES AAAAAAAAAA FIOSRKJIIJRIUGHJSROI")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":moneybag: :boom: :evergreen_tree: {lelcube}")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":moneybag: {void} :evergreen_tree: :hammer: {lelcube}")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":moneybag: {lelcube} :thumbsup:")
+                    await asyncio.sleep(3)
+                    await electrical()
+
+
+
+
+
+
+
+        async def super_gun_room():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":satellite: {left_gun} :bomb: :guitar: {lelthink}")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="Which super mega ultra gun you'll use?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Super laser machine","Super laser machine", emoji="📡"),
+                            SelectOption("Ultra shooting thing 3000", "Ultra shooting thing 3000", emoji=left_gun),
+                            SelectOption("Boom collection", "Boom collection", emoji="💣"),
+                            SelectOption("Mega musical pain","Mega musical pain",emoji="🎸")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Super laser machine":
+                    await scn.edit(content=f":satellite: {button} {left_punch} {lelcube} :joystick:")
+                    await msg.edit(content="***ULTRA_INTENSE_EPOK_MUSIC.MP3***",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void}{castle}\n:satellite:")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f"{void}:boom:\n:satellite:")
+                    await msg.edit(content="**You lost**\nCongrats! You did it! :clap: :clap: :clap:", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await super_gun_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Ultra shooting thing 3000":
+                    await scn.edit(content=f"{left_gun} :joystick: {lelcube}")
+                    await msg.edit(content="***SUPER_MEGA_ULTRA_INTENSE_EPOK_MUSIC_THAT_TOOK_700_YEARS_TO_MAKE.MP3***",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{castle} {left_gun}")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{left_gun}\n{castle}")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":helicopter: {void} {left_gun} {castle}")
+                    await msg.edit(content="**You lost**\nNice aim! :clap:", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await super_gun_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Mega musical pain":
+                    await scn.edit(content=f":guitar: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":fire: :loudspeaker: :guitar: {lelcube} :loudspeaker: :fire:")
+                    await msg.edit(content="***INSANELY_INSANE_AND_GOOD_MUSIC.MP3***")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":anger: {castle} :anger:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":anger: :earth_americas: :anger: {left_gun} :new_moon_with_face:")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+
+                    await scn.edit(content=f":guitar: {lelcube} {left_gun} {hellory5n}")
+                    await msg.edit(content="**You lost**\nCongrats! Your music sucks so much that hellory5n came here to kill you! :clap:", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await super_gun_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Boom collection":
+                    await scn.edit(content=f"{button} {left_gun} {lelcube}")
+                    await msg.edit(content="***SUPER_SUPER_SUPER_SUPER_SUPER_SUPER_EPICCC_MUSICCCCCCCC.MP3***",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{castle}\n:bomb:\n{void}\n{void}\n{void}\n{void}\n{void}\n:mountain:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :desktop:")
+                    await msg.edit(content="**Lelcube**\nwas dis?")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{castle}\n{void}\n{void}\n{void}\n{void}\n{void}\n:bomb:\n:mountain:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{castle}\n{void}\n{void}\n{void}\n{void}\n:arrow_up:\n:bomb:\n:mountain:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":rotating_light: {lelcube} :rotating_light:")
+                    await msg.edit(content=f"**Lelcube**\nOH NO WHAT HAVE I DONE\n\n**Castle security system**\nWARNING: BOMBS ARE GETTING CLOSE TO THE CASTLE!!!!!!!!!!!!!!! DO SOMETHING ABOUT IT!!!!!!!!!!!!!!!111")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :arrow_right: :window:")
+                    await msg.edit(content="**Castle security system**\nWARNING: BOMBS ARE GETTING CLOSE TO THE CASTLE!!!!!!!!!!!!!!! DO SOMETHING ABOUT IT!!!!!!!!!!!!!!!111")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{castle}\n{void}{lelcube}\n{void}\n{void}:helicopter:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":iphone: {sweatsmileHD}")
+                    await msg.edit(content=f"*Sweatsmile HD making a new Drive Mad Kit 2*")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube's phone**\n**__`NEVER GONNA GIVE YOU UP\nNEVER GONNA LET YOU DOWN\nNEVER GONNA RUN AROUND AND DESERT YOU\nNEVER GONNA MAKE YOU CRY\nNEVER GONNA SAY GOODBYE\nNEVER GONNA TELL A LIE AND HURT YOU`__**")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatsmile HD**\nOK OK OK")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube}\n:helicopter:")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {sweatsmileHD}")
+                    await msg.edit(content="**Sweatsmile HD**\nOk, the castle will explode?")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube**\nYes, I hope!")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":fire: :fire: {hellory5n} :fire: :fire:")
+                    await msg.edit(content="**hellory5n**\nNOOOOOOOOOOOOOOOOOOOOO")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await asyncio.sleep(3)
+                    await scn.edit(content=":boom:")
+                    await msg.edit(content="**You won!**\n...somehow")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":boom:\n{void}:helicopter:")
+                    await msg.edit(content=f"**Sweatsmile HD**\nYay, it really exploded!")
+                    await asyncio.sleep(5)
+                    await msg.edit(content=f"Congrats {inter.author.mention}! :clap:")
+
+
+
+
+
+
+
+
+
+        async def server():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":door: :file_cabinet: :file_cabinet: :file_cabinet: {left_gun} {lelthink}")
+            await msg.edit(content="** **",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Look what's on the server", "Look what's on the server", emoji="👀"),
+                            SelectOption("Destroy everything", "Destroy everything", emoji="🔨"),
+                            SelectOption("Play games on the supercomputers", "Play games on the supercomputers", emoji="🎮"),
+                            SelectOption("Just go to another room","Just go to another room",emoji="🏃")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Look what's on the server":
+                    await scn.edit(content=f":file_cabinet: :desktop: {lelcube}")
+                    await msg.edit(content=f"**Lelcomputer**\nStarting lelcubeOS 39 for servers...",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content=f"**Welcome!**\n\n**Apps**\n> :file_folder: Lelfinder\n> :keyboard: Lelterminal\n> :file_cabinet: Leldatabase\n> :cloud: Lelcloud\n> :arrows_counterclockwise: Restart\n> :octagonal_sign: Shutdown\n> :mag: Search")
+                    await asyncio.sleep(3)
+                    await msg.edit(content=f":file_folder: Lelfinder\n\n/home/Server3/\n> :page_facing_up: Documents\n> :arrow_down: Downloads\n> :frame_photo: Images\n> :musical_note: Musics\n> :film_frames: Videos")
+                    await asyncio.sleep(3)
+                    await msg.edit(content=f"/home/Server3/Documents/\n\n> :file_cabinet: database.leldb\n> :page_facing_up: HOW_TO_DESTROY_CASTLE.txt")
+                    await asyncio.sleep(3)
+                    await msg.edit(content=f":notepad_spiral: Lelnotepad\nscream \"EMERGENCY EVERYONE RUN WE NEED TO GET OUT OF THE CASTLEEEEEEEEEE\"")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube**\nEMERGENCY EVERYONE RUN WE NEED TO GET OUT OF THE CASTLEEEEEEEEEEEE")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":file_cabinet: :desktop: {lelcube} {sweatgun}")
+                    await msg.edit(content="**You lost**\nuwu he's gonna shoot you", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await server()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Destroy everything":
+                    await scn.edit(content=f":file_cabinet: :file_cabinet: :boom: {left_gun} {lelcube}")
+                    await msg.edit(content=f"** **",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":file_cabinet: :file_cabinet: :boom: {left_gun} {lelcube} {sweatgun}")
+                    await msg.edit(content="**You lost**\n**__B O O M__**", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await server()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Just go to another room":
+                    await scn.edit(content=f":door: {void} {void} {void} {lelcube}")
+                    await asyncio.sleep(1)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":door: :fire: :boom: :fire: :boom: :fire: {lelcube}")
+                    await msg.edit(content="**You lost**\nThe door doesn't like you", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await server()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Play games on the supercomputers":
+                    await scn.edit(content=f":file_cabinet: :desktop: :video_game: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nCan't wait to play cyberlel 2077 here!",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":file_cabinet: :hole: :video_game: {lelcube}")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube}\n:arrow_down:\n:hole:")
+                    await asyncio.sleep(3)
+                    await super_gun_room()
+
+
+
+
+
+
+
+
+
+
+        async def gun_room():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":toolbox: :robot: {lelthink}")
+            await msg.edit(content="**Bot**\nInsert your card to access guns.",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Insert credit card details", "Insert credit card details", emoji="📥"),
+                            SelectOption("Ask a hamburger", "Ask a hamburger", emoji="🍔"),
+                            SelectOption("Rickroll the bot", "Rickroll the bot", emoji="🎤"),
+                            SelectOption("Steal a card","Steal a card",emoji="🥷"),
+                            SelectOption("Go to another room","Go to another room",emoji="🏃")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Insert credit card details":
+                    await scn.edit(content=f":toolbox: :robot: :credit_card: {lelcube}")
+                    await msg.edit(content=f"**Lelcube**\nHey here's my credit card",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":toolbox: :robot: {void} {lelcube}")
+                    await msg.edit(content="**Bot**\nThank you!")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await msg.edit(content="**You lost**\nBots are evolving, this one likes money!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await gun_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Rickroll the bot":
+                    await scn.edit(content=f":toolbox: :robot: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nWe're no strangers to love",components=[])
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":toolbox: :robot: {right_gun} {lelcube}")
+                    await msg.edit(content="**You lost**\nBots are evolving, this one hates rickrolls!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await gun_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Steal a card":
+                    await scn.edit(content=f"{lelcube} {void} {void}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {void} {void} :woman_beard:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :arrow_left: :credit_card: :woman_beard:")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":toolbox: :robot: :credit_card: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nHere is ma card")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Bot**\nWhat?! Steve is not on the room for brainless people?????")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await msg.edit(content="**You lost**\nBots are evolving, this one thinks you are Steve!", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await gun_room()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Go to another room":
+                    await bank()
+
+                if option == "Ask a hamburger":
+                    await scn.edit(content=f":toolbox: :robot: {lelcube}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(5)
+                    await msg.edit(content="**Bot**\nTraceback (most recent call last):\n  File \"bot.ues\", line 69, in \"ues\"\nBotError: help what me supposed to do when tha user wants to get guns and it asks for a hamburger")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":toolbox: :boom: {lelcube}")
+                    await asyncio.sleep(3)
+                    await server()
+
+
+
+
+
+
+
+
+
+
+        async def right_path_start():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":door: {void} {lelthink}")
+            await msg.edit(content="**Lelcube**\nono tha door locked",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="How you will open tha door",
+                        max_values=1,
+                        options=[
+                            SelectOption("Use a key", "Use a key", emoji="🔑"),
+                            SelectOption("Shoot the door", "Shoot the door", emoji=left_gun),
+                            SelectOption("Delete the door object", "Delete the door object", emoji="💥"),
+                            SelectOption("High-speed train","High-speed train",emoji="🚄")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Use a key":
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":door: {void} {lelcube}")
+                    await msg.edit(content="**You lost**\nBut what key?", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await right_path_start()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Shoot the door":
+                    await scn.edit(content=f":door: :gun: {lelcube}")
+                    await msg.edit(content="**Lelcube**\nI'm gonna destroy this door!",components=[])
+                    await asyncio.sleep(5)
+                    await msg.edit(content="**Lelcube**\nwhat")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :iphone:")
+                    await msg.edit(content="**eyePhone**\nCalling...")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":joystick: {sweatsmileHD} {void} :iphone:")
+                    await msg.edit(content="**eyePhone**\nLelcube is calling you!")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} :telephone: {sweatsmileHD}")
+                    await msg.edit(content="**Lelcube**\nYou gave me a toy gun")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatsmile HD**\nWhat the")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatsmile HD**\nLike, can't you just steal a gun?")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelcube**\nI need a gun to destroy a locked door")
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Sweatsmile HD**\nOk, fine, gonna you give you a real gun!")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f"{castle} {void} {void} {void} {left_gun} :helicopter:\n{void} {void} {void} :arrow_lower_left:")
+                    await msg.edit(content="**You lost**\nnice", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await right_path_start()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "High-speed train":
+                    await scn.edit(content=f"{void} {void} {lelcube}\n:door: {void} 🚄")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} {void} {lelcube}\n{left_gun} :boom: 🚄")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":moneybag: :moneybag: {lelcube}\n:moneybag: :boom: 🚄")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} {void} {lelcube}\n:person_standing: :desktop: 🚄")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} {void} {lelcube}\n:level_slider: :boom: 🚄")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":video_game: :video_game: {lelcube}\n:video_game: :boom: 🚄")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":test_tube: :test_tube: {lelcube}\n:scientist: :boom: 🚄")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":radio: :control_knobs: {lelcube}\n:level_slider: :boom: 🚄")
+                    await msg.edit(content="**Lelcube**\nOH WAIT I DESTROYED THE REACTOR NOOOOOOOOOOOOOOO")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=castle)
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":boom:")
+                    await msg.edit(content="**You lost**\nWell, you destroyed the castle, so you technically won even tho you will fall into a mountain?", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await right_path_start()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                
+                if option == "Delete the door object":
+                    await scn.edit(content=f":door: :computer: {lelcube}")
+                    await msg.edit(content="**Lelptop**\n:balloon: Object manager\n\nroom=outside_of_the_castle.room\n> lelcube.obj\n> sweatsmileHD.obj\n> door.obj\n> lelptop.obj\n> helicopter\n> castle.obj",components=[])
+                    await asyncio.sleep(3)
+                    await msg.edit(content="**Lelptop**\n:balloon: Object manager\n\nobj=door.obj\n> Delete\n> Position\n> More")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{void} :computer: {lelcube}")
+                    await msg.edit(content="** **")
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":toolbox: :robot: {lelcube}")
+                    await asyncio.sleep(3)
+                    await gun_room()
+
+
+
+
+
+
+
+
+        async def bathroom():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f"{lelthink} :toilet: :shower:")
+            await msg.edit(content="*very_tense_epok_music.mp3*",components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="What you will do?",
+                        max_values=1,
+                        options=[
+                            SelectOption("Toilet", "Toilet", emoji="🚽"),
+                            SelectOption("Take a shower immediately", "Take a shower immediately", emoji="🚿"),
+                            SelectOption("Go down", "Go down", emoji="⬇️")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Toilet":
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f"{lelcube}\n:toilet:")
+                    await msg.edit(content="**You lost**\nare you kidding me", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await bathroom()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Take a shower immediately":
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":shower:\n{lelcube}")
+                    await msg.edit(content="**You lost**\nOk :thumbsup:", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await bathroom()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+                if option == "Go down":
+                    await scn.edit(content=f"{lelcube}\n:arrow_down:\n:toilet:")
+                    await msg.edit(components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":man_bald: {left_gun} :deaf_person: {lelcube}")
+                    await asyncio.sleep(3)
+
+                    row = ActionRow(
+                        Button(
+                            style=ButtonStyle.blurple,
+                            label="Again",
+                            custom_id="retry_button",
+                            emoji="🔄"
+                        )
+                    )
+                    
+                    await scn.edit(content=f":man_bald: :deaf_person: {right_gun} {lelcube}")
+                    await msg.edit(content="**You lost**\nasdfghjklñ.", components=[row])
+
+                    on_click = msg.create_click_listener(timeout=9900)
+
+                    @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+                    async def on_wrong_user(inter):
+                        await inter.reply("You're not the author :P", ephemeral=True)
+
+                    @on_click.matching_id("retry_button")
+                    async def on_retry_button(inter):
+                        await bathroom()
+
+                    @on_click.timeout
+                    async def on_timeout():
+                        await msg.edit(components=[])
+
+
+
+
+
+
+
+
+        async def path_chooser_3000():
+            nonlocal inter
+            nonlocal scn
+            nonlocal msg
+
+            await scn.edit(content=f":european_castle: {sweatsmileHD} {lelthink}")
+            await msg.edit(content="**Sweatsmile HD**\nWhere you'll jump?", components=[
+                    SelectMenu(
+                        custom_id="ues",
+                        placeholder="Choose something",
+                        max_values=1,
+                        options=[
+                            SelectOption("Top", "Top", emoji="⬆️"),
+                            SelectOption("Left", "Left", emoji="⬅️"),
+                            SelectOption("Right","Right",emoji="➡️")
+                        ]
+                    )
+                ]
+            )
+
+            oldinter = inter
+            inter = await msg.wait_for_dropdown()
+            if inter.author.id == oldinter.author.id:
+                labels = [option.label for option in inter.select_menu.selected_options]
+                option = "#".join(labels)
+
+                if option == "Top":
+                    await scn.edit(content=f":helicopter:\n{lelcube}\n:arrow_down:\n{castle}")
+                    await msg.edit(content="*epok_tension_music_thing.mp3*",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"{lelcube} {right_punch} :door:")
+                    await asyncio.sleep(3)
+                    await bathroom()
+                if option == "Right":
+                    await scn.edit(content=f"{castle} :arrow_left: {lelcube} :helicopter:")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f"🚪 {void} {lelcube}")
+                    await asyncio.sleep(3)
+                    await right_path_start()
+                if option == "Left":
+                    await scn.edit(content=f":helicopter: {lelcube} :arrow_right: {castle}")
+                    await msg.edit(content="** **",components=[])
+                    await asyncio.sleep(3)
+                    await scn.edit(content=f":window: {left_punch} {lelcube}")
+                    await asyncio.sleep(3)
+                    await thecookestbotroomevermadeomgveryepok()
+
+
+
+
+
+
+
+
+
+        async def intro():
+            nonlocal inter
+            nonlocal msg
+            nonlocal scn
+
+            await scn.edit(content=":helicopter:")
+            await msg.edit(content="** **",components=[])
+            await asyncio.sleep(3)
+            await scn.edit(content=f"{sweatsmileHD} {lelcube}")
+            await msg.edit(content="**Lelcube**\ny mii on helicopter")
+            await asyncio.sleep(3)
+            await scn.edit(content=":european_castle:")
+            await msg.edit(content="**Sweatsmile HD**\nRecently, hellory5n built a huge castle. It'll be used to help him take over the world.")
+            await asyncio.sleep(3)
+            await msg.edit(content="**Sweatsmile HD**\nThis castle will have all of his allies, and extremely powerful weapons.")
+            await asyncio.sleep(3)
+            await scn.edit(content=f"{sweatsmileHD} {lelcube}")
+            await msg.edit(content="**Sweatsmile HD**\nWe need to stop him.")
+            await asyncio.sleep(3)
+            await path_chooser_3000()
+        
+        on_click = msg.create_click_listener(timeout=9990)
+
+        @on_click.not_from_user(inter.author, cancel_others=True, reset_timeout=False)
+        async def on_wrong_user(inter):
+            await inter.reply("You're not the author :P", ephemeral=True)
+
+        @on_click.matching_id("yes_button")
+        async def on_yes_button(inter):
+            await intro()
+
+        @on_click.matching_id("no_button")
+        async def on_no_button(inter):
+            await path_chooser_3000()
+
+        @on_click.timeout
+        async def on_timeout():
+            await msg.edit(components=[])
+
+    await story()
+
+@client.command(aliases=['adventure'])
+@commands.cooldown(1, 120, commands.BucketType.user)
+async def adventure2(inter):
+    await adventure(inter)
 
 token = "Insert token here"
 client.run(token)
