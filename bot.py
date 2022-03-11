@@ -69,7 +69,9 @@ async def cook_loop():
     'h',
     'Did you know that your age is your age + 3 - 3?',
     'I want a really fancy coffee maker',
-    'I love SandwichXP, it\'s just so well made!']
+    'I love SandwichXP, it\'s just so well made!',
+    'Spinning is my favorite activity',
+    '🐢 tutel']
     await client.change_presence(status=discord.Status.idle, activity=discord.Game(f'Type l!help for help! {random.choice(statuses)}'))
 
 @client.event
@@ -208,7 +210,7 @@ async def randomstory2(ctx):
 @client.command()
 async def aboutme(ctx):
         embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-        embed.set_footer(text="Version 1.4")
+        embed.set_footer(text="Version 1.4.1")
         embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
         await ctx.send(embed=embed)
 
@@ -372,11 +374,11 @@ async def dostuff2(ctx,index="random"):
         index = "random"
 
     if index == "random":
-        lelbot_tasks_index = random.randint(1,75)
+        lelbot_tasks_index = random.randint(1,85)
         no_NOOOOO = True
     else:
-        if int_index < 1 or int_index > 75:
-            await ctx.send("Invalid index! Please enter something between 1 and 75.")
+        if int_index < 1 or int_index > 85:
+            await ctx.send("Invalid index! Please enter something between 1 and 85.")
         else:
             lelbot_tasks_index = int_index
             no_NOOOOO = True
@@ -612,6 +614,36 @@ async def dostuff2(ctx,index="random"):
         if lelbot_tasks_index == 75:
             await ctx.send(f':cup_with_straw: {lelcube}')
             await ctx.send('He drinks water')
+        if lelbot_tasks_index ==  76:
+            await ctx.send(lelcube)
+            await ctx.send('He')
+        if lelbot_tasks_index == 77:
+            await ctx.send(f"🟨🟨🟨🟨🟨🟨🟨🟨\n🟫🟫🟨🟫🟫🟦⬜🟨\n🟨🟨🟨🟨🟨🟨🟦⬜\n⬜🟫🟨⬜🟫🟨🟦🟦\n🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟫⬜⬜🟫🟨🟨🟨\n🟨🟨🟫🟫🟨🟨🟨🟨\n🟨🟨🟨🟨🟨🟨🟨🟨 {lelcube}")
+            await ctx.send('He made statue')
+        if lelbot_tasks_index == 78:
+            await ctx.send(f":ballot_box_with_check: {lelcube}")
+            await ctx.send('He approves nonsenses')
+        if lelbot_tasks_index == 79:
+            await ctx.send(f":turtle: {lelcube}")
+            await ctx.send('He has a pet called tutel')
+        if lelbot_tasks_index == 80:
+            await ctx.send(f"{lelcube} :medal: {lelcube}")
+            await ctx.send('He gives a medal to lelcube')
+        if lelbot_tasks_index == 81:
+            await ctx.send(f":point_down:{lelcube}\n<:grass:951926072792981579><:grass:951926072792981579>")
+            await ctx.send('He touches grass')
+        if lelbot_tasks_index == 82:
+            await ctx.send(f"🔪🛸🗡️\n🪝{lelcube}<:Gun:816099538619072553>\n💉📯🪛")
+            await ctx.send('He is in danger')
+        if lelbot_tasks_index == 83:
+            await ctx.send(f":bug: <:Gun:816099538619072553> {lelcube}")
+            await ctx.send('He fixes bugs')
+        if lelbot_tasks_index == 84:
+            await ctx.send(f":coffee: {lelcube}")
+            await ctx.send('He likes coffee')
+        if lelbot_tasks_index == 85:
+            await ctx.send(f":circus_tent: {lelcube}")
+            await ctx.send('He goes to circus')
 
 @client.command(aliases=['embed'])
 async def embed2(ctx, *, embedsay):
@@ -949,11 +981,11 @@ async def dostuff(ctx,index="random"):
         index = "random"
 
     if index == "random":
-        lelbot_tasks_index = random.randint(1,75)
+        lelbot_tasks_index = random.randint(1,85)
         no_NOOOOO = True
     else:
-        if int_index < 1 or int_index > 75:
-            await ctx.send("Invalid index! Please enter something between 1 and 75.")
+        if int_index < 1 or int_index > 85:
+            await ctx.send("Invalid index! Please enter something between 1 and 85.")
         else:
             lelbot_tasks_index = int_index
             no_NOOOOO = True
@@ -1189,6 +1221,36 @@ async def dostuff(ctx,index="random"):
         if lelbot_tasks_index == 75:
             await ctx.send(f':cup_with_straw: {lelcube}')
             await ctx.send('He drinks water')
+        if lelbot_tasks_index ==  76:
+            await ctx.send(lelcube)
+            await ctx.send('He')
+        if lelbot_tasks_index == 77:
+            await ctx.send(f"🟨🟨🟨🟨🟨🟨🟨🟨\n🟫🟫🟨🟫🟫🟦⬜🟨\n🟨🟨🟨🟨🟨🟨🟦⬜\n⬜🟫🟨⬜🟫🟨🟦🟦\n🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟫⬜⬜🟫🟨🟨🟨\n🟨🟨🟫🟫🟨🟨🟨🟨\n🟨🟨🟨🟨🟨🟨🟨🟨 {lelcube}")
+            await ctx.send('He made statue')
+        if lelbot_tasks_index == 78:
+            await ctx.send(f":ballot_box_with_check: {lelcube}")
+            await ctx.send('He approves nonsenses')
+        if lelbot_tasks_index == 79:
+            await ctx.send(f":turtle: {lelcube}")
+            await ctx.send('He has a pet called tutel')
+        if lelbot_tasks_index == 80:
+            await ctx.send(f"{lelcube} :medal: {lelcube}")
+            await ctx.send('He gives a medal to lelcube')
+        if lelbot_tasks_index == 81:
+            await ctx.send(f":point_down:{lelcube}\n<:grass:951926072792981579><:grass:951926072792981579>")
+            await ctx.send('He touches grass')
+        if lelbot_tasks_index == 82:
+            await ctx.send(f"🔪🛸🗡️\n🪝{lelcube}<:Gun:816099538619072553>\n💉📯🪛")
+            await ctx.send('He is in danger')
+        if lelbot_tasks_index == 83:
+            await ctx.send(f":bug: <:Gun:816099538619072553> {lelcube}")
+            await ctx.send('He fixes bugs')
+        if lelbot_tasks_index == 84:
+            await ctx.send(f":coffee: {lelcube}")
+            await ctx.send('He likes coffee')
+        if lelbot_tasks_index == 85:
+            await ctx.send(f":circus_tent: {lelcube}")
+            await ctx.send('He goes to circus')
 
 @inter_client.slash_command(description="Builds a custom embed", options=[Option('title', 'Embed title', OptionType.STRING, required=True),Option('description', 'Embed description', OptionType.STRING,required=True),Option('color', 'Embed color', OptionType.STRING),Option('footer','Embed footer',OptionType.STRING),Option('url','Embed image url',OptionType.STRING)])
 async def embed(inter, title, description, color=0xFECC4D, footer="Super cook embed", url=None):
@@ -1257,7 +1319,7 @@ async def invite(inter):
 @inter_client.slash_command(description="About me 😉")
 async def aboutme(inter):
     ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.4")
+    ABOTME_embed.set_footer(text="Version 1.4.1")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await inter.send(embed=ABOTME_embed)
 
