@@ -149,9 +149,11 @@ Wants to host a modified version of lelbot? Please read these stuff below before
 
 > lelbot already was tested on Python 3.8.2, 3.9.2, 3.9.7 and 3.8.10, I don't know what other versions work with it tho
 
-0.3. Discord.py and dislash.py
+0.3. Install disnake
 
-> Those can be installed with pip
+> You can install it with this command: `pip install -U disnake['discord']`
+
+> Note: If you installed discord.py before, run `pip uninstall discord` before installing disnake
 
 **1. Create a bot**
 
