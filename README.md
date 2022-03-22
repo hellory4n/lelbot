@@ -128,6 +128,8 @@ Simple! Just click [here](https://discord.com/api/oauth2/authorize?client_id=822
 
 `l!adventure` - An adventure
 
+`l!image` - Get a random image
+
 ## Hosting lelbot
 
 Wants to host a modified version of lelbot? Please read these stuff below before doing that!
