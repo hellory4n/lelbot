@@ -185,6 +185,8 @@ These are the files that you need to download to make lelbot work correctly:
 > snowball_thing.json
 > 
 > snowball_hits.json
+>
+> images.txt
 
 **4. Put the bot token in bot.py**
 
