@@ -94,7 +94,7 @@ async def boom2(ctx, *, exploded_lol):
 async def help(ctx):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
     embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`", inline=False)
-    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`, `image`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`",inline=False)
     embed.add_field(name="Snowballs",value="`collect`, `throw <target>`, `snow_lb`",inline=False)
@@ -190,7 +190,7 @@ async def randomstory2(ctx):
 @client.command()
 async def aboutme(ctx):
         ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-        ABOTME_embed.set_footer(text="Version 1.4.2")
+        ABOTME_embed.set_footer(text="Version 1.5.0")
         ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
         await ctx.send(embed=ABOTME_embed)
 
@@ -762,7 +762,7 @@ async def eightball(inter, question: str):
 async def help(inter):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
     embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`", inline=False)
-    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`", inline=False)
+    embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`, `image`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
     embed.add_field(name="Snowballs",value="`collect`, `throw <target>`, `snow_lb`",inline=False)
@@ -1398,7 +1398,7 @@ async def invite(inter):
 @client.slash_command(description="About me 😉")
 async def aboutme(inter):
     ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.4.1")
+    ABOTME_embed.set_footer(text="Version 1.5.0")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await inter.send(embed=ABOTME_embed)
 
@@ -7769,6 +7769,32 @@ async def adventure2(inter):
         await msg.edit(view=view)
     
     await story()
+
+@client.slash_command(description="Get a random image")
+async def image(inter):
+    with open("images.txt",'r') as f:
+        ues = f.read()
+    
+    stuff = ues.split("\n")
+    #banana = stuff[index]
+    banana = random.choice(stuff)
+    m = banana.split("&&")
+    embed = discord.Embed(title=m[0], color=0xFECC4D)
+    embed.set_image(url=m[1])
+    await inter.send(embed=embed)
+
+@client.command(aliases=['image'])
+async def image2(ctx):
+    with open("images.txt",'r') as f:
+        ues = f.read()
+    
+    stuff = ues.split("\n")
+    #banana = stuff[index]
+    banana = random.choice(stuff)
+    m = banana.split("&&")
+    embed = discord.Embed(title=m[0], color=0xFECC4D)
+    embed.set_image(url=m[1])
+    await ctx.send(embed=embed)
 
 EXTREMELYSECRETSETOFCHARACTERS = "insert token here"
 client.run(EXTREMELYSECRETSETOFCHARACTERS)
