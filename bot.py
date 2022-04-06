@@ -93,7 +93,7 @@ async def boom2(ctx, *, exploded_lol):
 @client.command(aliases=['commands'])
 async def help(ctx):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
-    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`", inline=False)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`, `cake <someone>`, `hat`", inline=False)
     embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`, `image`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`",inline=False)
@@ -189,10 +189,10 @@ async def randomstory2(ctx):
 
 @client.command()
 async def aboutme(ctx):
-        ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-        ABOTME_embed.set_footer(text="Version 1.5.0")
-        ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
-        await ctx.send(embed=ABOTME_embed)
+    ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>\nMy birthday is on april 6, cuz lelbot 0.1 was released in april 6, 2021!", color=0xFECC4D)
+    ABOTME_embed.set_footer(text="Version 1.5.1")
+    ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
+    await ctx.send(embed=ABOTME_embed)
 
 @client.command(aliases=['when'])
 async def when2(ctx, *, whenn):
@@ -761,7 +761,7 @@ async def eightball(inter, question: str):
 @client.slash_command(description="The good old help command")
 async def help(inter):
     embed = discord.Embed(title="Help", description="\n`<>` means required argument, `[]` means optional argument\nDon't include `<>` or `[]`\nMost commands are available in slash commands!", color=0xFECC4D)
-    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`", inline=False)
+    embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`, `cake <someone>`, `hat`", inline=False)
     embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`, `image`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
     embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
@@ -1397,8 +1397,8 @@ async def invite(inter):
 
 @client.slash_command(description="About me 😉")
 async def aboutme(inter):
-    ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.5.0")
+    ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>\nMy birthday is on april 6, cuz lelbot 0.1 was released in april 6, 2021!", color=0xFECC4D)
+    ABOTME_embed.set_footer(text="Version 1.5.1")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await inter.send(embed=ABOTME_embed)
 
@@ -1839,6 +1839,10 @@ async def use(inter, item: Items, amount: int=1):
     if item not in items or items[item] < amount:
         ono = True
         await inter.send("Lol you don't have this item")
+
+    if amount < 1:
+        ono = True
+        await inter.send("Das illegal")
 
     if ono == False:
         items[item] = items[item] - amount
@@ -2788,6 +2792,10 @@ async def use2(inter, amount="1"):
                 if item not in items or items[item] < amount:
                     ono = True
                     await inter.send("Lol you don't have this item")
+                
+                if amount < 1:
+                    ono = True
+                    await msg.edit(content="Das illegal",view=None)
                 
                 if ono == False:
                     items[item] = items[item] - amount
@@ -7795,6 +7803,347 @@ async def image2(ctx):
     embed = discord.Embed(title=m[0], color=0xFECC4D)
     embed.set_image(url=m[1])
     await ctx.send(embed=embed)
+
+@client.slash_command(description="Give a cake")
+async def cake(inter, someone:str):
+    """
+    Parameters
+    ----------
+    someone: Who will get tha cake
+    """
+    credits = "If you're seeing this text then something has gone wrong"
+    image = "https://cdn.discordapp.com/attachments/811051988992524299/950044067444686848/emoji.png"
+    index = random.randint(1,50)
+
+    if index == 1:
+        credits="Photo by American Heritage Chocolate on Unsplash"
+        image="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
+    if index == 2:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 3:
+        credits="Photo by Alexandra Gornago on Unsplash"
+        image="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
+    if index == 4:
+        credits="Photo by Anthony Espinosa on Unsplash"
+        image="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 5:
+        credits="Photo by David Holifield on Unsplash"
+        image="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
+    if index == 6:
+        credits="Photo by kaouther djouada on Unsplash"
+        image="https://images.unsplash.com/photo-1602351447937-745cb720612f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+    if index == 7:
+        credits="Photo by Katie Rosario on Unsplash"
+        image="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+    if index == 8:
+        credits="Photo by Annie Spratt on Unsplash"
+        image="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=936&q=80"
+    if index == 9:
+        credits="Photo by American Heritage Chocolate on Unsplash"
+        image="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 10:
+        credits="Photo by Swapnll Dwivedi on Unsplash"
+        image="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80"
+    if index == 11:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=936&q=80"
+    if index == 12:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1562777717-dc6984f65a63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 13:
+        credits="Photo by Karly Gomez on Unsplash"
+        image="https://images.unsplash.com/photo-1488477304112-4944851de03d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 14:
+        credits="Photo by Slashio Photography on Unsplash"
+        image="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=701&q=80"
+    if index == 15:
+        credits="Photo by Slashio Photography on Unplash"
+        image="https://images.unsplash.com/photo-1622896784083-cc051313dbab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 16:
+        credits="Photo by Heather Barnes on Unsplash"
+        image="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=729&q=80"
+    if index == 17:
+        credits="Photo by Kim Daniels on Unsplash"
+        image="https://images.unsplash.com/photo-1560180474-e8563fd75bab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 18:
+        credits="Photo by Will Echols on Unsplash"
+        image="https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+    if index == 19:
+        credits="Photo by Natallia Nagorniak on Unsplash"
+        image="https://images.unsplash.com/photo-1595272568891-123402d0fb3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 20:
+        credits="Photo by Alex Lvrs on Unsplash"
+        image="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 21:
+        credits="Photo by Alexandra Khudyntseva on Unsplash"
+        image="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=933&q=80"
+    if index == 22:
+        credits="Photo by Jacob Thomas on Unsplash"
+        image="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=803&q=80"
+    if index == 23:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1557164158-11e97f2bb220?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=694&q=80"
+    if index == 24:
+        credits="Photo by Ellieelien on Unsplash"
+        image="https://images.unsplash.com/photo-1557308536-ee471ef2c390?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 25:
+        credits="Photo by Dessy Dimcheva on Unsplash"
+        image="https://images.unsplash.com/photo-1575919361890-69028a013637?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 26:
+        credits="Photo by Phinehas Adams on Unsplash"
+        image="https://images.unsplash.com/photo-1579306194872-64d3b7bac4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=817&q=80"
+    if index == 27:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1616690710400-a16d146927c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 28:
+        credits="Photo by David Holifield on Unsplash"
+        image="https://images.unsplash.com/photo-1604413191066-4dd20bedf486?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
+    if index == 29:
+        credits="Photo by Slashio Photography on Unsplash"
+        image="https://images.unsplash.com/photo-1623842529695-f056295fd8e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 30:
+        credits="Photo by Diana Light on Unsplash"
+        image="https://images.unsplash.com/photo-1562023692-9283c11284bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 31:
+        credits="Photo by Aneta Voborilova on Unsplash"
+        image="https://images.unsplash.com/photo-1615735487485-e52b9af610c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 32:
+        credits="Photo by Jasmine Bartel on Unsplash"
+        image="https://images.unsplash.com/photo-1568827999250-3f6afff96e66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+    if index == 33:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1569289522127-c0452f372d46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80"
+    if index == 34:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1552689486-f6773047d19f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+    if index == 35:
+        credits="Photo by Julia Peretiatko on Unsplash"
+        image="https://images.unsplash.com/photo-1596529267076-07866e3655cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 36:
+        credits="Photo by Diana Light on Unsplash"
+        image="https://images.unsplash.com/photo-1586244897823-988c9ad48c7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 37:
+        credits="Photo by Aneta Voborilova on Unsplash"
+        image="https://images.unsplash.com/photo-1618426703623-c1b335803e07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 38:
+        credits="Photo by Jenny Galloway on Unsplash"
+        image="https://images.unsplash.com/photo-1612809075925-230725151da2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=788&q=80"
+    if index == 39:
+        credits="Photo by micheile || visual stories on Unsplash"
+        image="https://images.unsplash.com/photo-1608830597604-619220679440?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 40:
+        credits="Photo by Pranjall Kumar on Unsplash"
+        image="https://images.unsplash.com/photo-1615796701805-2094ac54bbf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+    if index == 41:
+        credits="Photo by Alina Karpenko on Unsplash"
+        image="https://images.unsplash.com/photo-1557925923-33b27f891f88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+    if index == 42:
+        credits="Photo by leyli sadeqian on Unsplash"
+        image="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 43:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1557776959-f066eb37857f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 44:
+        credits="Photo by Vicky Ng on Unsplash"
+        image="https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    if index == 45:
+        credits="Photo by Takuya Nagaoka on Unsplash"
+        image="https://images.unsplash.com/photo-1602663491496-73f07481dbea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+    if index == 46:
+        credits="Photo by amirali mirhashemian on Unsplash"
+        image="https://images.unsplash.com/photo-1611293388250-580b08c4a145?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=838&q=80"
+    if index == 47:
+        credits="Photo by Melissa Walker Horn on Unsplash"
+        image="https://images.unsplash.com/photo-1565661834013-d196ca46e14e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
+    if index == 48:
+        credits="Photo by Deva Williamson on Unplash"
+        image="https://images.unsplash.com/photo-1552689486-ce080445fbb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=731&q=80"
+    if index == 49:
+        credits="Photo by Taylor Kiser on Unsplash"
+        image="https://images.unsplash.com/photo-1505253149613-112d21d9f6a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 50:
+        credits="Photo by amirali mirhashemian on Unsplash"
+        image="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=951&q=80"
+
+    embed = discord.Embed(title="Cake :)",description=f"{someone} got a cake from {inter.author.mention} :)", color=0xFECC4D)
+    embed.set_image(url=image)
+    embed.set_footer(text=credits)
+    await inter.send(embed=embed)
+
+@client.command(aliases=['cake'])
+async def cake2(inter, someone):
+    credits = "If you're seeing this text then something has gone wrong"
+    image = "https://cdn.discordapp.com/attachments/811051988992524299/950044067444686848/emoji.png"
+    index = random.randint(1,50)
+
+    if index == 1:
+        credits="Photo by American Heritage Chocolate on Unsplash"
+        image="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
+    if index == 2:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 3:
+        credits="Photo by Alexandra Gornago on Unsplash"
+        image="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
+    if index == 4:
+        credits="Photo by Anthony Espinosa on Unsplash"
+        image="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 5:
+        credits="Photo by David Holifield on Unsplash"
+        image="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"
+    if index == 6:
+        credits="Photo by kaouther djouada on Unsplash"
+        image="https://images.unsplash.com/photo-1602351447937-745cb720612f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+    if index == 7:
+        credits="Photo by Katie Rosario on Unsplash"
+        image="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+    if index == 8:
+        credits="Photo by Annie Spratt on Unsplash"
+        image="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=936&q=80"
+    if index == 9:
+        credits="Photo by American Heritage Chocolate on Unsplash"
+        image="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 10:
+        credits="Photo by Swapnll Dwivedi on Unsplash"
+        image="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80"
+    if index == 11:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=936&q=80"
+    if index == 12:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1562777717-dc6984f65a63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 13:
+        credits="Photo by Karly Gomez on Unsplash"
+        image="https://images.unsplash.com/photo-1488477304112-4944851de03d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 14:
+        credits="Photo by Slashio Photography on Unsplash"
+        image="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=701&q=80"
+    if index == 15:
+        credits="Photo by Slashio Photography on Unplash"
+        image="https://images.unsplash.com/photo-1622896784083-cc051313dbab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 16:
+        credits="Photo by Heather Barnes on Unsplash"
+        image="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=729&q=80"
+    if index == 17:
+        credits="Photo by Kim Daniels on Unsplash"
+        image="https://images.unsplash.com/photo-1560180474-e8563fd75bab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 18:
+        credits="Photo by Will Echols on Unsplash"
+        image="https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+    if index == 19:
+        credits="Photo by Natallia Nagorniak on Unsplash"
+        image="https://images.unsplash.com/photo-1595272568891-123402d0fb3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 20:
+        credits="Photo by Alex Lvrs on Unsplash"
+        image="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 21:
+        credits="Photo by Alexandra Khudyntseva on Unsplash"
+        image="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=933&q=80"
+    if index == 22:
+        credits="Photo by Jacob Thomas on Unsplash"
+        image="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=803&q=80"
+    if index == 23:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1557164158-11e97f2bb220?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=694&q=80"
+    if index == 24:
+        credits="Photo by Ellieelien on Unsplash"
+        image="https://images.unsplash.com/photo-1557308536-ee471ef2c390?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 25:
+        credits="Photo by Dessy Dimcheva on Unsplash"
+        image="https://images.unsplash.com/photo-1575919361890-69028a013637?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 26:
+        credits="Photo by Phinehas Adams on Unsplash"
+        image="https://images.unsplash.com/photo-1579306194872-64d3b7bac4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=817&q=80"
+    if index == 27:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1616690710400-a16d146927c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 28:
+        credits="Photo by David Holifield on Unsplash"
+        image="https://images.unsplash.com/photo-1604413191066-4dd20bedf486?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
+    if index == 29:
+        credits="Photo by Slashio Photography on Unsplash"
+        image="https://images.unsplash.com/photo-1623842529695-f056295fd8e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 30:
+        credits="Photo by Diana Light on Unsplash"
+        image="https://images.unsplash.com/photo-1562023692-9283c11284bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 31:
+        credits="Photo by Aneta Voborilova on Unsplash"
+        image="https://images.unsplash.com/photo-1615735487485-e52b9af610c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 32:
+        credits="Photo by Jasmine Bartel on Unsplash"
+        image="https://images.unsplash.com/photo-1568827999250-3f6afff96e66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+    if index == 33:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1569289522127-c0452f372d46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80"
+    if index == 34:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1552689486-f6773047d19f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+    if index == 35:
+        credits="Photo by Julia Peretiatko on Unsplash"
+        image="https://images.unsplash.com/photo-1596529267076-07866e3655cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 36:
+        credits="Photo by Diana Light on Unsplash"
+        image="https://images.unsplash.com/photo-1586244897823-988c9ad48c7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 37:
+        credits="Photo by Aneta Voborilova on Unsplash"
+        image="https://images.unsplash.com/photo-1618426703623-c1b335803e07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 38:
+        credits="Photo by Jenny Galloway on Unsplash"
+        image="https://images.unsplash.com/photo-1612809075925-230725151da2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=788&q=80"
+    if index == 39:
+        credits="Photo by micheile || visual stories on Unsplash"
+        image="https://images.unsplash.com/photo-1608830597604-619220679440?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 40:
+        credits="Photo by Pranjall Kumar on Unsplash"
+        image="https://images.unsplash.com/photo-1615796701805-2094ac54bbf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+    if index == 41:
+        credits="Photo by Alina Karpenko on Unsplash"
+        image="https://images.unsplash.com/photo-1557925923-33b27f891f88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+    if index == 42:
+        credits="Photo by leyli sadeqian on Unsplash"
+        image="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 43:
+        credits="Photo by Deva Williamson on Unsplash"
+        image="https://images.unsplash.com/photo-1557776959-f066eb37857f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 44:
+        credits="Photo by Vicky Ng on Unsplash"
+        image="https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    if index == 45:
+        credits="Photo by Takuya Nagaoka on Unsplash"
+        image="https://images.unsplash.com/photo-1602663491496-73f07481dbea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+    if index == 46:
+        credits="Photo by amirali mirhashemian on Unsplash"
+        image="https://images.unsplash.com/photo-1611293388250-580b08c4a145?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=838&q=80"
+    if index == 47:
+        credits="Photo by Melissa Walker Horn on Unsplash"
+        image="https://images.unsplash.com/photo-1565661834013-d196ca46e14e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
+    if index == 48:
+        credits="Photo by Deva Williamson on Unplash"
+        image="https://images.unsplash.com/photo-1552689486-ce080445fbb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=731&q=80"
+    if index == 49:
+        credits="Photo by Taylor Kiser on Unsplash"
+        image="https://images.unsplash.com/photo-1505253149613-112d21d9f6a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    if index == 50:
+        credits="Photo by amirali mirhashemian on Unsplash"
+        image="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=951&q=80"
+
+    embed = discord.Embed(title="Cake :)",description=f"{someone} got a cake from {inter.author.mention} :)", color=0xFECC4D)
+    embed.set_image(url=image)
+    embed.set_footer(text=credits)
+    await inter.send(embed=embed)
+
+@client.slash_command(description="Hats are cook :)")
+async def hat(inter):
+    thing = [':cat:',":dog:",":chair:",":package:",":bed:",":wastebasket:",":coffee:",":printer:",":couch:","👩","🧑","👧","👩‍🦰","👶","👴","👨‍🦳","👨‍🦲","👱‍♂️","🙎","🧏","🤦","🤷","💇","🏃","🐵","🐺","🐯","🦒","🦊","🦝","🐮","🐷","🐹","🐰","🐻","🐼","🐸","🦓","🐴","🐔","🐳","🐟","🐘","<:lelcube:811058465383514132>","<:lelbot:811058423604576306>","<:superlelcube:916875806746226698>"]
+    hat = ['🎩','🧢','👒','🎓','⛑️','🪖','👑','🔥','☔']
+    await inter.send(f"{random.choice(hat)}\n{random.choice(thing)}")
+
+@client.command(aliases=['hat'])
+async def hat2(inter):
+    thing = [':cat:',":dog:",":chair:",":package:",":bed:",":wastebasket:",":coffee:",":printer:",":couch:","👩","🧑","👧","👩‍🦰","👶","👴","👨‍🦳","👨‍🦲","👱‍♂️","🙎","🧏","🤦","🤷","💇","🏃","🐵","🐺","🐯","🦒","🦊","🦝","🐮","🐷","🐹","🐰","🐻","🐼","🐸","🦓","🐴","🐔","🐳","🐟","🐘","<:lelcube:811058465383514132>","<:lelbot:811058423604576306>","<:superlelcube:916875806746226698>"]
+    hat = ['🎩','🧢','👒','🎓','⛑️','🪖','👑','🔥','☔']
+    await inter.send(f"{random.choice(hat)}\n{random.choice(thing)}")
 
 EXTREMELYSECRETSETOFCHARACTERS = "insert token here"
 client.run(EXTREMELYSECRETSETOFCHARACTERS)
