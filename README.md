@@ -130,6 +130,10 @@ Simple! Just click [here](https://discord.com/api/oauth2/authorize?client_id=822
 
 `l!image` - Get a random image
 
+`l!cake <someone>` - Give a cake to someone
+
+`l!hat` - Hats are cook :)
+
 ## Hosting lelbot
 
 Wants to host a modified version of lelbot? Please read these stuff below before doing that!
