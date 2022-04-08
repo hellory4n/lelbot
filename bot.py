@@ -7972,7 +7972,7 @@ async def cake(inter, someone:str):
     await inter.send(embed=embed)
 
 @client.command(aliases=['cake'])
-async def cake2(inter, someone):
+async def cake2(inter, *, someone):
     credits = "If you're seeing this text then something has gone wrong"
     image = "https://cdn.discordapp.com/attachments/811051988992524299/950044067444686848/emoji.png"
     index = random.randint(1,50)
