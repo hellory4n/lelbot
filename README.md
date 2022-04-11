@@ -106,6 +106,10 @@ Simple! Just click [here](https://discord.com/api/oauth2/authorize?client_id=822
 
 `l!rob <user> <amount>` - Steal the lelgolds of another person
 
+`l!reset_items` - Reset your items
+
+`l!sell <user> <price> [amount]` - Sell items
+
 `l!classic_help` - Get the classic help design
 
 `l!text_to_wotcode` - wot
