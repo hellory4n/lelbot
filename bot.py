@@ -5,8 +5,8 @@ import json
 import os
 from disnake.ext import commands, tasks
 from disnake.mentions import AllowedMentions
-from disnake.ui import Button, View, Select
-from disnake import ButtonStyle, SelectMenu, SelectOption, ActionRow
+from disnake.ui import Button, View, Select, Modal, TextInput
+from disnake import ButtonStyle, SelectMenu, SelectOption, ActionRow, TextInputStyle
 
 #Note: There's cringe variable names
 
@@ -96,7 +96,7 @@ async def help(ctx):
     embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`, `cake <someone>`, `hat`", inline=False)
     embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`, `image`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
-    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`",inline=False)
+    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`, `reset_items`, `sell <user> <price> [amount]`",inline=False)
     embed.add_field(name="Snowballs",value="`collect`, `throw <target>`, `snow_lb`",inline=False)
     embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
     embed.add_field(name="Stuff that isn't really for fun", value="`embed <title> | <description>`, `math <expression>`, `poll <text>`, `randnum <min> <max>`, `suggest <suggestion>`, `roll`", inline=False)
@@ -764,7 +764,7 @@ async def help(inter):
     embed.add_field(name="Very random", value="`bobux`, `dostuff [index]`, `hello [something]`, `morecookis`, `randomsandwich`, `randomstory`, `sandwich <size>`, `name`, `buildpc`, `adventure`, `cake <someone>`, `hat`", inline=False)
     embed.add_field(name="Random", value="`bam <someone>`, `boom <something>`, `fact [index]`, `hack <something>`, `sweatsmile`, `yesorno <question>`, `chat <something>`, `sentence`, `who <someone>`, `where <something>`, `image`", inline=False)
     embed.add_field(name="Not so random", value="`attack <someone>`, `hug <someone>`, `say <something>`, `8ball <question>`, `when <question>`, `weirdtext`, `text_to_wotcode`, `wotcode_to_text`", inline=False)
-    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`")
+    embed.add_field(name="Economy",value="`work`, `bal [user]`, `dep <amount>`, `with <amount>`, `lb`, `shop`, `buy [amount]`, `inv [user]`, `use [amount]`, `give_money <user> <amount>`, `reset_money`, `give_item <user> <amount>`, `rob <user> <amount>`, `reset_items`, `sell <user> <price> [amount]`")
     embed.add_field(name="Snowballs",value="`collect`, `throw <target>`, `snow_lb`",inline=False)
     embed.add_field(name="Bot stuff", value="`ping`, `invite`, `aboutme`, `server`, `help`, `classic_help`", inline=False)
     embed.add_field(name="Stuff that isn't really for fun", value="`embed <title> | <description>`, `math <expression>`, `poll <text>`, `randnum <min> <max>`, `suggest <suggestion>`, `roll`", inline=False)
@@ -1509,10 +1509,10 @@ async def balance(inter, user: discord.User=None):
     if user==None:
         filename = str(inter.author.id) + '.json'
         user=inter.author
+        create_user_if_it_dont_exist(inter.author.id)
     else:
         filename = str(user.id) + '.json'
-    
-    create_user_if_it_dont_exist(inter.author.id)
+        create_user_if_it_dont_exist(user.id)
 
     with open(filename, 'r') as f:
         ok = json.load(f)
@@ -2113,6 +2113,138 @@ async def use(inter, item: Items, amount: int=1):
             await inter.send("Hmm, metal tastes so good! I love it! Tasty! Delicious! Incredible!")
             await asyncio.sleep(3)
             await inter.send("*explodes*")
+        
+        elif item == "Lelcube":
+            items[item] = items[item] + amount*2
+
+            with open(f"{str(inter.author.id)}_items.json", 'w') as f:
+                json.dump(items, f)
+            
+            await inter.send("<:lelcube:811058465383514132>")
+            await inter.channel.send(f"Now you have {items[item]} lelcubes :D")
+        
+        elif item == "Free lelgolds":
+            values = {}
+            modaluwu = Modal(
+                title="Form where you put your info",
+                custom_id="epok_cook_modal",
+                components=[
+                    TextInput(
+                        label="Email address",
+                        placeholder="Placeholder",
+                        custom_id="email_address",
+                        style=TextInputStyle.short,
+                        max_length=150,
+                    ),
+                    TextInput(
+                        label="Password lol",
+                        placeholder="Placeholder",
+                        custom_id="password_lol",
+                        style=TextInputStyle.short,
+                        max_length=150,
+                    ),
+                    TextInput(
+                        label="IP address",
+                        placeholder="Placeholder",
+                        custom_id="ip_address",
+                        style=TextInputStyle.short,
+                        max_length=32,
+                    ),
+                    TextInput(
+                        label="Why you want free lelgolds?",
+                        placeholder="Placeholder",
+                        custom_id="why",
+                        style=TextInputStyle.paragraph,
+                        max_length=512,
+                    ),
+                    TextInput(
+                        label="Did you like this form?",
+                        placeholder="Placeholder",
+                        custom_id="yesorno",
+                        style=TextInputStyle.short,
+                        max_length=32,
+                    )
+                ]
+            )
+
+            await inter.response.send_modal(modaluwu)
+
+            # Wait until the user submits the modal
+            try:
+                modal_inter: discord.ModalInteraction = await client.wait_for(
+                    "modal_submit",
+                    check=lambda i: i.custom_id == "epok_cook_modal" and i.author.id == inter.author.id,
+                    timeout=1024,
+                )
+            except asyncio.TimeoutError:
+                # lol took too much
+                return
+            
+            '''for custom_id, value in modal_inter.text_values.items():
+                values[custom_id] = value'''
+
+            await modal_inter.response.send_message("Getting access to lelbot's servers...")
+            msg = await modal_inter.original_message()
+            await asyncio.sleep(3)
+            await msg.edit(content="Bypassing firewall...")
+            await asyncio.sleep(3)
+            await msg.edit(content="Connecting to SQL database...")
+            await asyncio.sleep(3)
+            await msg.edit(content=f"Searching for database key \"{str(modal_inter.author.id)}_MONE\"")
+            await asyncio.sleep(3)
+            await msg.edit(content="Connecting to SQL database again...")
+            await asyncio.sleep(3)
+            await msg.edit(content=f"Modifying {random.randint(2,30000)} database keys...")
+            await asyncio.sleep(3)
+            await msg.edit(content=f"Stealing your discord account lol...")
+            await asyncio.sleep(3)
+            await msg.edit(content=f"I gave {random.randint(1,9999999999999)} lelgolds to your account BUT now your account is mine >:DDDDDDDD\nNow I finally can buy 942482 metal cakes :D")
+        
+        elif item == "Macrohard Doors 11":
+            await inter.send(":door:\n\n:o:")
+            msg = await inter.original_message()
+            await asyncio.sleep(60)
+            await msg.edit(content="Please wait... :o: (this will take 25 minutes)")
+            await asyncio.sleep(720)
+            await msg.edit(content="**11:11**\nhttps://cdn.discordapp.com/attachments/811060176265805825/962452691685101598/best-banner-ever-lol.png")
+            await asyncio.sleep(10)
+            await msg.edit(content=f"Logging to {inter.author.name}'s account...")
+            await asyncio.sleep(720)
+            await msg.edit(content="```ues\n:(\ntrololol doors 11 crashed trololol you have to restart :wink:```")
+        
+        elif item == "Pancakes":
+            await inter.send(":pancakes: <:lelcube:811058465383514132>")
+            await inter.channel.send("He eats pancakes")
+        
+        elif item == "The best movie out there":
+            await inter.send("<:lelcube:811058465383514132>")
+            scn = await inter.original_message()
+            msg = await inter.channel.send("LELCUBE MOVIE PRODUCTIONS")
+            await asyncio.sleep(6)
+            await scn.edit(content=":deaf_person:")
+            await msg.edit(content="FROM THE CREATORS OF /ADVENTURE AND THE BEST MOVIE OUT THERE")
+            await asyncio.sleep(6)
+            await msg.edit(content="INTRODUCING...")
+            await asyncio.sleep(6)
+            await msg.edit(content="THE BEST MOVIE OUT THERE")
+            await asyncio.sleep(6)
+            await scn.edit(content="<:lelcube:811058465383514132> :cookie:")
+            await msg.edit(content="**Lelcube**\nI like cookis")
+            await asyncio.sleep(6)
+            await scn.edit(content="<:lelcube:811058465383514132>")
+            await msg.edit(content="** **")
+            await asyncio.sleep(3)
+            await msg.edit(content="**Lelcube**\nono where is ma cooki")
+            await asyncio.sleep(3)
+            await scn.edit(content="<:lelcube:811058465383514132> <:void:834904392008335360> <:hellory5n:915028960604200982>")
+            await msg.edit(content="**hellory5n**\ni stealed it lol")
+            await asyncio.sleep(5)
+            await scn.edit(content="<:lelcube:811058465383514132> <:nuG:915809814947463168> <:hellory5n:915028960604200982>")
+            await msg.edit(content="** **")
+            await asyncio.sleep(5)
+            await msg.edit(content="A MOVIE BY LELCUBE MOVIE PRODUCTIONS")
+            await asyncio.sleep(10)
+            await msg.edit(content="WHY\nWHY I MADE THIS MOVIE")
 
 @client.slash_command(description="Give money to another person")
 async def give_money(inter, user: discord.User, amount: int):
@@ -2123,6 +2255,8 @@ async def give_money(inter, user: discord.User, amount: int):
     amount: The amount of money that you will give
     """
     problems_ono = False
+
+    create_user_if_it_dont_exist(inter.author.id)
 
     if user.id == inter.author.id:
         problems_ono = True
@@ -2139,6 +2273,8 @@ async def give_money(inter, user: discord.User, amount: int):
         await inter.send("You can't lol")
     
     if problems_ono == False:
+        create_user_if_it_dont_exist(user.id)
+        
         with open(output, 'r') as f_o:
             ok_o = json.load(f_o)
         
@@ -2213,6 +2349,8 @@ async def give_item(inter, user: discord.User, item: Items, amount: int=1):
     """
     problems_ono = False
     
+    create_user_if_it_dont_exist(inter.author.id)
+
     input = f"{str(inter.author.id)}_items.json"
     output = f"{str(user.id)}_items.json"
 
@@ -2228,6 +2366,8 @@ async def give_item(inter, user: discord.User, item: Items, amount: int=1):
         await inter.send("You can't give items to yourself xd",ephemeral=True)
 
     if problems_ono == False:
+        create_user_if_it_dont_exist(user.id)
+
         with open(output, 'r') as f_o:
             ok_o = json.load(f_o)
         
@@ -2275,6 +2415,8 @@ async def rob(inter, amount: int, user: discord.User):
     """
     problems_ono = False
     
+    create_user_if_it_dont_exist(inter.author.id)
+
     output = f"{str(inter.author.id)}.json"
     input = f"{str(user.id)}.json"
 
@@ -2286,6 +2428,8 @@ async def rob(inter, amount: int, user: discord.User):
         await inter.send("You can't lol")
     
     if problems_ono == False:
+        create_user_if_it_dont_exist(user.id)
+
         with open(output, 'r') as f_o:
             ok_o = json.load(f_o)
         
@@ -2416,8 +2560,10 @@ async def bal(inter, user:discord.User=None):
     if user==None:
         filename = str(inter.author.id) + '.json'
         user=inter.author
+        create_user_if_it_dont_exist(inter.author.id)
     else:
         filename = str(user.id) + '.json'
+        create_user_if_it_dont_exist(user.id)
     
     create_user_if_it_dont_exist(inter.author.id)
 
@@ -3068,6 +3214,138 @@ async def use2(inter, amount="1"):
                         await inter.send("Hmm, metal tastes so good! I love it! Tasty! Delicious! Incredible!")
                         await asyncio.sleep(3)
                         await inter.send("*explodes*")
+                    
+                    elif item == "Lelcube":
+                        items[item] = items[item] + amount*2
+
+                        with open(f"{str(inter.author.id)}_items.json", 'w') as f:
+                            json.dump(items, f)
+                        
+                        await inter.send("<:lelcube:811058465383514132>")
+                        await inter.channel.send(f"Now you have {items[item]} lelcubes :D")
+                    
+                    elif item == "Free lelgolds":
+                        values = {}
+                        modaluwu = Modal(
+                            title="Form where you put your info",
+                            custom_id="epok_cook_modal",
+                            components=[
+                                TextInput(
+                                    label="Email address",
+                                    placeholder="Placeholder",
+                                    custom_id="email_address",
+                                    style=TextInputStyle.short,
+                                    max_length=150,
+                                ),
+                                TextInput(
+                                    label="Password lol",
+                                    placeholder="Placeholder",
+                                    custom_id="password_lol",
+                                    style=TextInputStyle.short,
+                                    max_length=150,
+                                ),
+                                TextInput(
+                                    label="IP address",
+                                    placeholder="Placeholder",
+                                    custom_id="ip_address",
+                                    style=TextInputStyle.short,
+                                    max_length=32,
+                                ),
+                                TextInput(
+                                    label="Why you want free lelgolds?",
+                                    placeholder="Placeholder",
+                                    custom_id="why",
+                                    style=TextInputStyle.paragraph,
+                                    max_length=512,
+                                ),
+                                TextInput(
+                                    label="Did you like this form?",
+                                    placeholder="Placeholder",
+                                    custom_id="yesorno",
+                                    style=TextInputStyle.short,
+                                    max_length=32,
+                                )
+                            ]
+                        )
+
+                        await inter.response.send_modal(modaluwu)
+
+                        # Wait until the user submits the modal
+                        try:
+                            modal_inter: discord.ModalInteraction = await client.wait_for(
+                                "modal_submit",
+                                check=lambda i: i.custom_id == "epok_cook_modal" and i.author.id == inter.author.id,
+                                timeout=1024,
+                            )
+                        except asyncio.TimeoutError:
+                            # lol took too much
+                            return
+                        
+                        '''for custom_id, value in modal_inter.text_values.items():
+                            values[custom_id] = value'''
+
+                        await modal_inter.response.send_message("Getting access to lelbot's servers...")
+                        msg = await modal_inter.original_message()
+                        await asyncio.sleep(3)
+                        await msg.edit(content="Bypassing firewall...")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="Connecting to SQL database...")
+                        await asyncio.sleep(3)
+                        await msg.edit(content=f"Searching for database key \"{str(modal_inter.author.id)}_MONE\"")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="Connecting to SQL database again...")
+                        await asyncio.sleep(3)
+                        await msg.edit(content=f"Modifying {random.randint(2,30000)} database keys...")
+                        await asyncio.sleep(3)
+                        await msg.edit(content=f"Stealing your discord account lol...")
+                        await asyncio.sleep(3)
+                        await msg.edit(content=f"I gave {random.randint(1,9999999999999)} lelgolds to your account BUT now your account is mine >:DDDDDDDD\nNow I finally can buy 942482 metal cakes :D")
+                    
+                    elif item == "Macrohard Doors 11":
+                        await inter.send(":door:\n\n:o:")
+                        msg = await inter.original_message()
+                        await asyncio.sleep(60)
+                        await msg.edit(content="Please wait... :o: (this will take 25 minutes)")
+                        await asyncio.sleep(720)
+                        await msg.edit(content="**11:11**\nhttps://cdn.discordapp.com/attachments/811060176265805825/962452691685101598/best-banner-ever-lol.png")
+                        await asyncio.sleep(10)
+                        await msg.edit(content=f"Logging to {inter.author.name}'s account...")
+                        await asyncio.sleep(720)
+                        await msg.edit(content="```ues\n:(\ntrololol doors 11 crashed trololol you have to restart :wink:```")
+                    
+                    elif item == "Pancakes":
+                        await inter.send(":pancakes: <:lelcube:811058465383514132>")
+                        await inter.channel.send("He eats pancakes")
+                    
+                    elif item == "The best movie out there":
+                        await inter.send("<:lelcube:811058465383514132>")
+                        scn = await inter.original_message()
+                        msg = await inter.channel.send("LELCUBE MOVIE PRODUCTIONS")
+                        await asyncio.sleep(6)
+                        await scn.edit(content=":deaf_person:")
+                        await msg.edit(content="FROM THE CREATORS OF /ADVENTURE AND THE BEST MOVIE OUT THERE")
+                        await asyncio.sleep(6)
+                        await msg.edit(content="INTRODUCING...")
+                        await asyncio.sleep(6)
+                        await msg.edit(content="THE BEST MOVIE OUT THERE")
+                        await asyncio.sleep(6)
+                        await scn.edit(content="<:lelcube:811058465383514132> :cookie:")
+                        await msg.edit(content="**Lelcube**\nI like cookis")
+                        await asyncio.sleep(6)
+                        await scn.edit(content="<:lelcube:811058465383514132>")
+                        await msg.edit(content="** **")
+                        await asyncio.sleep(3)
+                        await msg.edit(content="**Lelcube**\nono where is ma cooki")
+                        await asyncio.sleep(3)
+                        await scn.edit(content="<:lelcube:811058465383514132> <:void:834904392008335360> <:hellory5n:915028960604200982>")
+                        await msg.edit(content="**hellory5n**\ni stealed it lol")
+                        await asyncio.sleep(5)
+                        await scn.edit(content="<:lelcube:811058465383514132> <:nuG:915809814947463168> <:hellory5n:915028960604200982>")
+                        await msg.edit(content="** **")
+                        await asyncio.sleep(5)
+                        await msg.edit(content="A MOVIE BY LELCUBE MOVIE PRODUCTIONS")
+                        await asyncio.sleep(10)
+                        await msg.edit(content="WHY\nWHY I MADE THIS MOVIE")
 
             else:
                 await inter.send("You're not the author :P",ephemeral=True)
@@ -3080,6 +3358,8 @@ async def use2(inter, amount="1"):
 @client.command(aliases=['give-money','give_money'])
 async def give_money2(inter, user:discord.User, amount:int):
     problems_ono = False
+
+    create_user_if_it_dont_exist(inter.author.id)
 
     if user.id == inter.author.id:
         problems_ono = True
@@ -3096,6 +3376,8 @@ async def give_money2(inter, user:discord.User, amount:int):
         await inter.reply("You can't lol")
     
     if problems_ono == False:
+        create_user_if_it_dont_exist(user.id)
+
         with open(output, 'r') as f_o:
             ok_o = json.load(f_o)
         
@@ -3162,6 +3444,8 @@ async def reset_money2(inter):
 async def give_item2(inter, user:discord.Member, amount="1"):
     oh_nice = False
 
+    create_user_if_it_dont_exist(inter.author.id)
+
     try:
         amount = int(amount)
         oh_nice = True
@@ -3199,6 +3483,8 @@ async def give_item2(inter, user:discord.Member, amount="1"):
                     await msg.edit(content="You can't give items to yourself xd",view=None)
 
                 if problems_ono == False:
+                    create_user_if_it_dont_exist(user.id)
+
                     with open(output, 'r') as f_o:
                         ok_o = json.load(f_o)
                     
@@ -3230,6 +3516,8 @@ async def give_item2(inter, user:discord.Member, amount="1"):
 async def rob2(inter, user:discord.User, amount):
     problems_ono = False
 
+    create_user_if_it_dont_exist(inter.author.id)
+
     try:
       amount = int(amount)
     except:
@@ -3248,6 +3536,8 @@ async def rob2(inter, user:discord.User, amount):
           await inter.reply("You can't lol")
       
       if problems_ono == False:
+          create_user_if_it_dont_exist(user.id)
+          
           with open(output, 'r') as f_o:
               ok_o = json.load(f_o)
           
@@ -3277,14 +3567,14 @@ async def rob2(inter, user:discord.User, amount):
 @client.slash_command(description="For the people that don't like the new help command")
 async def classic_help(inter):
     embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`, `l!adventure`", inline=False)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`, `l!adventure`, `l!cake <someone>`, `l!hat`, `l!reset_items`, `l!sell <user> <price> [amount]`", inline=False)
     embed.set_footer(text="lel")
     await inter.send(embed=embed)
 
 @client.command(aliases=['classic_help'])
 async def classic_help2(inter):
     embed=discord.Embed(title="Help", description="`<>` = required, `[]` = optional.", color=0xFECC4D)
-    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`, `l!adventure`", inline=False)
+    embed.add_field(name="Commands", value="`l!hello`, `l!ping`, `l!8ball <question>`, `l!boom <user>`, `l!invite`, `l!chat <text>`, `l!fact [index]`, `l!randomstory`, `l!aboutme`, `l!when <question>`, `l!helloyesorno <question>`, `l!say <text>`, `l!hug <user>`, `l!attack <user>`, `l!bam <user>`, `l!roll`, `l!hack <user>`, `l!server`, `l!randomsandwich`, `l!poll <text>`, `l!suggest <text>`, `l!weirdtext`, `l!dostuff`, `l!embed <title> | <description>`, `l!math <number> <operation> <number>`, `l!sweatsmile`, `l!randnum <min> <max>`, `l!bobux`, `l!morecookis`, `l!work`, `l!bal [user]`, `l!dep <value>`, `l!with <value>`, `l!lb`, `l!shop`, `l!buy [amount]`, `l!inv [user]`, `l!use [amount]`, `l!give_money <user> <amount>`, `l!reset_money`, `l!give_item <user> [amount]`, `l!rob <user> <amount>`, `l!text_to_wotcode <user>`, `l!wotcode_to_text <user>`, `l!name`, `l!sandwich <size>`, `l!collect`, `l!throw <target>`, `l!snow-lb`, `l!where <something>`, `l!buildpc`, `l!adventure`, `l!cake <someone>`, `l!hat`, `l!reset_items`, `l!sell <user> <price> [amount]`", inline=False)
     embed.set_footer(text="lel")
     await inter.send(embed=embed)
 
@@ -8144,6 +8434,335 @@ async def hat2(inter):
     thing = [':cat:',":dog:",":chair:",":package:",":bed:",":wastebasket:",":coffee:",":printer:",":couch:","👩","🧑","👧","👩‍🦰","👶","👴","👨‍🦳","👨‍🦲","👱‍♂️","🙎","🧏","🤦","🤷","💇","🏃","🐵","🐺","🐯","🦒","🦊","🦝","🐮","🐷","🐹","🐰","🐻","🐼","🐸","🦓","🐴","🐔","🐳","🐟","🐘","<:lelcube:811058465383514132>","<:lelbot:811058423604576306>","<:superlelcube:916875806746226698>"]
     hat = ['🎩','🧢','👒','🎓','⛑️','🪖','👑','🔥','☔']
     await inter.send(f"{random.choice(hat)}\n{random.choice(thing)}")
+
+@client.slash_command(description="Reset YOUR items")
+async def reset_items(inter):
+    filename = str(inter.author.id) + "_items.json"
+
+    create_user_if_it_dont_exist(inter.author.id)
+
+    yes = Button(
+            style=ButtonStyle.red,
+            label="Yes, reset my money!",
+            custom_id="yes_button"
+        )
+    no = Button(
+            style=ButtonStyle.blurple,
+            label="Nevermind.",
+            custom_id="no_button"
+        )
+    
+    pain = inter
+
+    async def on_yes(inter):
+        if pain.author.id == inter.author.id:
+            with open(filename, 'r') as f:
+                ok = json.load(f)
+
+            ok = {}
+
+            with open(filename, 'w') as f:
+                json.dump(ok, f)
+
+            await msg.edit(content="Successfully reseted.", view=None)
+        else:
+            await inter.send(content="You're not the author :P",ephemeral=True)
+    
+    async def on_no(inter):
+        if pain.author.id == inter.author.id:
+            await msg.edit(content="Ok",view=None)
+        else:
+            await inter.send(content="You're not the author :P",ephemeral=True)
+
+    yes.callback = on_yes
+    no.callback = on_no
+    view = View()
+    view.add_item(yes)
+    view.add_item(no)
+
+    await inter.send("Are you sure you want to reset your items??", view=view)
+    msg = await inter.original_message()
+
+@client.command(aliases=['reset_items'])
+async def reset_items2(inter):
+    filename = str(inter.author.id) + "_items.json"
+
+    create_user_if_it_dont_exist(inter.author.id)
+
+    yes = Button(
+            style=ButtonStyle.red,
+            label="Yes, reset my money!",
+            custom_id="yes_button"
+        )
+    no = Button(
+            style=ButtonStyle.blurple,
+            label="Nevermind.",
+            custom_id="no_button"
+        )
+    
+    pain = inter
+
+    async def on_yes(inter):
+        if pain.author.id == inter.author.id:
+            with open(filename, 'r') as f:
+                ok = json.load(f)
+
+            ok = {}
+
+            with open(filename, 'w') as f:
+                json.dump(ok, f)
+
+            await msg.edit(content="Successfully reseted.", view=None)
+        else:
+            await inter.send(content="You're not the author :P",ephemeral=True)
+    
+    async def on_no(inter):
+        if pain.author.id == inter.author.id:
+            await msg.edit(content="Ok",view=None)
+        else:
+            await inter.send(content="You're not the author :P",ephemeral=True)
+
+    yes.callback = on_yes
+    no.callback = on_no
+    view = View()
+    view.add_item(yes)
+    view.add_item(no)
+
+    msg = await inter.send("Are you sure you want to reset your items??", view=view)
+
+@client.slash_command(description="Sell items")
+@commands.cooldown(1, 60, commands.BucketType.user)
+async def sell(inter, user: discord.User, item: Items, price:int, amount:int=1):
+    """
+    Parameters
+    ----------
+    user: Who will buy the item
+    item: The item you will sell
+    price: The price.
+    amount: How many items you will sell
+    """
+    xd = False
+
+    with open(f"{str(inter.author.id)}_items.json", 'r') as f:
+        items = json.load(f)
+    
+    # Does the author have this item?
+    if item not in items or items[item] < amount:
+        xd = True
+        await inter.send("Lol you don't have this item")
+    
+    # Illegal stuff
+    if amount < 1 or user.id == inter.author.id:
+        xd = True
+        await inter.send("Das illegal")
+    
+    if xd == False:
+        #Get the price using the price the items have in the shop
+        '''# I should make items.txt a json file
+        with open("items.txt", 'r') as f:
+            txt = f.read()
+        
+        txt2 = txt.split("\n")
+
+        for i in txt2:
+            txt3 = i.split("&&")
+        
+            if txt3[0] == item:
+                price = int(txt3[1])'''
+
+        yes = Button(
+            style=ButtonStyle.blurple,
+            label="Yes",
+            custom_id="yes_button"
+        )
+        no = Button(
+            style=ButtonStyle.red,
+            label="No",
+            custom_id="no_button"
+        )
+
+        async def on_yes(epokinter):
+            if epokinter.author.id == user.id:
+                # Does the user have enough money?
+                with open(f"{str(user.id)}.json", 'r') as f:
+                    mone = json.load(f)
+                
+                if mone['cash'] >= price:
+                    # Give the item
+                    items[item] -= amount
+
+                    with open(f"{str(inter.author.id)}_items.json", 'w') as f:
+                        json.dump(items, f)
+                    
+                    with open(f"{str(user.id)}_items.json", 'r') as f:
+                        items_but_it_has_a_different_value_i_know_this_is_a_pretty_good_variable_name = json.load(f)
+                    
+                    items_but_it_has_a_different_value_i_know_this_is_a_pretty_good_variable_name[item] += amount
+
+                    with open(f"{str(user.id)}_items.json", 'w') as f:
+                        json.dump(items_but_it_has_a_different_value_i_know_this_is_a_pretty_good_variable_name, f)
+
+                    # Mone 🤑
+                    with open(f"{str(inter.author.id)}.json", 'r') as f:
+                        monehrjieodkgro = json.load(f)
+                    
+                    monehrjieodkgro['cash'] += price
+                    mone['cash'] -= price
+
+                    with open(f"{str(inter.author.id)}.json", 'w') as f:
+                        json.dump(monehrjieodkgro, f)
+                    
+                    with open(f"{str(user.id)}.json", 'w') as f:
+                        json.dump(mone, f)
+                    
+                    await msg.edit(content=f"{item} was successfully sold!", view=None)
+
+                else:
+                    await msg.edit(content=f"{user.mention} You don't have enough lelgolds xdd", view=None)
+            else:
+                await epokinter.send(content="Yes",ephemeral=True)
+        
+        async def on_no(epokinter):
+            if epokinter.author.id == user.id:
+                await msg.edit(content="Canceled operation.",view=None)
+            else:
+                await epokinter.send(content="Yes",ephemeral=True)
+
+        yes.callback = on_yes
+        no.callback = on_no
+        view = View(timeout=None)
+        view.add_item(yes)
+        view.add_item(no)
+
+        await inter.send(f"{user.mention} Do you want to buy {amount} {item}s for {price} <:lelgold:888933451410075689>?", view=view)
+        msg = await inter.original_message()
+
+@client.command(aliases=['sell'])
+@commands.cooldown(1, 60, commands.BucketType.user)
+async def sell2(inter, user: discord.User, price, amount=1):
+    numbernt = False
+    xd = False
+
+    try:
+        price = int(price)
+        amount = int(amount)
+    except:
+        numbernt = True
+        await inter.reply("You are supposed to put a number as the amount (If you are trying to specify the item, you will do it after sending the command!)")
+
+    if numbernt == False:
+
+        select = Select(
+            custom_id="select",
+            placeholder="Click here to choose the item you want",
+            max_values=1,
+            options=itemselect
+        )
+
+        async def clallbakc(interr):
+            nonlocal xd
+            if interr.author.id == inter.author.id:
+                item = select.values[0]
+                with open(f"{str(inter.author.id)}_items.json", 'r') as f:
+                    items = json.load(f)
+                
+                # Does the author have this item?
+                if item not in items or items[item] < amount:
+                    xd = True
+                    await msg.edit(content="Lol you don't have this item",view=None)
+                
+                # Illegal stuff
+                if amount < 1 or user.id == inter.author.id:
+                    xd = True
+                    await msg.edit(content="Das illegal",view=None)
+
+                if xd == False:
+                    #Get the price using the price the items have in the shop
+                    '''# I should make items.txt a json file
+                    with open("items.txt", 'r') as f:
+                        txt = f.read()
+                    
+                    txt2 = txt.split("\n")
+
+                    for i in txt2:
+                        txt3 = i.split("&&")
+                    
+                        if txt3[0] == item:
+                            price = int(txt3[1])'''
+
+                    yes = Button(
+                        style=ButtonStyle.blurple,
+                        label="Yes",
+                        custom_id="yes_button"
+                    )
+                    no = Button(
+                        style=ButtonStyle.red,
+                        label="No",
+                        custom_id="no_button"
+                    )
+
+                    async def on_yes(epokinter):
+                        if epokinter.author.id == user.id:
+                            # Does the user have enough money?
+                            with open(f"{str(user.id)}.json", 'r') as f:
+                                mone = json.load(f)
+                            
+                            if mone['cash'] >= price:
+                                # Give the item
+                                items[item] -= amount
+
+                                with open(f"{str(inter.author.id)}_items.json", 'w') as f:
+                                    json.dump(items, f)
+                                
+                                with open(f"{str(user.id)}_items.json", 'r') as f:
+                                    items_but_it_has_a_different_value_i_know_this_is_a_pretty_good_variable_name = json.load(f)
+                                
+                                items_but_it_has_a_different_value_i_know_this_is_a_pretty_good_variable_name[item] += amount
+
+                                with open(f"{str(user.id)}_items.json", 'w') as f:
+                                    json.dump(items_but_it_has_a_different_value_i_know_this_is_a_pretty_good_variable_name, f)
+
+                                # Mone 🤑
+                                with open(f"{str(inter.author.id)}.json", 'r') as f:
+                                    monehrjieodkgro = json.load(f)
+                                
+                                monehrjieodkgro['cash'] += price
+                                mone['cash'] -= price
+
+                                with open(f"{str(inter.author.id)}.json", 'w') as f:
+                                    json.dump(monehrjieodkgro, f)
+                                
+                                with open(f"{str(user.id)}.json", 'w') as f:
+                                    json.dump(mone, f)
+                                
+                                await msg.edit(content=f"{item} was successfully sold!", view=None)
+
+                            else:
+                                await msg.edit(content=f"{user.mention} You don't have enough lelgolds xdd", view=None)
+                        else:
+                            await epokinter.send(content="Yes",ephemeral=True)
+                    
+                    async def on_no(epokinter):
+                        if epokinter.author.id == user.id:
+                            await msg.edit(content="Canceled operation.",view=None)
+                        else:
+                            await epokinter.send(content="Yes",ephemeral=True)
+
+                    yes.callback = on_yes
+                    no.callback = on_no
+                    view = View(timeout=None)
+                    view.add_item(yes)
+                    view.add_item(no)
+
+                    await msg.edit(content=f"{user.mention} Do you want to buy {amount} {item}s for {price} <:lelgold:888933451410075689>?", view=view)
+            else:
+                await interr.send(content="You're not the author :P",ephemeral=True)
+
+        select.callback = clallbakc
+        view = View()
+        view.add_item(select)
+
+        msg = await inter.send("What item you want to sell?", view=view)
 
 EXTREMELYSECRETSETOFCHARACTERS = "insert token here"
 client.run(EXTREMELYSECRETSETOFCHARACTERS)
