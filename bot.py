@@ -190,7 +190,7 @@ async def randomstory2(ctx):
 @client.command()
 async def aboutme(ctx):
     ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>\nMy birthday is on april 6, cuz lelbot 0.1 was released in april 6, 2021!", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.5.1")
+    ABOTME_embed.set_footer(text="Version 1.5.2")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await ctx.send(embed=ABOTME_embed)
 
@@ -1398,7 +1398,7 @@ async def invite(inter):
 @client.slash_command(description="About me 😉")
 async def aboutme(inter):
     ABOTME_embed=discord.Embed(title=f'About lelbot', description=f"Hello! I'm lelbot, the smartest AI in the universe, created by hellory5n, a very evil guy with very dumb plans!\nBy the way this is hellory5n: <:hellory5n:915028960604200982>\nMy birthday is on april 6, cuz lelbot 0.1 was released in april 6, 2021!", color=0xFECC4D)
-    ABOTME_embed.set_footer(text="Version 1.5.1")
+    ABOTME_embed.set_footer(text="Version 1.5.2")
     ABOTME_embed.add_field(name="Credits",value="Developed by hellory4n\nMany facts from `fact`: The credits are in the command itself\nArnold cooki ad from super snowman item: JustYellow\nThanks for using me!",inline=False)
     await inter.send(embed=ABOTME_embed)
 
@@ -8552,7 +8552,7 @@ async def sell(inter, user: discord.User, item: Items, price:int, amount:int=1):
         await inter.send("Lol you don't have this item")
     
     # Illegal stuff
-    if amount < 1 or user.id == inter.author.id:
+    if amount < 1 or user.id == inter.author.id or price < 1:
         xd = True
         await inter.send("Das illegal")
     
@@ -8672,7 +8672,7 @@ async def sell2(inter, user: discord.User, price, amount=1):
                     await msg.edit(content="Lol you don't have this item",view=None)
                 
                 # Illegal stuff
-                if amount < 1 or user.id == inter.author.id:
+                if amount < 1 or user.id == inter.author.id or price < 1:
                     xd = True
                     await msg.edit(content="Das illegal",view=None)
 
