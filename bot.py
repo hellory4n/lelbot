@@ -455,7 +455,7 @@ async def dostuff2(ctx,index="random"):
             await ctx.send(f':sweat_smile: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
             await ctx.send(f'He kills')
         if lelbot_tasks_index == 30:
-            await ctx.send(f'<:maum1:778489567036178464> <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send(f'<:hand1:883717167374278686> <:lelcube:811058465383514132> <:hand2:883717605066674176>')
             await ctx.send(f'He will catch you')
         if lelbot_tasks_index == 31:
             await ctx.send(f'<:lelcube:811058465383514132> :dash:')
@@ -530,7 +530,7 @@ async def dostuff2(ctx,index="random"):
             await ctx.send(':jack_o_lantern: :skull: <:lelcube:811058465383514132>')
             await ctx.send('He is on spooky month')
         if lelbot_tasks_index == 55:
-            await ctx.send('<:maum1:778489567036178464> :gem: <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send('<:hand1:883717167374278686> :gem: <:lelcube:811058465383514132> <:hand2:883717605066674176>')
             await ctx.send('He steals')
         if lelbot_tasks_index == 56:
             await ctx.send('<:lelcube:811058465383514132> :arrows_counterclockwise:')
@@ -1142,7 +1142,7 @@ async def dostuff(ctx,index="random"):
             await ctx.send(f':sweat_smile: <:Gun:816099538619072553> <:lelcube:811058465383514132>')
             await ctx.channel.send(f'He kills')
         if lelbot_tasks_index == 30:
-            await ctx.send(f'<:maum1:778489567036178464> <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send(f'<:hand1:883717167374278686> <:lelcube:811058465383514132> <:hand2:883717605066674176>')
             await ctx.channel.send(f'He will catch you')
         if lelbot_tasks_index == 31:
             await ctx.send(f'<:lelcube:811058465383514132> :dash:')
@@ -1217,7 +1217,7 @@ async def dostuff(ctx,index="random"):
             await ctx.send(':jack_o_lantern: :skull: <:lelcube:811058465383514132>')
             await ctx.channel.send('He is on spooky month')
         if lelbot_tasks_index == 55:
-            await ctx.send('<:maum1:778489567036178464> :gem: <:lelcube:811058465383514132> <:maum2:778489689014403072>')
+            await ctx.send('<:hand1:883717167374278686> :gem: <:lelcube:811058465383514132> <:hand2:883717605066674176>')
             await ctx.channel.send('He steals')
         if lelbot_tasks_index == 56:
             await ctx.send('<:lelcube:811058465383514132> :arrows_counterclockwise:')
